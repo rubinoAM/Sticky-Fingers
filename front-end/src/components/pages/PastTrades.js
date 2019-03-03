@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home(){
+function PastTrades(){
 
     return(
         <p>
-            Home Page
+            PastTrades
         </p>
     )
 }
 
-export default Home;
+export default PastTrades;
