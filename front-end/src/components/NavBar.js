@@ -31,12 +31,6 @@ class NavBar extends Component{
                 <div className="nav-bar hide-on-small-only">
                     <Link to="/"><img src="images/stickyfingerslogo_sm.png" alt="" /></Link>
                     {currentNav}
-                    <img src="images/stickyfingerslogo_sm.png" alt="" />
-                    <ul className="navs">
-                        <li><Link to="/register">REGISTER</Link></li>
-                        <li><Link to="/login">LOG-IN</Link></li>
-                        <li><Link to="/collection">COLLECTION</Link></li>
-                    </ul>
                 </div>
                 <div className="nav-bar-mobile hide-on-med-and-up">
                     <img src="images/stickyfingerslogo_sm.png" alt="" />
