@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
-import Slider from 'react-slick';
 
 function Home(){
-
     return(
         <div className="home-container">
             <div className="landing-img-container">
