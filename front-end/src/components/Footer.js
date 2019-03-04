@@ -3,9 +3,41 @@ import { Link } from 'react-router-dom';
 import './footer.css';
 
 function Footer(){
+    let currTime = new Date();
+    let currYear = currTime.getFullYear();
+
     return(
-        <div className="footer">
-            Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.
+        <div className="page-footer footer">
+            <div className="container">
+                <div className="row">
+                    <div className="col m4 s12">
+                        <h5>Sticky Fingers</h5>
+                        <ul>
+                            <li><Link to="">About Us</Link></li>
+                            <li><Link to="">Blog</Link></li>
+                            <li><Link to="">Careers</Link></li>
+                        </ul>
+                    </div>
+                    <div className="col m4 s12">
+                        <h5>Help</h5>
+                        <ul>
+                            <li><Link to="">Help & Support</Link></li>
+                            <li><Link to="">Forum</Link></li>
+                            <li><Link to="">FAQ</Link></li>
+                        </ul>
+                    </div>
+                    <div className="col m4 s12">
+                        <h5>Follow Us</h5>
+                        <ul>
+                            <li><Link to="">Facebook</Link></li>
+                            <li><Link to="">Twitter</Link></li>
+                            <li><Link to="">Soundcloud</Link></li>
+                            <li><Link to="">Instagram</Link></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="footer-copyright">© {currYear} JR Priestman & Michael Rubino</div>
+            </div>
         </div>
     )
 }
