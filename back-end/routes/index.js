@@ -8,9 +8,75 @@ const config = require('../config');
 const connection = mysql.createConnection(config);
 connection.connect();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+
+router.post('/register',(req,res)=>{
+  const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
+  connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
+    // console.log("=========Server insanity check")
+    if(err){throw err};
+    if(results.length === 0){
+      console.log("there is no spoon")
+      const token = randToken.uid(50);
+      const hash = bcrypt.hashSync(req.body.password);
+      const insertUserQuery = `INSERT INTO users (email,password,token)
+      VALUES
+      (?,?,?);`;
+      connection.query(insertUserQuery,[req.body.email, hash, token],(err2,results2)=>{
+        if(err2){throw err2;}
+        res.json({
+          msg: "User Added",
+          token,
+          email: req.body.email
+        })
+      });
+    } else {
+      console.log("there is a spoon")
+      res.json({msg: "User Exists"})
+    }
+  })
+})
+
+router.post('/login',(req,res)=>{
+  
+  const email = req.body.email;
+  const password = req.body.password;
+  const selectUserQuery = `SELECT * FROM users WHERE email = ?;`;
+  
+  connection.query(selectUserQuery, [email],(error,results)=>{
+    
+    if(error)throw error
+    console.log("=========Server insanity check")
+    if(results.length === 0){
+      res.json({
+        msg: "Bad User"
+      })
+    }else {
+      const checkHash = bcrypt.compareSync(password, results[0].password)
+      if(checkHash){
+        const token = randToken.uid(50);
+        const updateTokenQuery = `UPDATE users SET token = ?
+          WHERE email = ?`
+          connection.query(updateTokenQuery, [token,email],(results2,error2)=>{
+          if(error2){throw error2}
+        })
+        res.json({
+          msg: "Login Success",
+          token,
+          email
+        })
+      }else{
+        res.json({
+          msg: "Bad Password"
+        })
+      }
+    }
+  })
+})
 
 module.exports = router;

@@ -19,25 +19,19 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">
-            <p>
-              Sticky Fingers App Insanity Check
-            </p>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/userHome" component={UserHome} />
-            <Route exact path="/collection" component={Collection} />
-            <Route exact path="/pastTrades" component={PastTrades} />
-            <Route exact path="/community" component={Community} />
-            <Route exact path="/friends" component={Friends} />
-            <Route exact path="/record" component={Record} />
-            <Route exact path="/makeTrade" component={MakeTrade} />
-            <Route exact path="/friendProfile" component={FriendProfile} />
-            <Route exact path="/addRecord" component={AddRecord} />
-            <Link to="/register" >Register</Link>
-          </header>
+        <div >
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/userHome" component={UserHome} />
+          <Route exact path="/collection" component={Collection} />
+          <Route exact path="/pastTrades" component={PastTrades} />
+          <Route exact path="/community" component={Community} />
+          <Route exact path="/friends" component={Friends} />
+          <Route exact path="/record" component={Record} />
+          <Route exact path="/makeTrade" component={MakeTrade} />
+          <Route exact path="/friendProfile" component={FriendProfile} />
+          <Route exact path="/addRecord" component={AddRecord} />
         </div>
       </Router>
     );
