@@ -12,7 +12,6 @@ function Home(){
                 <Link to="/register" >Register</Link>
                 or
                 <Link to="/login" >Login</Link>
-                <Link to="/collection" />
                 </header>
             </div>
     )
