@@ -32,7 +32,7 @@ router.post('/register',(req,res)=>{
         res.json({
           msg: "User Added",
           token,
-          email: req.body.email
+          email: req.body.email,
         })
       });
     } else {
@@ -64,7 +64,7 @@ router.post('/login',(req,res)=>{
         res.json({
           msg: "Login Success",
           token,
-          email
+          email,
         })
       }else{
         console.log("=========Server insanity check - bad password")
@@ -75,5 +75,36 @@ router.post('/login',(req,res)=>{
     }
   })
 })
+
+router.get('/collection',(req,res,next)=>{
+  // pull all records from the records table where 
+  // (the uid in the collections table = the current user), 
+  // (the crid of those items = rid in collection-records table)
+
+  // pull the records who have an id that is within rid of the collection-records table, that has a cid
+  // pull the user id of the current user, 
+  
+  const collectionQuery = `SELECT * FROM records 
+    INNER JOIN collectionRecords ON collectionRecords.rid = records.id
+    INNER JOIN collections ON collections.id = collectionRecords.cid
+    INNER JOIN users ON collections.uid = users.id
+    WHERE users.id = 1;`;
+  // const userIdQuery = `SELECT id FROM users WHERE email = the current users email`
+
+  // const collectionQuery = `SELECT * FROM records INNER JOIN`
+
+  console.log("collection route has been hit")
+
+  connection.query(collectionQuery,(error,results)=>{
+    // console.log(results)
+    if(error){throw error}
+    // const record = results;
+    res.json(results)
+    console.log(results)
+  })
+
+  // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
+})
+
 
 module.exports = router;
