@@ -1,3 +1,18 @@
 .footer{
     background:#201F1B;
+    color:#FBF6EF;
+    padding:20px;
+    font-family: 'KoHo', sans-serif;
+}
+
+.footer a{
+    color:#FBF6EF;
+}
+
+.footer a:hover{
+    color:#1eabc4;
+}
+
+.footer-copyright{
+    margin:0 auto;
 }
