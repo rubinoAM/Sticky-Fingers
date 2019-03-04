@@ -3,9 +3,10 @@ import React from 'react';
 function Collection(){
 
     return(
-        <p>
+        <div>
             Collection
-        </p>
+            <Link to="/collection" ></Link>
+        </div>
     )
 }
 

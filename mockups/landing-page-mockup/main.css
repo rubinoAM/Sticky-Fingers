@@ -25,7 +25,7 @@ body{
 
 .carousel-container{
     height:400px;
-    background:url('../../images/landing_bg.png');
+    background:url('../../front-end/public/images/landing_bg.png');
     background-size:cover;
     background-position:center;
     display:flex;
