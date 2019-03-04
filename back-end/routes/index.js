@@ -76,4 +76,17 @@ router.post('/login',(req,res)=>{
   })
 })
 
+router.get('/collection',(req,res)=>{
+  // pull all records from the records table where 
+  // (the uid in the collections table = the current user), 
+  // (the crid of those items = rid in collection-records table)
+  const collectionQuery = `SELECT * FROM records`
+
+  connection.query(collectionQuery),((error,results)=>{
+    if(error){throw error}
+    res.json(results)
+  })
+})
+
+
 module.exports = router;
