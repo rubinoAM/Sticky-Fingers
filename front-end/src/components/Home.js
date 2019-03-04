@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function Home(){
 
     return(
-        <p>
             <div className="App">
                 <header className="App-header">
                 <p>
@@ -13,10 +12,9 @@ function Home(){
                 <Link to="/register" >Register</Link>
                 or
                 <Link to="/login" >Login</Link>
+                <Link to="/collection" />
                 </header>
             </div>
-            
-        </p>
     )
 }
 

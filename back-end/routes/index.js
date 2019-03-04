@@ -43,15 +43,11 @@ router.post('/register',(req,res)=>{
 })
 
 router.post('/login',(req,res)=>{
-  
   const email = req.body.email;
   const password = req.body.password;
   const selectUserQuery = `SELECT * FROM users WHERE email = ?;`;
-  
   connection.query(selectUserQuery, [email],(error,results)=>{
-    
     if(error)throw error
-    console.log("=========Server insanity check")
     if(results.length === 0){
       res.json({
         msg: "Bad User"
@@ -62,7 +58,7 @@ router.post('/login',(req,res)=>{
         const token = randToken.uid(50);
         const updateTokenQuery = `UPDATE users SET token = ?
           WHERE email = ?`
-          connection.query(updateTokenQuery, [token,email],(results2,error2)=>{
+          connection.query(updateTokenQuery, [token,email],(error2,results2)=>{
           if(error2){throw error2}
         })
         res.json({
@@ -71,6 +67,7 @@ router.post('/login',(req,res)=>{
           email
         })
       }else{
+        console.log("=========Server insanity check - bad password")
         res.json({
           msg: "Bad Password"
         })
