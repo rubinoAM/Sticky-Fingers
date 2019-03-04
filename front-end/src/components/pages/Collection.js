@@ -5,7 +5,7 @@ function Collection(){
     return(
         <div>
             Collection
-            <Link to="/collection" ></Link>
+            {/* <Link to="/collection" ></Link> */}
         </div>
     )
 }
