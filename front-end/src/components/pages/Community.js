@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home(){
+function Community(){
 
     return(
         <p>
-            Home Page
+            Community
         </p>
     )
 }
 
-export default Home;
+export default Community;

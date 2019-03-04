@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home(){
+function AddRecord(){
 
     return(
         <p>
-            Home Page
+            AddRecord
         </p>
     )
 }
 
-export default Home;
+export default AddRecord;

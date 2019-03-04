@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home(){
+function Collection(){
 
     return(
         <p>
-            Home Page
+            Collection
         </p>
     )
 }
 
-export default Home;
+export default Collection;

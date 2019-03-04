@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Home(){
+function Friends(){
 
     return(
         <p>
-            Home Page
+            Friends
         </p>
     )
 }
 
-export default Home;
+export default Friends;
