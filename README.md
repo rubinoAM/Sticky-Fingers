@@ -37,11 +37,11 @@ To be written later...
 ## Authors
 * J.R. Priestman
     * Contributions:
-        * To be written later...
+        * React Routing, Express Routing, SQL Schema
     * [GitHub Profile](https://github.com/JRPriestman)
 * Michael Rubino
     * Contributions:
-        * To be written later...
+        * Concept, Wireframing, Front-End Design, Discogs API Implementation
     * [GitHub Profile](https://github.com/rubinoAM)
 
 ## Screenshots

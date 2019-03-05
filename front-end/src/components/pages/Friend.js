@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Friend extends Component{
     constructor(){
@@ -13,7 +14,7 @@ class Friend extends Component{
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
                     <div className="card-image">
-                        <img src="https://via.placeholder.com/200" alt="" />
+                        <Link to="/"><img src="http://lorempixel.com/200/200/cats" className="friend-avatar" alt="" /></Link>
                     </div>
                     <div className="card-content">
                         <span className="friend-username">USERNAME</span>
@@ -32,7 +33,8 @@ class Friend extends Component{
                     </div>
                     <div className="card-action">
                     <center>
-                        <button className="btn friend-btn offset-s2">PROFILE</button></center>
+                        <Link to="/"><button className="btn friend-btn offset-s2">PROFILE</button></Link>
+                    </center>
                     </div>
                 </div>
             </div>

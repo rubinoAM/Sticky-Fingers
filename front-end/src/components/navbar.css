@@ -39,6 +39,7 @@
 
 .navs li a, .mobile-navs li a{
     color:#FBF6EF;
+    transition:color 0.5s ease-out;
 }
 
 .mobile-navs li a{
@@ -48,6 +49,7 @@
 
 .navs li a:hover, .mobile-navs li a:hover{
     color:#E23F35;
+    transition:color 0.2s ease-in;
 }
 
 button.menu-btn{

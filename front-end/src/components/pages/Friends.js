@@ -32,8 +32,22 @@ class Friends extends Component{
         } else if (this.state.footer) {
             let footer = this.state.footer;
             window.addEventListener("resize",()=>{
-                if(this.state.friends.length < 5){
-                    if(window.innerHeight === 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
+                if(this.state.friends.length < 5 && this.state.friends.length > 2){
+                    if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
+                        footer.style.width = "100vw";
+                        footer.style.position = "absolute";
+                        footer.style.bottom = "0";
+                    } else {
+                        footer.style.width = "auto";
+                        footer.style.position = "static";
+                        footer.style.bottom = "initial";
+                    }
+                } else if (this.state.friends.length < 3){
+                    if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
+                        footer.style.width = "100vw";
+                        footer.style.position = "absolute";
+                        footer.style.bottom = "0";
+                    } else if(window.innerHeight >= 978 && window.innerWidth <= 992 && window.innerWidth >= 601){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
                         footer.style.bottom = "0";
