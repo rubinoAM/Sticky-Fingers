@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import authAction from '../../actions/authAction';
 import { connect } from 'react-redux';
@@ -51,7 +50,7 @@ class Register extends Component{
         };
 
         return(
-            <div className="row">
+            <div className="row form-holder">
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Register Error"

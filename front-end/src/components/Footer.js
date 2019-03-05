@@ -7,7 +7,7 @@ function Footer(){
     let currYear = currTime.getFullYear();
 
     return(
-        <div className="page-footer footer">
+        <div className="page-footer footer" id="footer">
             <div className="container">
                 <div className="row">
                     <div className="col m4 s12">
