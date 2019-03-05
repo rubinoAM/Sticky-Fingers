@@ -1,0 +1,113 @@
+.main-app > .row{
+    margin-bottom:0;
+}
+
+.form-header{
+    text-align:center;
+    padding:20px 20px 40px;
+    background:#E23F35;
+    background-blend-mode:multiply;
+    color:#FBF6EF;
+    height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.form-header h1{
+    font-family: 'Kodchasan', sans-serif;
+    font-weight:700;
+}
+
+.form-header span{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.5rem;
+    position:relative;
+    bottom:10px;
+    padding:5px 5px 10px;
+}
+
+.form-body{
+    margin:110px auto;
+}
+
+.form-record-img{
+    height:325px;
+    width:325px;
+    overflow:hidden;
+    border-radius:50%;
+}
+
+.form-record-img img{
+    height:325px;
+    filter:saturate(0%);
+}
+
+.form-main-form{
+    background:#FBF6EF;
+    padding:30px;
+}
+
+.form-btn{
+    background:#1eabc4;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+}
+
+.form-btn:hover{
+    background:#E23F35;
+}
+
+.form-tiny-input{
+    color:#1eabc4;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    margin-top:10px;
+}
+
+.form-tiny-input:hover{
+    color:#E23F35;
+}
+
+.vinyl-img{
+    height:300px;
+    width:300px;
+    border-radius:50%;
+}
+
+.vinyl-img img{
+    height:300px;
+    width:300px;
+    border-radius:50%;
+}
+
+@media screen and (max-width:600px){
+    .form-header{
+        height:300px;
+    }
+
+    .form-body{
+        margin:20px auto 60px;
+    }
+
+    .form-tiny-input{
+        font-size:1.5rem;
+        margin-bottom:10px;
+    }
+}
+
+@media screen and (max-width:992px){
+    .form-main-form{
+        position:relative;
+        top:20px;
+    }
+
+    .form-record-img{
+        height:250px;
+        width:250px;
+    }
+    
+    .form-record-img img{
+        height:250px;
+    }
+}

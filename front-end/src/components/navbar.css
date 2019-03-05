@@ -28,17 +28,35 @@
     right:0;
 }
 
+.mobile-navs{
+    display:none;
+}
+
 .navs li{
-    margin:0 10px;
+    margin:5px 10px 0;
     font-family: 'KoHo', sans-serif;
 }
 
-.navs li a{
+.navs li a, .mobile-navs li a{
     color:#FBF6EF;
 }
 
-.navs li a:hover{
+.mobile-navs li a{
+    font-size:2rem;
+    font-family: 'KoHo', sans-serif;
+}
+
+.navs li a:hover, .mobile-navs li a:hover{
     color:#E23F35;
+}
+
+button.menu-btn{
+    background:none;
+    border:none;
+}
+
+.mobile-navs{
+    text-align:center;
 }
 
 @media screen and (max-width:600px){

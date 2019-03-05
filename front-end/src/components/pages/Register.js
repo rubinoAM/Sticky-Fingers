@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import authAction from '../../actions/authAction';
 import { connect } from 'react-redux';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+import './form.css';
+import formHeaderImage from '../../images/form-header.jpg';
 
 class Register extends Component{
     constructor(){
@@ -42,62 +45,57 @@ class Register extends Component{
     }
 
     render(){
-        // const msg = this.state.msg;
+        var headerStyle = {
+            backgroundImage: `url(${formHeaderImage})`,
+            backgroundSize: 'cover',
+        };
+
         return(
-            <main>
+            <div className="row">
                 <SweetAlert
                     show={this.state.showAlert}
-                    title="Registration Error"
-                    text="Email is already registered. Login or chooose a different email."
+                    title="Register Error"
+                    text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <center>
-                    <div className="App">
-                        <header className="App-header">
-                            <div className="container">Register Page
-                                <div className="z-depth-1 grey lighten-4 row login">
-                                <form className="col s12" onSubmit={this.registerSubmit}>
-                                    <div className='row'>
-                                    <div className='col s12'>
-                                    </div>
-                                    </div>
-                                    <div className='row'>
-                                    <div className='input-field col s12'>
-                                        <input className='validate' type='email' name='email' id='email' />
-                                        <label htmlFor='email'>Enter your email</label>
-                                    </div>
-                                    </div>
-                                    <div className='row'>
-                                    <div className='input-field col s12'>
-                                        <input className='validate' type='password' name='password' id='password' />
-                                        <label htmlFor='password'>Enter your password</label>
-                                    </div>
-                                    <label>
-                                        <a className='pink-text' href='#!'><b>Forgot Password?</b></a>
-                                    </label>
-                                    </div>
-                                    <br />
-                                    <center>
-                                    <div className='row'>
-                                        <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect indigo'>Register</button>
-                                    </div>
-                                    </center>
-                                </form>
+                <div className="col s12 m6 form-header" style={headerStyle}>
+                    <h1>REGISTER</h1>
+                    <span>Please enter your information in order to register an account with us.</span>
+                </div>
+                <center className="col s12 m6">
+                    <div className="container form-body">
+                    <form className="form-main-form" onSubmit={this.registerSubmit}>
+                            <div className="row">
+                                <div className='input-field col s12'>
+                                    <input className='validate' type='text' name='username' id='username' />
+                                    <label htmlFor='username'>Enter Your Username</label>
                                 </div>
                             </div>
-                        </header>
+                            <div className='row'>
+                                <div className='input-field col s12'>
+                                    <input className='validate' type='email' name='email' id='email' />
+                                    <label htmlFor='email'>Enter Your Email Address</label>
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='input-field col s12'>
+                                    <input className='validate' type='password' name='password' id='password' />
+                                    <label htmlFor='password'>Enter Your Password</label>
+                                </div>
+                            </div>
+                            <center>
+                                <div className='row'>
+                                    <span className="col s2 m3"></span>
+                                    <button type='submit' name='btn_register' className='col s8 m6 form-btn btn btn-large waves-effect'>Register</button>
+                                    <span className="col s2 m3"></span>
+                                </div>
+                            </center>
+                        </form>
                     </div>
                 </center>
-                
-                
-                <div className="section"></div>
-                <div className="section"></div> 
-            </main>
+            </div>
         )
-
     }
-
-    
 }
 
 
