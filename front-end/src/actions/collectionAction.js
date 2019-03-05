@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export default (formData)=>{
+export default ()=>{
+
     const axiosPromise = axios({
         url: `${window.apiHost}/collection`,
         method: 'GET',
-        data: formData
     })
     return{
         type: "COLLECTION_ACTION",

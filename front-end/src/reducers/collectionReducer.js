@@ -1,5 +1,5 @@
 export default (state = [], action)=>{
-    console.log("Collection Reducer has been hit!")
+    console.log(action.payload)
     if (action.type === "COLLECTION_ACTION"){
         return action.payload.data
     }else{

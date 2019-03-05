@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import collectionAction from '../../actions/collectionAction';
 
 class Collection extends Component{
     constructor(){
@@ -13,20 +14,18 @@ class Collection extends Component{
     }
 
     componentDidMount(){
-        const recordsResponse = axios.get(`${window.apiHost}/collection`);
-        recordsResponse.then((response)=>{
-            const records = response.data;
-            this.setState({
-                records
-            })
-        })
+        
+        this.props.collectionAction();
     }
 
     render(){
-        const recordsArray = this.state.records.map((record,i)=>{
+        console.log(this.props)
+        
+        const recordsArray = this.props.records.map((record,i)=>{
+            console.log(record)
             return(
-                <tr key={record.id}>
-                    <td><Link to="">{record.name}</Link></td>
+                <tr key={record.rid}>
+                    <td><Link to={`/collection/record/${record.rid}`}>{record.name}</Link></td>
                     <td>{record.artist}</td>
                     <td>{record.year}</td>
                     <td># of Tracks</td>
@@ -38,6 +37,7 @@ class Collection extends Component{
 
         })
         return(
+            
             
             <div>
                 Your Record Collection
@@ -60,7 +60,18 @@ class Collection extends Component{
             </div>
         )
     }
-    
 }
 
-export default Collection;
+function mapStateToProps(state){
+    return{
+        records: state.coll
+    }
+}
+
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        collectionAction
+    },dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Collection);
