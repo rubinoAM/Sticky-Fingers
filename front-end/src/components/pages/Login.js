@@ -40,9 +40,11 @@ class Login extends Component{
 
     handleLogin = (event)=>{
         event.preventDefault()
+        const userName = event.target[0].value;
         const email = event.target[0].value;
         const password = event.target[1].value;
         this.props.loginAction({
+            userName,
             email,
             password
         })

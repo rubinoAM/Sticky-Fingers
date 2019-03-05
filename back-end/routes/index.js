@@ -21,13 +21,13 @@ router.post('/register',(req,res)=>{
     // console.log("=========Server insanity check")
     if(err){throw err};
     if(results.length === 0){
-      console.log("there is no spoon")
+      console.log(req.body)
       const token = randToken.uid(50);
       const hash = bcrypt.hashSync(req.body.password);
-      const insertUserQuery = `INSERT INTO users (email,password,token)
+      const insertUserQuery = `INSERT INTO users (userName,email,password,token)
       VALUES
-      (?,?,?);`;
-      connection.query(insertUserQuery,[req.body.email, hash, token],(err2,results2)=>{
+      (?,?,?,?);`;
+      connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
         if(err2){throw err2;}
         res.json({
           msg: "User Added",
@@ -45,16 +45,22 @@ router.post('/register',(req,res)=>{
 router.post('/login',(req,res)=>{
   const email = req.body.email;
   const password = req.body.password;
-  const selectUserQuery = `SELECT * FROM users WHERE email = ?;`;
-  connection.query(selectUserQuery, [email],(error,results)=>{
+  const userName = req.body.userName;
+  const selectUserQuery = `SELECT * FROM users WHERE userName = ?;`;
+  // const hash = bcrypt.hashSync(req.body.password);
+  connection.query(selectUserQuery, [userName],(error,results)=>{
+    console.log("============login route hit")
     if(error)throw error
     if(results.length === 0){
       res.json({
         msg: "Bad User"
       })
     }else {
+      
       const checkHash = bcrypt.compareSync(password, results[0].password)
+      console.log(password,results[0].password)
       if(checkHash){
+        
         const token = randToken.uid(50);
         const updateTokenQuery = `UPDATE users SET token = ?
           WHERE email = ?`
