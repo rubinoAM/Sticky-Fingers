@@ -12,3 +12,26 @@ body {
 p{
   margin:0;
 }
+
+label{
+  font-family: 'KoHo', sans-serif;
+}
+
+/* label focus color */
+input[type=text]:not(.browser-default):focus:not([readonly])+label,input[type=password]:not(.browser-default):focus:not([readonly])+label,input[type=email]:not(.browser-default):focus:not([readonly])+label{
+  color: #E23F35;
+  font-family: 'KoHo', sans-serif;
+}
+
+/* label underline focus color */
+input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]),input[type=email]:not(.browser-default):focus:not([readonly]){
+  border-bottom: 1px solid #E23F35;
+  box-shadow: 0 1px 0 0 #E23F35;
+  font-family: 'KoHo', sans-serif;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #E23F35;
+  font-family: 'KoHo', sans-serif;
+}

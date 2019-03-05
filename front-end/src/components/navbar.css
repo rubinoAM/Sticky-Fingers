@@ -33,7 +33,7 @@
 }
 
 .navs li{
-    margin:0 10px;
+    margin:5px 10px 0;
     font-family: 'KoHo', sans-serif;
 }
 
@@ -43,6 +43,7 @@
 
 .mobile-navs li a{
     font-size:2rem;
+    font-family: 'KoHo', sans-serif;
 }
 
 .navs li a:hover, .mobile-navs li a:hover{
