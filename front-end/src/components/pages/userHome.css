@@ -1,0 +1,132 @@
+
+.home-header{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.headshot-div{
+    /* margin: 25px 30px 0px 0px; */
+}
+
+.headshot{
+    border-radius: 50%;
+    z-index: 11;
+}
+
+.banner{
+    background-color: #FBF6EF;
+    z-index: 10;
+}
+
+@media screen and (max-width:600px){
+    /* .headshot-div{
+        widt
+    } */
+    .navPanel{
+        display: none;
+    }
+    .dashboard-item{
+        margin: 15px;
+    }
+}
+
+.navOptions{
+    margin-top: 25px;
+    /* try to make navbar stay when scrolling */
+
+}
+.navOption{
+    display: block;
+    width: 100%;
+    background-color: #FBF6EF;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.navOption:hover{
+    background-color:#006D80;
+    transition:color 0.2s ease-in;
+}
+
+a{
+    display: block;
+    
+}
+
+.dashboard{
+    /* margin: 25px; */
+}
+
+
+.dashboard-item{
+    height: 200px;
+    background-color:  #FBF6EF;
+    /* border-bottom: 1px #201F1B solid; */
+    display: flex;
+    position: relative;
+
+}
+
+.line{
+    border-bottom: 1px solid black;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    height: 1px;
+    margin-left: 2.5%;
+}
+
+
+@media screen and (min-width:601px){
+    .dashboard{
+        margin-top: 25px;
+    }
+}
+
+.dashboard-item-label{
+    background-color: #999;
+    height: 40px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+
+}
+
+.dashboard-item-link{
+    background-color: #E23F35;
+    color: #FBF6EF;
+    height: 40px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+
+}
+
+
+/* 600
+992
+1200 */
+
+
+/* font{
+    color: #515151;
+    color: #3f3f3f;
+    color: #999;
+    color: #313131;
+    color: rgba(0,0,0,.25);
+    color: #222;
+    color: #2a2a2a;
+} */

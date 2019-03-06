@@ -11,7 +11,7 @@ class RecordCard extends Component{
     render(){
         return(
             <div className="col s3 game-card" >
-            <Link to={`/record/${this.props.data.rid}`}>
+            <Link to={`/users/record/${this.props.data.rid}`}>
                 <div className="card">
                     <div className="card-image waves-effect waves-block waves-light">
                         <img className="activator" alt=""/>
