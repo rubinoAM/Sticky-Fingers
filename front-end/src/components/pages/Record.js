@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import collectionAction from '../../actions/collectionAction';
+import RecordDetails from '../utility/RecordDetails';
 
 class Record extends Component{
     constructor(){
@@ -13,43 +14,17 @@ class Record extends Component{
 
     render(){
         
-        // console.log(this.props)
         const recordId = this.props.match.params.id;
         const recordSearch = this.props.records.find((record)=>{
-            console.log(record.rid,recordId)
             return(record.rid == recordId)
         })
-        console.log(recordSearch)
 
 
         return(
             
             <div>
                 Your Individual Record
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Record</th>
-                            <th>Artist</th>
-                            <th>Year</th>
-                            <th>Tracks</th>
-                            <th>Genre</th>
-                            <th>Label</th>
-                            <th>On Loan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{recordSearch.name}</td>
-                            <td>{recordSearch.artist}</td>
-                            <td>{recordSearch.year}</td>
-                            <td># of Tracks</td>
-                            <td>{recordSearch.genre}</td>
-                            <td>{recordSearch.label}</td>
-                            <td>Date Loaned</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <RecordDetails data={recordSearch}/>
             </div>
         )
     }
