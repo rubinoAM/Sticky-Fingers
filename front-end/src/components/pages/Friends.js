@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import friendsAction from '../../actions/friendsAction';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Friend from './Friend';
 import './friends.css';
 
@@ -7,12 +10,14 @@ class Friends extends Component{
     constructor(){
         super()
         this.state = {
-            friends:[1,2,3,4],
+            friends:{},
             footer:'',
         }
     }
 
     componentDidMount(){ //Challenge: Footer resize
+        this.props.friendsAction();
+
         this.setState({
             footer:window.document.getElementById('footer'),
         })
@@ -27,12 +32,12 @@ class Friends extends Component{
 
     render(){
         let friendContainers;
-        if(this.state.friends.length === 0){
+        if(Object.keys(this.state.friends).length === 0){
             friendContainers = <div className="friends-filler">NO FRIENDS</div>
         } else if (this.state.footer) {
             let footer = this.state.footer;
             window.addEventListener("resize",()=>{
-                if(this.state.friends.length < 5 && this.state.friends.length > 2){
+                if(Object.keys(this.state.friends).length < 5 && Object.keys(this.state.friends).length > 2){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -79,4 +84,16 @@ class Friends extends Component{
     }
 }
 
-export default Friends;
+function mapStateToProps(state){
+    return{
+        friends: state.friends,
+    }
+}
+
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        friendsAction
+    },dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Friends);

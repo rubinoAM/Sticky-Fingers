@@ -52,11 +52,11 @@ class NavBar extends Component{
         return(
             <div>
                 <div className="nav-bar hide-on-small-only">
-                    <Link to="/"><img src="images/stickyfingerslogo_sm.png" alt="" /></Link>
+                    <Link to="/"><img src="/images/stickyfingerslogo_sm.png" alt="" /></Link>
                     {currentNav}
                 </div>
                 <div className="nav-bar-mobile hide-on-med-and-up">
-                    <img src="images/stickyfingerslogo_sm.png" alt="" />
+                    <img src="/images/stickyfingerslogo_sm.png" alt="" />
                     <button onClick={this.showMobile} className="menu-btn"><i className="material-icons">menu</i></button>
                     {currentMobileNav}
                 </div>

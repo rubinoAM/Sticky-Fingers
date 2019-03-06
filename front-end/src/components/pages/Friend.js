@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Friend extends Component{
     constructor(){
         super()
         this.state = {
-
+            friend:{},
         }
     }
 
+    componentDidMount(){
+        this.setState({
+            friend:this.props.data,
+        })
+    }
+
     render(){
+        console.log(this.state.friend);
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
@@ -42,4 +50,10 @@ class Friend extends Component{
     }
 }
 
-export default Friend;
+function mapStateToProps(state){
+    return{
+        friend: state.friend
+    }
+}
+
+export default connect(mapStateToProps)(Friend);

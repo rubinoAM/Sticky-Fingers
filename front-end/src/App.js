@@ -32,16 +32,16 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/userHome" component={UserHome} />
-            <Route exact path="/collection" component={Collection} />
-            <Route exact path="/pastTrades" component={PastTrades} />
-            <Route exact path="/marbles" component={Marbles} />
-            <Route exact path="/community" component={Community} />
-            <Route exact path="/friends" component={Friends} />
-            <Route exact path="/record/:id" component={Record} />
-            <Route exact path="/makeTrade" component={MakeTrade} />
-            <Route exact path="/friendProfile" component={FriendProfile} />
-            <Route exact path="/addRecord" component={AddRecord} />
+            <Route exact path="/users/userHome" component={UserHome} />
+            <Route exact path="/users/collection" component={Collection} />
+            <Route exact path="/users/pastTrades" component={PastTrades} />
+            <Route exact path="/users/marbles" component={Marbles} />
+            <Route exact path="/users/community" component={Community} />
+            <Route exact path="/users/friends" component={Friends} />
+            <Route exact path="/users/record/:id" component={Record} />
+            <Route exact path="/users/makeTrade" component={MakeTrade} />
+            <Route exact path="/users/friendProfile" component={FriendProfile} />
+            <Route exact path="/users/addRecord" component={AddRecord} />
           </div>
           <Footer />
         </div>
