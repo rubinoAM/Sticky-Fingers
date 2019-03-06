@@ -1,0 +1,98 @@
+.add-record-header, .results-header{
+    text-align:center;
+}
+
+.add-record-header h1, .results-header{
+    font-family: 'Kodchasan', sans-serif;
+    font-weight:700;
+}
+
+.add-record-header span{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    position:relative;
+    bottom:10px;
+    padding:5px 5px 10px;
+}
+
+.search-box{
+    margin:20px 0;
+}
+
+.search-body{
+    background:#E23F35;
+    padding:20px;
+}
+
+.results-img{
+    width:100%;
+}
+
+.row .col .results-details{
+    background:#E23F35;
+    min-height:41.5vh;
+    padding:20px;
+}
+
+.check-record-btn,.add-record-btn{
+    background:#1eabc4;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    transition:background 0.5s ease-out;
+}
+
+.check-record-btn:hover,.add-record-btn:hover{
+    background:#E23F35;
+    transition:background 0.2s ease-in;
+}
+
+.search-box label{
+    font-size:1.25rem;
+    color:#F5E3CE;
+}
+
+.results-box label{
+    font-size:1rem;
+    color:#F5E3CE;
+}
+
+/* label focus color */
+.search-box input[type=text]:not(.browser-default):focus:not([readonly])+label,input[type=password]:not(.browser-default):focus:not([readonly])+label,input[type=email]:not(.browser-default):focus:not([readonly])+label{
+    color: #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+.results-box input[type=text]:not(.browser-default):focus:not([readonly])+label,input[type=password]:not(.browser-default):focus:not([readonly])+label,input[type=email]:not(.browser-default):focus:not([readonly])+label{
+    color: #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+/* label underline focus color */
+.search-box input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]),input[type=email]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #F5E3CE;
+    box-shadow: 0 1px 0 0 #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+.results-box input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]),input[type=email]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #F5E3CE;
+    box-shadow: 0 1px 0 0 #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+/* icon prefix focus color */
+.search-box .input-field .prefix.active {
+    color: #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+.results-box .input-field .prefix.active {
+    color: #F5E3CE;
+    font-family: 'KoHo', sans-serif;
+}
+
+@media screen and (max-width:600px){
+    .add-record-btn{
+        margin-top:20px;
+    }
+}

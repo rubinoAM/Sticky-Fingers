@@ -14,7 +14,6 @@ import Login from './components/pages/Login';
 import UserHome from './components/pages/UserHome';
 import Collection from './components/pages/Collection';
 import PastTrades from './components/pages/PastTrades';
-import Marbles from './components/pages/Marbles.js';
 import Community from './components/pages/Community';
 import Friends from './components/pages/Friends';
 import Record from './components/pages/Record';
@@ -35,7 +34,6 @@ class App extends Component {
             <Route exact path="/users/userHome" component={UserHome} />
             <Route exact path="/users/collection" component={Collection} />
             <Route exact path="/users/pastTrades" component={PastTrades} />
-            <Route exact path="/users/marbles" component={Marbles} />
             <Route exact path="/users/community" component={Community} />
             <Route exact path="/users/friends" component={Friends} />
             <Route exact path="/users/record/:id" component={Record} />
