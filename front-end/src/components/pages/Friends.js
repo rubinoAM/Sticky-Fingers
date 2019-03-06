@@ -10,7 +10,6 @@ class Friends extends Component{
     constructor(){
         super()
         this.state = {
-            friends:{},
             footer:'',
         }
     }
@@ -32,12 +31,12 @@ class Friends extends Component{
 
     render(){
         let friendContainers;
-        if(Object.keys(this.state.friends).length === 0){
+        if(Object.keys(this.props.friends).length === 0){
             friendContainers = <div className="friends-filler">NO FRIENDS</div>
         } else if (this.state.footer) {
             let footer = this.state.footer;
             window.addEventListener("resize",()=>{
-                if(Object.keys(this.state.friends).length < 5 && Object.keys(this.state.friends).length > 2){
+                if(Object.keys(this.props.friends).length < 5 && Object.keys(this.props.friends).length > 2){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -47,7 +46,7 @@ class Friends extends Component{
                         footer.style.position = "static";
                         footer.style.bottom = "initial";
                     }
-                } else if (this.state.friends.length < 3){
+                } else if (Object.keys(this.props.friends).length < 3){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -64,7 +63,7 @@ class Friends extends Component{
                 }
             })
 
-            friendContainers = this.state.friends.map((friend,i)=>{
+            friendContainers = this.props.friends.map((friend,i)=>{
                 return <Friend data={friend} key={i} />
             })
         }

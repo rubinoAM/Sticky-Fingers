@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import collectionReducer from './collectionReducer';
-
+import friendsReducer from './friendsReducer';
 
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    coll: collectionReducer
+    coll: collectionReducer,
+    friends: friendsReducer,
 })
 
 

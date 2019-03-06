@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 //Friends
 router.get('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
-  const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, exchanges
+  const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
     FROM friendships
     INNER JOIN users u1 ON friendships.u1id = u1.id
     INNER JOIN users u2 ON friendships.u2id = u2.id
