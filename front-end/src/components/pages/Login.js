@@ -57,7 +57,7 @@ class Login extends Component{
         };
 
         return(
-            <div className="row">
+            <div className="row form-holder">
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Login Error"

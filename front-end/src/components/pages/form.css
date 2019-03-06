@@ -17,6 +17,7 @@
 .form-header h1{
     font-family: 'Kodchasan', sans-serif;
     font-weight:700;
+    font-size:3.75rem;
 }
 
 .form-header span{
@@ -27,8 +28,9 @@
     padding:5px 5px 10px;
 }
 
-.form-body{
-    margin:110px auto;
+.form-holder{
+    display:flex;
+    align-items:center;
 }
 
 .form-record-img{
@@ -52,10 +54,12 @@
     background:#1eabc4;
     font-family: 'KoHo', sans-serif;
     font-size:1.25rem;
+    transition:background 0.5s ease-out;
 }
 
 .form-btn:hover{
     background:#E23F35;
+    transition:background 0.2s ease-in;
 }
 
 .form-tiny-input{
@@ -82,6 +86,10 @@
 }
 
 @media screen and (max-width:600px){
+    .form-holder{
+        display:block;
+    }
+
     .form-header{
         height:300px;
     }
