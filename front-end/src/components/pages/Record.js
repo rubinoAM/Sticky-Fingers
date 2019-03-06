@@ -11,14 +11,6 @@ class Record extends Component{
 
     }
 
-    // getRecord = ()=>{
-    //     const recordId = this.props.record.rid;
-    //     console.log(recordId)
-    //     this.props.collectionAction(recordId)
-        
-    // }
-
-
     render(){
         
         // console.log(this.props)

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import collectionAction from '../../actions/collectionAction';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Record from './Record';
+import RecordCard from '../utility/RecordCard';
 
 class Collection extends Component{
     constructor(){
@@ -20,43 +23,15 @@ class Collection extends Component{
 
     render(){
         console.log(this.props)
-        
         const recordsArray = this.props.records.map((record,i)=>{
-            console.log(record)
             return(
-                <tr key={record.rid}>
-                    <td><Link to={`/collection/record/${record.rid}`}>{record.name}</Link></td>
-                    <td>{record.artist}</td>
-                    <td>{record.year}</td>
-                    <td># of Tracks</td>
-                    <td>{record.genre}</td>
-                    <td>{record.label}</td>
-                    <td>Date Loaned</td>
-                </tr>
+                <RecordCard data={record} key={i}/>
             )
-
         })
         return(
-            
-            
             <div>
                 Your Record Collection
-                <table className="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Record</th>
-                            <th>Artist</th>
-                            <th>Year</th>
-                            <th>Tracks</th>
-                            <th>Genre</th>
-                            <th>Label</th>
-                            <th>On Loan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {recordsArray}
-                    </tbody>
-                </table>
+                    {recordsArray}
             </div>
         )
     }

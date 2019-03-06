@@ -32,12 +32,13 @@ class Register extends Component{
         event.preventDefault();
         // console.dir(event.target);
         // below two are exactly the same
-        // const userName = event.target[0].value;
+        const userName = event.target[0].value;
         const email = document.getElementById('email').value;
         const password = event.target[1].value;
         // console.log(username);
         // console.log(password);
         this.props.authAction({
+            userName,
             email, 
             password
         })
