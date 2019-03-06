@@ -5,27 +5,33 @@ import { connect } from 'react-redux';
 class RecordCard extends Component{
     constructor(){
         super()
-
+        
     }
 
     render(){
         return(
-            <div className="col s3 game-card" >
-            <Link to={`/record/${this.props.data.rid}`}>
-                <div className="card">
-                    <div className="card-image waves-effect waves-block waves-light">
-                        <img className="activator" alt=""/>
+            <div key={this.props.data.rid} className="col s12 m6 l3">
+                <div className="card record-card">
+                    <div className="card-image">
+                    <Link to={`/collection/record/${this.props.data.rid}`}><img className="record-img" src={this.props.data.coverUrl} alt="" /></Link>
                     </div>
                     <div className="card-content">
-                        <span className="card-title activator grey-text text-darken-4">{this.props.data.name}<i className="material-icons right">more_vert</i></span>
-                    </div>
-                    <div className="card-reveal">
-                        <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i></span>
-                        <p>Summary</p>
+                        <Link to={`/collection/record/${this.props.data.rid}`} className="record-name">{this.props.data.name}</Link>
+                        <div className="row record-details">
+                            <div className="col s12">
+                                <div className="field-row">
+                                    <span>Artist: </span>
+                                    <span>{this.props.data.artist}</span>
+                                </div>
+                                <div className="field-row">
+                                    <span>Year: </span>
+                                    <span className="field-data">{this.props.data.year}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </Link>
-          </div>   
+            </div>
         )
     }
 }
