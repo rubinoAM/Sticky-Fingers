@@ -7,10 +7,12 @@
 
 .footer a{
     color:#FBF6EF;
+    transition:color 0.4s ease-in;
 }
 
 .footer a:hover{
     color:#1eabc4;
+    transition:color 0.2s ease-in;
 }
 
 .footer-copyright{

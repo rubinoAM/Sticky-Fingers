@@ -1,0 +1,59 @@
+.friends-header{
+    text-align:center;
+    font-family: 'Kodchasan', sans-serif;
+    font-weight:700;
+}
+
+.friends-container{
+    width:95%;
+    margin:0 auto;
+}
+
+.friends-body{
+    width:85%;
+    margin:0 auto;
+}
+
+.friend-card .card-content{
+    text-align:center;
+    padding:24px 0px;
+    background:#FBF6EF;
+}
+
+.friend-avatar{
+    transition:all 0.5s ease-out;
+}
+
+.friend-avatar:hover{
+    filter:grayscale(70%);
+    transition:all 0.2s ease-in;
+}
+
+.friend-username{
+    font-family: 'Kodchasan', sans-serif;
+    font-weight:700;
+    font-size:1.25rem;
+}
+
+.friend-details{
+    font-family: 'KoHo', sans-serif;
+    margin:0;
+}
+
+.friend-btn{
+    background:#1eabc4;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    transition:background 0.5s ease-out;
+}
+
+.friend-btn:hover{
+    background:#E23F35;
+    transition:background 0.2s ease-in;
+}
+
+@media screen and (max-width:600px){
+    .friends-header h1{
+        font-size:2.75rem;
+    }
+}
