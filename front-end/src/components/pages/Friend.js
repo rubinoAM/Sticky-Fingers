@@ -17,7 +17,12 @@ class Friend extends Component{
     }
 
     render(){
-        console.log(this.state.friend);
+        //console.log(this.state.friend);
+        let avatar = this.state.friend.avatarUrl;
+        if(avatar == "null"){
+            avatar = 'https://via.placeholder.com/200'
+        }
+
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
