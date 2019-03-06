@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/register',(req,res)=>{
+router.post('/register',(req,res,next)=>{
   const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
   connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
     // console.log("=========Server insanity check")
@@ -42,7 +42,7 @@ router.post('/register',(req,res)=>{
   })
 })
 
-router.post('/login',(req,res)=>{
+router.post('/login',(req,res,next)=>{
   const email = req.body.email;
   const password = req.body.password;
   const userName = req.body.userName;
@@ -81,36 +81,5 @@ router.post('/login',(req,res)=>{
     }
   })
 })
-
-router.get('/collection',(req,res,next)=>{
-  // pull all records from the records table where 
-  // (the uid in the collections table = the current user), 
-  // (the crid of those items = rid in collection-records table)
-
-  // pull the records who have an id that is within rid of the collection-records table, that has a cid
-  // pull the user id of the current user, 
-  
-  const collectionQuery = `SELECT * FROM records 
-    INNER JOIN collectionRecords ON collectionRecords.rid = records.id
-    INNER JOIN collections ON collections.id = collectionRecords.cid
-    INNER JOIN users ON collections.uid = users.id
-    WHERE users.id = 1;`;
-  // const userIdQuery = `SELECT id FROM users WHERE email = the current users email`
-
-  // const collectionQuery = `SELECT * FROM records INNER JOIN`
-
-  console.log("collection route has been hit")
-
-  connection.query(collectionQuery,(error,results)=>{
-    // console.log(results)
-    if(error){throw error}
-    // const record = results;
-    res.json(results)
-    console.log(results)
-  })
-
-  // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
-})
-
 
 module.exports = router;

@@ -12,18 +12,19 @@ router.get('/', function(req, res, next) {
 });
 
 //Friends
-router.get('/friends',(req,res,next)=>{
-  const friendsQuery = `SELECT *
+router.get('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
+  const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, exchanges
     FROM friendships
-    INNER JOIN users ON friendships.u1id = users.id
-    WHERE users.id = 1;`;
+    INNER JOIN users u1 ON friendships.u1id = u1.id
+    INNER JOIN users u2 ON friendships.u2id = u2.id
+    WHERE u1.id = 1;`;
 
   connection.query(friendsQuery,(err,results)=>{
     if(err){throw err}
     res.json(results);
-    console.log(results);
+    //console.log(results);
   })
-})
+});
 
 //Collection
 router.get('/collection',(req,res,next)=>{
@@ -50,7 +51,7 @@ router.get('/collection',(req,res,next)=>{
     if(error){throw error}
     // const record = results;
     res.json(results)
-    console.log(results)
+    //console.log(results)
   })
 
   // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
