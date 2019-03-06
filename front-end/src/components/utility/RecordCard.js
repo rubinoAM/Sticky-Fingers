@@ -9,7 +9,6 @@ class RecordCard extends Component{
     }
 
     render(){
-        console.log(this.props.data.rid)
         return(
             <div className="col s3 game-card" >
             <Link to={`/record/${this.props.data.rid}`}>
