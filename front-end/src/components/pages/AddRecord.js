@@ -11,7 +11,7 @@ class AddRecord extends Component{
     }
 
     componentDidMount(){
-
+        
     }
 
     sendSearch = (e)=>{
@@ -20,7 +20,7 @@ class AddRecord extends Component{
         const searchArtist = e.target[1].value;
         const searchRequest = axios.get(`${window.apiHost}/users/addrecord/${searchTitle}/${searchArtist}`);
         searchRequest.then((resp)=>{
-            const recordData = resp.data[0];
+            const recordData = resp.data;
             this.setState({
                 result:recordData,
             })
@@ -33,6 +33,18 @@ class AddRecord extends Component{
     }
 
     render(){
+        let resultTitle = this.state.result.title;
+        let resultArtist = this.state.result.artist;
+        let resultYear = this.state.result.year;
+        let resultGenre = this.state.result.genre;
+        let resultCover;
+
+        if(this.state.result.imageUrl){
+            resultCover = this.state.result.imageUrl;
+        } else {
+            resultCover = 'https://via.placeholder.com/300';
+        }
+
         return(
             <div>
                 <div className="add-record-header">
@@ -68,26 +80,26 @@ class AddRecord extends Component{
                                 <form className="col s12 results-box" id="results-box" onSubmit={this.submitRecord}>
                                     <div className="row">
                                         <div className="col s12 m4">
-                                            <img className="results-img" id="results-img" src="https://via.placeholder.com/300" alt="" />
+                                            <img className="results-img" id="results-img" src={resultCover} alt="" />
                                         </div>
                                         <div className="col s12 m8 results-details">
                                             <div className="row">
                                                 <div className="col s12 m6">
-                                                    <input readOnly className='validate' type='text' name='recordTitle' id='recordTitle' />
+                                                    <input readOnly className='validate' type='text' name='recordTitle' id='recordTitle' value={resultTitle}/>
                                                     <label htmlFor='recordTitle'>Record Title</label>
                                                 </div>
                                                 <div className="col s12 m6">
-                                                    <input readOnly className='validate' type='text' name='recordArtist' id='recordArtist' />
+                                                    <input readOnly className='validate' type='text' name='recordArtist' id='recordArtist' value={resultArtist}/>
                                                     <label htmlFor='recordArtist'>Record Artist</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col s12 m6">
-                                                    <input readOnly className='validate' type='text' name='recordYear' id='recordYear' />
+                                                    <input readOnly className='validate' type='text' name='recordYear' id='recordYear' value={resultYear}/>
                                                     <label htmlFor='recordYear'>Record Year</label>
                                                 </div>
                                                 <div className="col s12 m6">
-                                                    <input readOnly className='validate' type='text' name='recordGenre' id='recordGenre' />
+                                                    <input readOnly className='validate' type='text' name='recordGenre' id='recordGenre' value={resultGenre}/>
                                                     <label htmlFor='recordGenre'>Record Genre</label>
                                                 </div>
                                             </div>
