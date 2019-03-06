@@ -11,9 +11,6 @@ import RecordCard from '../utility/RecordCard';
 class Collection extends Component{
     constructor(){
         super()
-        this.state = {
-            records: []
-        }
     }
 
     componentDidMount(){
@@ -22,7 +19,6 @@ class Collection extends Component{
     }
 
     render(){
-        console.log(this.props)
         const recordsArray = this.props.records.map((record,i)=>{
             return(
                 <RecordCard data={record} key={i}/>

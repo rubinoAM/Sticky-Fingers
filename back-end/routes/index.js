@@ -67,6 +67,7 @@ router.post('/login',(req,res)=>{
           connection.query(updateTokenQuery, [token,email],(error2,results2)=>{
           if(error2){throw error2}
         })
+        console.log("Login Success")
         res.json({
           msg: "Login Success",
           token,
