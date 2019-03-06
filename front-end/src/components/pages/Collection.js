@@ -7,6 +7,7 @@ import collectionAction from '../../actions/collectionAction';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Record from './Record';
 import RecordCard from '../utility/RecordCard';
+import './collection.css';
 
 class Collection extends Component{
     constructor(){
