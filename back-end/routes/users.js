@@ -12,6 +12,7 @@ var db = new Discogs(config.discogs).database();
 //Main Users Route
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
+  console.log(req.body);
 });
 
 //Friends

@@ -3,12 +3,14 @@ import authReducer from './authReducer';
 import collectionReducer from './collectionReducer';
 import friendsReducer from './friendsReducer';
 import addRecordReducer from './addRecordReducer';
+import tradesReducer from './tradesReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
     coll: collectionReducer,
     friends: friendsReducer,
     addRec: addRecordReducer,
+    trades: tradesReducer,
 })
 
 export default rootReducer;
