@@ -78,7 +78,7 @@ class AddRecord extends Component{
         return(
             <div className="add-record-page">
                 <div className="add-record-header">
-                    <h1>Add Record</h1>
+                    <h1>ADD RECORD</h1>
                     <span>Enter the requested details below, and we will provide the closest match in our database.</span>
                 </div>
                 <div className="add-record-body">
@@ -106,7 +106,7 @@ class AddRecord extends Component{
                                 </div>
                             </form>
                             <div className="results-section" id="results-section">
-                                <h1 className="results-header col s12">Results</h1>
+                                <h1 className="results-header col s12">RESULTS</h1>
                                 <form className="col s12 results-box" id="results-box" onSubmit={this.submitRecord}>
                                     <div className="row">
                                         <div className="col s12 m4">
