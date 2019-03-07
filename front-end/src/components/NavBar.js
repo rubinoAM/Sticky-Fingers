@@ -37,17 +37,17 @@ class NavBar extends Component{
                             </ul>;
         } else {
             currentNav = <ul className="navs">
-                            <li><Link to="/register">LINK 1</Link></li>
-                            <li><Link to="/register">LINK 2</Link></li>
-                            <li><Link to="/register">LINK 3</Link></li>
-                            <li><Link to="/logout">LOGOUT</Link></li>
+                            <li><Link to="/users/addrecord">ADD RECORD</Link></li>
+                            <li><Link to="/users/collection">COLLECTION</Link></li>
+                            <li><Link to="/users/friends">FRIENDS</Link></li>
+                            <li><Link to="/">LOGOUT</Link></li>
                         </ul>;
 
             currentMobileNav = <ul className="mobile-navs" id="mobile-navs">
-                                    <li><Link to="/register">LINK 1</Link></li>
-                                    <li><Link to="/register">LINK 2</Link></li>
-                                    <li><Link to="/register">LINK 3</Link></li>
-                                    <li><Link to="/logout">LOGOUT</Link></li>
+                                    <li><Link to="/users/addrecord">ADD RECORD</Link></li>
+                                    <li><Link to="/users/collection">COLLECTION</Link></li>
+                                    <li><Link to="/users/friends">FRIENDS</Link></li>
+                                    <li><Link to="/">LOGOUT</Link></li>
                                 </ul>;
         }
 
