@@ -19,7 +19,7 @@ class Friend extends Component{
     render(){
         //console.log(this.state.friend);
         let avatar = this.state.friend.avatarUrl;
-        if(avatar == "null"){
+        if(avatar === "null"){
             avatar = 'https://via.placeholder.com/200'
         }
 

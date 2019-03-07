@@ -1,0 +1,50 @@
+.trades-header{
+    text-align:center
+}
+
+.trades-header h1{
+    font-family: 'Kodchasan', sans-serif;
+}
+
+.trades-header span{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    position:relative;
+    bottom:10px;
+    padding:5px 5px 10px;
+}
+
+.trades-body{
+    margin:40px 0;
+}
+
+.trade-container{
+    background:#f00;
+}
+
+.trade-header{
+    background:#f00;
+    text-align:center;
+}
+
+.trade-header span{
+    color:#F5E3CE;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+}
+
+.trade-label{
+    font-family: 'Kodchasan', sans-serif;
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+img.trade-cover{
+    min-height:100%;
+}
+
+.trade-rec-detail{
+    color:#F5E3CE;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+}

@@ -82,12 +82,4 @@ router.post('/login',(req,res,next)=>{
   })
 })
 
-router.get('/logout'),(req,res,next)=>{
-  res.json({
-    msg:'',
-    username:'',
-    token:'',
-  })
-}
-
 module.exports = router;

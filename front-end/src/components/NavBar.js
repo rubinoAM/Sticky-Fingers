@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import authAction from '../actions/authAction';
 
 class NavBar extends Component{
-    constructor(){
-        super()
-        this.state = {
-            loggedIn:false,
-        }
+    componentWillReceiveProps(newProps){
+        console.log(newProps);
     }
 
     showMobile = (e)=>{
@@ -21,10 +20,20 @@ class NavBar extends Component{
         }
     }
 
+    logOut = (e)=>{
+        e.preventDefault();
+        this.props.authAction({
+            email:'',
+            msg:'',
+            username:'',
+            token:'',
+        })
+        this.props.history.push('/');
+    }
+
     render(){
         let currentNav;
         let currentMobileNav;
-        console.log(this.props);
         if(!this.props.auth.userName){
             currentNav = <ul className="navs">
                             <li><Link to="/register">REGISTER</Link></li>
@@ -40,14 +49,14 @@ class NavBar extends Component{
                             <li><Link to="/users/addrecord">ADD RECORD</Link></li>
                             <li><Link to="/users/collection">COLLECTION</Link></li>
                             <li><Link to="/users/friends">FRIENDS</Link></li>
-                            <li><Link to="/">LOGOUT</Link></li>
+                            <li><a onClick={this.logOut}>LOGOUT</a></li>
                         </ul>;
 
             currentMobileNav = <ul className="mobile-navs" id="mobile-navs">
                                     <li><Link to="/users/addrecord">ADD RECORD</Link></li>
                                     <li><Link to="/users/collection">COLLECTION</Link></li>
                                     <li><Link to="/users/friends">FRIENDS</Link></li>
-                                    <li><Link to="/">LOGOUT</Link></li>
+                                    <li><a onClick={this.logOut}>LOGOUT</a></li>
                                 </ul>;
         }
 
@@ -73,4 +82,10 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(NavBar);
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        authAction,
+    },dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
