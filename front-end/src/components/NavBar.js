@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
+import { connect } from 'react-redux';
 
 class NavBar extends Component{
     constructor(){
@@ -23,7 +24,8 @@ class NavBar extends Component{
     render(){
         let currentNav;
         let currentMobileNav;
-        if(this.state.loggedIn === false){
+        console.log(this.props);
+        if(!this.props.auth.userName){
             currentNav = <ul className="navs">
                             <li><Link to="/register">REGISTER</Link></li>
                             <li><Link to="/login">LOGIN</Link></li>
@@ -65,4 +67,10 @@ class NavBar extends Component{
     }
 }
 
-export default NavBar;
+function mapStateToProps(state){
+    return{
+        auth:state.auth,
+    }
+}
+
+export default connect(mapStateToProps)(NavBar);

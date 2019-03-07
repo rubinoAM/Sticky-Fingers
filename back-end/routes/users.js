@@ -90,6 +90,7 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log('Year: ' + data.year);
       console.log('Image URL: ' + data.images[0].uri);*/
 
+      console.log(data);
       const title = data.title;
       const artist = data.artists[0].name;
       const genre = data.styles[0];
@@ -108,5 +109,42 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
     })
   })
 })
+
+router.post('/addrecord/', (req,res,next)=>{
+  //console.log(req);
+
+  const title = req.body.title;
+  const artist = req.body.artist;
+  const year = req.body.year;
+  const genre = req.body.genre;
+  const coverUrl = req.body.coverUrl;
+
+  const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl)
+    VALUES (?,?,?,?,?);`;  
+
+  connection.query(addRecordQuery,[title,artist,year,genre,coverUrl],(err,results)=>{
+    if(err){throw err}
+    //console.log(results);
+  });
+
+  let recId;
+  const getRecIdQuery = `SELECT id FROM records
+    WHERE name = ?
+    AND artist = ?;`
+
+  connection.query(getRecIdQuery,[title,artist],(err,results)=>{
+    if(err){throw err}
+    recId = results[0].id;
+    //console.log(recId);
+
+    const connectRecToCollectionQuery = `INSERT INTO collectionRecords (cid,rid)
+    VALUES(1,?)`;
+
+    connection.query(connectRecToCollectionQuery,[recId],(err,results)=>{
+      if(err){throw err}
+      console.log(results);
+    })
+  });
+});
 
 module.exports = router;

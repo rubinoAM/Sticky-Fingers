@@ -62,10 +62,6 @@ function Home(){
                         </div>
                     </div>
                 </div>
-                {/* <p>Sticky Fingers App Insanity Check</p>
-                <Link to="/register" >Register</Link>
-                <p>or</p>
-                <Link to="/login" >Login</Link> */}
             </div>
         </div>
     )

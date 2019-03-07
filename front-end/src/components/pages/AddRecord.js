@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './addrecord.css';
+import addRecordBG from '../../images/addrecord_bg.jpg';
 
 class AddRecord extends Component{
     constructor(){
@@ -14,6 +15,10 @@ class AddRecord extends Component{
         
     }
 
+    componentWillUnmount(){
+        document.body.style.backgroundImage = '';
+    }
+
     sendSearch = (e)=>{
         e.preventDefault();
         const searchTitle = e.target[0].value;
@@ -24,12 +29,34 @@ class AddRecord extends Component{
             this.setState({
                 result:recordData,
             })
-            console.log(recordData);
+            //console.log(recordData);
         });
     }
 
     submitRecord = (e)=>{
         e.preventDefault();
+        
+        const recordTitle = document.getElementById('recordTitle').value;
+        const recordArtist = document.getElementById('recordArtist').value;
+        const recordYear = document.getElementById('recordYear').value;
+        const recordGenre = document.getElementById('recordGenre').value;
+        const recordCover = document.getElementById('results-img').src;
+
+        const recordSubmission = {
+            title:recordTitle,
+            artist:recordArtist,
+            year:recordYear,
+            genre:recordGenre,
+            coverUrl:recordCover,
+        }
+
+        axios({
+            url: `${window.apiHost}/users/addrecord`,
+            method: 'POST',
+            data: recordSubmission,
+        })
+
+        console.log(recordSubmission);
     }
 
     render(){
@@ -37,6 +64,7 @@ class AddRecord extends Component{
         let resultArtist = this.state.result.artist;
         let resultYear = this.state.result.year;
         let resultGenre = this.state.result.genre;
+        //let resultLabel = this.state.result.label;
         let resultCover;
 
         if(this.state.result.imageUrl){
@@ -45,8 +73,10 @@ class AddRecord extends Component{
             resultCover = 'https://via.placeholder.com/300';
         }
 
+        document.body.style.backgroundImage = `url(${addRecordBG})`;
+
         return(
-            <div>
+            <div className="add-record-page">
                 <div className="add-record-header">
                     <h1>Add Record</h1>
                     <span>Enter the requested details below, and we will provide the closest match in our database.</span>
