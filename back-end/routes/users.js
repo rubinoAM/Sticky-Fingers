@@ -90,6 +90,7 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log('Year: ' + data.year);
       console.log('Image URL: ' + data.images[0].uri);*/
 
+      console.log(data);
       const title = data.title;
       const artist = data.artists[0].name;
       const genre = data.styles[0];

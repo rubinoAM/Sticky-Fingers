@@ -71,6 +71,7 @@ router.post('/login',(req,res,next)=>{
         res.json({
           msg: "Login Success",
           token,
+          userName,
           email,
         })
       }else{

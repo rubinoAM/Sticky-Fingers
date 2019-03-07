@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './addrecord.css';
 import addRecordBG from '../../images/addrecord_bg.jpg';
-import addRecordAction from '../../actions/addRecordAction';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 class AddRecord extends Component{
     constructor(){
@@ -67,6 +64,7 @@ class AddRecord extends Component{
         let resultArtist = this.state.result.artist;
         let resultYear = this.state.result.year;
         let resultGenre = this.state.result.genre;
+        //let resultLabel = this.state.result.label;
         let resultCover;
 
         if(this.state.result.imageUrl){
