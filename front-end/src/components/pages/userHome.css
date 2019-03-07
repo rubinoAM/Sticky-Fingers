@@ -1,25 +1,49 @@
+html {
+    scroll-behavior: smooth;
+}
+.user-home-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:#201F1B;
+    overflow:hidden;
+    font-family: 'KoHo', sans-serif;
+    font-size: calc(10px + 1.25vmin);
+}
+
+a{
+    color:#E23F35;
+    display: block;
+    width: 100%;
+    
+}
+
+
 
 .home-header{
-    display: flex;
+    /* display: flex;
     justify-content:center;
-    align-items:center;
+    align-items:center; */
 
 }
 
 .headshot-div{
-    /* margin: 25px 30px 0px 0px; */
+    margin: 25px 0px 25px 0px;
 }
 
 .headshot{
     border-radius: 50%;
-    z-index: 11;
+    /* z-index: 1; */
 }
 
 .banner{
     background-color: #FBF6EF;
-    z-index: 10;
 }
 
+
+/* small screen */
 @media screen and (max-width:600px){
     /* .headshot-div{
         widt
@@ -30,20 +54,63 @@
     .dashboard-item{
         margin: 15px;
     }
+    .dashboard-item-label{
+        background-color: #999;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+        /* margin: 12px; */
+    
+    }
+}
+
+/* medium screen and up */
+@media screen and (min-width:601px){
+    .banner{
+        margin-top: 50px;
+    }
+    .dashboard{
+        margin-top: 25px;
+    }
+
+    .dashboard-item-label{
+        background-color: #999;
+        height: 40px;
+        width: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 12px;
+        /* margin: 12px; */
+    
+    }
 }
 
 .navOptions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 25px;
     /* try to make navbar stay when scrolling */
 
 }
 .navOption{
-    display: block;
+    /* display: block; */
     width: 100%;
     background-color: #FBF6EF;
     height: 50px;
+    
+}
+
+.navOption a{
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -51,29 +118,64 @@
 
 .navOption:hover{
     background-color:#006D80;
-    transition:color 0.2s ease-in;
+    transition:color 0.9s ease-in;
 }
 
-a{
-    display: block;
-    
-}
+
 
 .dashboard{
     /* margin: 25px; */
 }
 
-
 .dashboard-item{
-    height: 200px;
+    /* height: 200px; */
     background-color:  #FBF6EF;
     /* border-bottom: 1px #201F1B solid; */
-    display: flex;
-    position: relative;
-
+    /* display: flex;
+    position: relative; */
+    /* padding-left: 12px; */
 }
 
-.line{
+.dashboard-subinfo{
+    font-size: calc(7px + 1.25vmin);
+}
+
+.dashboard-item-content{
+    margin: 12px 0 0 0;
+}
+
+.dashboard-item-details{
+    
+}
+
+
+.dashboard-item-link{
+    background-color: #E23F35;
+    height: 40px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-item-link-tag{
+    color: #FBF6EF;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-item-link-tag:hover{
+    color:#006D80;
+    transition:color 0.2s ease-in;
+}
+
+
+
+
+/* .line{
     border-bottom: 1px solid black;
     display: block;
     position: absolute;
@@ -81,39 +183,8 @@ a{
     width: 95%;
     height: 1px;
     margin-left: 2.5%;
-}
+} */
 
-
-@media screen and (min-width:601px){
-    .dashboard{
-        margin-top: 25px;
-    }
-}
-
-.dashboard-item-label{
-    background-color: #999;
-    height: 40px;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 12px;
-
-}
-
-.dashboard-item-link{
-    background-color: #E23F35;
-    color: #FBF6EF;
-    height: 40px;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 12px;
-
-}
 
 
 /* 600
