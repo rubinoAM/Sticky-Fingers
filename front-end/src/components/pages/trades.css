@@ -70,6 +70,14 @@ img.trade-cover{
     font-size:1.25rem;
 }
 
+.trades-page hr{
+    width:40%;
+    border-top:0;
+    border-left:0;
+    border-right:0;
+    border-bottom:1px solid #E23F35;
+}
+
 @media screen and (max-width:600px){
     .info-detail{
         text-align:center;
@@ -93,5 +101,9 @@ img.trade-cover{
 
     .trade-rec-detail{
         font-size:1.75rem;
+    }
+
+    .trades-page hr{
+        width:70%;
     }
 }

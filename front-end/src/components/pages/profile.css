@@ -1,0 +1,49 @@
+.profile-header{
+    text-align:center;
+    padding:20px 20px 40px;
+    height:300px;
+    background:#E23F35;
+    background-blend-mode:multiply;
+    color:#FBF6EF;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.profile-header h1{
+    margin:0;
+    font-family: 'Kodchasan', sans-serif;
+    font-weight:700;
+    font-size:3.75rem;
+}
+
+.profile-header span{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.5rem;
+    padding:5px 5px 10px;
+}
+
+.profile-form{
+    width:80%;
+    margin:50px auto;
+    background:#FBF6EF;
+
+}
+
+.avy-label{
+  font-family: 'KoHo', sans-serif;
+  color:#E23F35;
+}
+
+.form-btn{
+    margin-bottom:20px;
+    background:#1eabc4;
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    transition:background 0.5s ease-out;
+}
+
+.form-btn:hover{
+    background:#E23F35;
+    transition:background 0.2s ease-in;
+}

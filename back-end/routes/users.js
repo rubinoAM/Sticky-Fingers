@@ -1,3 +1,4 @@
+const fs = require('fs');
 var express = require('express');
 var router = express.Router();
 
@@ -8,6 +9,9 @@ connection.connect();
 
 var Discogs = require('disconnect').Client;
 var db = new Discogs(config.discogs).database();
+
+const multer = require('multer');
+const upload = multer({dest:'public/images/'});
 
 //Main Users Route
 router.get('/', function(req, res, next) {
@@ -146,6 +150,51 @@ router.post('/addrecord/', (req,res,next)=>{
       console.log(results);
     })
   });
+});
+
+router.post('/profileCreation',(req,res,next)=>{
+  const tagline = req.body.tagline;
+  const addStreet = req.body.addStreet;
+  const addCity = req.body.addCity;
+  const addState = req.body.addState;
+  const addZip = req.body.addZip;
+
+  const profileDetailsQuery = `INSERT INTO users (tagline,addressStreet,addressCity,addressState,addressZip)
+    VALUES
+    (?,?,?,?,?)`
+
+  console.log(tagline,addStreet,addCity,addState,addZip);
+  // connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip],(err,results)=>{
+  //   if(err){throw err}
+  //   res.redirect('/dashboard')
+  // })
+});
+
+router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
+  const tempPath = req.file.path;
+  let userId;
+  const targetQuery = `SELECT * FROM users WHERE id = ?`;
+
+  connection.query(targetQuery,[userId],(err,results)=>{
+    if(err){throw err}
+    const targetPath = "public/images/avy_" + userId + ".jpg";
+    const dbPath = "avy_" + userId + ".jpg"
+    fs.readFile(tempPath,(err,fileContents)=>{
+      if(err){throw err}
+      fs.writeFile(targetPath,fileContents,(error_2)=>{
+        if(error_2){throw error_2}
+        const insertAvatarQuery = `INSERT INTO users (avatarUrl)
+          VALUES (?)`
+
+        connection.query(insertAvatarQuery,[dbPath],(dbErr,dbResults)=>{
+          if(dbErr){throw dbErr}
+          else{
+            res.redirect('/dashboard');
+          }
+        })
+      })
+    })
+  })
 });
 
 module.exports = router;
