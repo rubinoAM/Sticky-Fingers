@@ -19,16 +19,16 @@
 }
 
 .trade-container{
-    background:#f00;
+    background:#E23F35;
 }
 
 .trade-header{
-    background:#f00;
+    background:#E23F35;
     text-align:center;
 }
 
 .trade-header span{
-    color:#F5E3CE;
+    color:#FBF6EF;
     font-family: 'KoHo', sans-serif;
     font-size:1.25rem;
 }
@@ -44,7 +44,54 @@ img.trade-cover{
 }
 
 .trade-rec-detail{
-    color:#F5E3CE;
+    color:#FBF6EF;
     font-family: 'KoHo', sans-serif;
     font-size:1.25rem;
+    margin-top:4px;
+}
+
+.trade-information{
+    background:#FBF6EF;
+}
+
+.trade-information .row:first-child{
+    margin-top:15px;
+}
+
+.info-title{
+    font-family: 'Kodchasan', sans-serif;
+    font-size:1.25rem;
+    font-weight:700;
+    color:#E23F35;
+}
+
+.info-detail{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+}
+
+@media screen and (max-width:600px){
+    .info-detail{
+        text-align:center;
+        font-size:1.5rem;
+    }
+}
+
+@media screen and (max-width:992px){
+    .trade-rec-row{
+        text-align:center;
+        padding-bottom:10px;
+    }
+
+    .trade-rec-row:first-child{
+        margin-top:15px;
+    }
+
+    .trade-rec-row:nth-child(4){
+        border-bottom:0;
+    }
+
+    .trade-rec-detail{
+        font-size:1.75rem;
+    }
 }
