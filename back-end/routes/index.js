@@ -56,19 +56,17 @@ router.post('/login',(req,res,next)=>{
       res.json({
         msg: "Bad User"
       })
-    }else {
-      
+    } else {
       const checkHash = bcrypt.compareSync(password, results[0].password)
-      console.log(password,results[0].password)
+      //console.log(password,results[0].password)
       if(checkHash){
-        
         const token = randToken.uid(50);
         const updateTokenQuery = `UPDATE users SET token = ?
           WHERE email = ?`
-          connection.query(updateTokenQuery, [token,email],(error2,results2)=>{
+        connection.query(updateTokenQuery, [token,email],(error2,results2)=>{
           if(error2){throw error2}
         })
-        console.log("Login Success")
+        //console.log("Login Success")
         res.json({
           msg: "Login Success",
           token,
@@ -76,8 +74,8 @@ router.post('/login',(req,res,next)=>{
           email,
 
         })
-      }else{
-        console.log("=========Server insanity check - bad password")
+      } else {
+        //console.log("=========Server insanity check - bad password")
         res.json({
           msg: "Bad Password"
         })

@@ -13,7 +13,7 @@ import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import UserHome from './components/pages/UserHome';
 import Collection from './components/pages/Collection';
-import PastTrades from './components/pages/PastTrades';
+import Trades from './components/pages/Trades';
 import Community from './components/pages/Community';
 import Friends from './components/pages/Friends';
 import Record from './components/pages/Record';
@@ -26,14 +26,14 @@ class App extends Component {
     return (
       <Router>
         <div className="app-container">
-          <NavBar />
+          <Route path="/" component={NavBar} />
           <div className="main-app">
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/users/userHome" component={UserHome} />
             <Route exact path="/users/collection" component={Collection} />
-            <Route exact path="/users/pastTrades" component={PastTrades} />
+            <Route exact path="/users/trades" component={Trades} />
             <Route exact path="/users/community" component={Community} />
             <Route exact path="/users/friends" component={Friends} />
             <Route exact path="/users/record/:id" component={Record} />
