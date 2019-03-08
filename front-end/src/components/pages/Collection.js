@@ -13,7 +13,7 @@ class Collection extends Component{
     constructor(){
         super()
         this.state = {
-            records: [],
+            // records: [],
             footer: '',
         }
     }
@@ -35,7 +35,7 @@ class Collection extends Component{
 
     render(){
         //console.log(this.props);
-        let recordsArray = this.props.records.map((record,i)=>{
+        let recordsArray = this.props.coll.map((record,i)=>{
             //console.log(record);
             return(
                 <RecordCard data={record} key={i} />
@@ -45,7 +45,7 @@ class Collection extends Component{
         if (this.state.footer) {
             let footer = this.state.footer;
             window.addEventListener("resize",()=>{
-                if(this.state.records.length < 5 && this.state.records.length > 2){
+                if(this.props.coll.length < 5 && this.props.coll.length > 2){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -55,7 +55,7 @@ class Collection extends Component{
                         footer.style.position = "static";
                         footer.style.bottom = "initial";
                     }
-                } if (this.state.records.length < 3){
+                } if (this.props.coll.length < 3){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -90,7 +90,7 @@ class Collection extends Component{
 
 function mapStateToProps(state){
     return{
-        records: state.coll
+        coll: state.coll
     }
 }
 
