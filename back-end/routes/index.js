@@ -33,6 +33,7 @@ router.post('/register',(req,res,next)=>{
           msg: "User Added",
           token,
           email: req.body.email,
+          userName: req.body.userName
         })
       });
     } else {
@@ -71,6 +72,7 @@ router.post('/login',(req,res,next)=>{
           token,
           userName,
           email,
+
         })
       } else {
         //console.log("=========Server insanity check - bad password")

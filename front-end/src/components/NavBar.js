@@ -46,14 +46,14 @@ class NavBar extends Component{
                             </ul>;
         } else {
             currentNav = <ul className="navs">
-                            <li><Link to="/users/addrecord">ADD RECORD</Link></li>
+                            <li><Link to="/users/userHome">MY HOME</Link></li>
                             <li><Link to="/users/collection">COLLECTION</Link></li>
                             <li><Link to="/users/friends">FRIENDS</Link></li>
                             <li><a onClick={this.logOut}>LOGOUT</a></li>
                         </ul>;
 
             currentMobileNav = <ul className="mobile-navs" id="mobile-navs">
-                                    <li><Link to="/users/addrecord">ADD RECORD</Link></li>
+                                    <li><Link to="/users/userHome">MY HOME</Link></li>
                                     <li><Link to="/users/collection">COLLECTION</Link></li>
                                     <li><Link to="/users/friends">FRIENDS</Link></li>
                                     <li><a onClick={this.logOut}>LOGOUT</a></li>
