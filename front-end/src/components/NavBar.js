@@ -37,14 +37,14 @@ class NavBar extends Component{
                             </ul>;
         } else {
             currentNav = <ul className="navs">
-                            <li><Link to="/register">LINK 1</Link></li>
+                            <li><Link to="/users/userHome">USER HOME</Link></li>
                             <li><Link to="/register">LINK 2</Link></li>
                             <li><Link to="/register">LINK 3</Link></li>
                             <li><Link to="/logout">LOGOUT</Link></li>
                         </ul>;
 
             currentMobileNav = <ul className="mobile-navs" id="mobile-navs">
-                                    <li><Link to="/register">LINK 1</Link></li>
+                                    <li><Link to="/users/userHome">USER HOME</Link></li>
                                     <li><Link to="/register">LINK 2</Link></li>
                                     <li><Link to="/register">LINK 3</Link></li>
                                     <li><Link to="/logout">LOGOUT</Link></li>

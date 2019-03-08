@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import collectionAction from '../../actions/collectionAction';
-
 import '../pages/userHome.css';
 
 
@@ -13,40 +12,43 @@ class HomeCollection extends Component{
         super()
     }
 
-
     componentDidMount(){
+        console.log(this.props)
         this.props.collectionAction();
+        console.log(this.props)
     }
 
-    // componentWillUpdate(nextProps, nextState){
-    //     this.props.collectionAction();
-    //     console.log(this.nextProps)
-    // }
-
-
-
-    // componentWillReceiveProps(newProps){
-    //     if(newProps.cart.length !== this.props.cart.length){
-    //         this.props.history.push('/?added=item');
-    //     }
-    // }
-
-
     render(){
-        console.log(this.props.coll[0])
-        if(!this.props.coll){
+        // console.log(this.props.coll[0].name)
+        // console.log(this.props)
+        if(this.props.coll.length === 0){
             return (<h1>Loading...</h1>)
-        }
+        }else{
+            console.log(this.props)
+            const collection = this.props.coll.map((album,i)=>{
+                return(
+                    <div>
+                        <span>{album.name}</span>
+                    </div>
+                )
+            })
 
             return(
                 <div className="dashboard-item row">
                     <div className="col s12 m3">
                         <span className="dashboard-item-label" id="collection">Collection</span>
-                        <span className="dashboard-subinfo">Your record collection name, date created</span>
+                        <span className="dashboard-subinfo">
+                            <span>Name</span>
+                            <span>Started</span>
+                        </span>
                     </div>
                     <div className="dashboard-item-content col s12 m9 ">
                         <div className="row">
-                            <span className="dashboard-item-details col s12">{this.props.coll[0].id}</span>
+                            <span className="dashboard-item-details col s12">
+                                <span>Grab a Record!
+                                    <span>{collection}</span>
+                                </span>
+                            </span>
                         </div>
                         <div className="row">
                         <span className="col s9"></span>
@@ -56,6 +58,8 @@ class HomeCollection extends Component{
                 </div>
     
             )
+
+        }
         
         
         
