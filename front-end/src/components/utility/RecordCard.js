@@ -38,7 +38,7 @@ class RecordCard extends Component{
 
 function mapStateToProps(state){
     return{
-        records: state.coll
+        coll: state.coll
     }
 }
 
