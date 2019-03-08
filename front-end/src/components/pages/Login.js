@@ -31,7 +31,7 @@ class Login extends Component{
                 msg: "User name not found"
             })
         }else if(newProps.auth.msg === "Login Success"){
-            this.props.history.push('/');
+            this.props.history.push('/users/userHome');
         }
     }
 
