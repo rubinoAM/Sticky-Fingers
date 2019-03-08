@@ -43,11 +43,23 @@ router.get('/collection',(req,res,next)=>{
   // pull the records who have an id that is within rid of the collection-records table, that has a cid
   // pull the user id of the current user, 
   
+  // correct one that works:
   const collectionQuery = `SELECT * FROM records 
     INNER JOIN collectionRecords ON collectionRecords.rid = records.id
     INNER JOIN collections ON collections.id = collectionRecords.cid
     INNER JOIN users ON collections.uid = users.id
     WHERE users.id = 1;`;
+
+  // const collectionQuery = `SELECT * FROM records 
+  // //   INNER JOIN collectionRecords ON collectionRecords.rid = records.id
+  // //   INNER JOIN collections ON collections.id = collectionRecords.cid
+  // //   INNER JOIN users ON collections.uid = users.id
+  // //   WHERE users.id = ?;`;
+
+  // INNER JOIN users ON {auth.token} = 
+  // pull the collection that belongs to the current user
+  // we know its the current user by what auth.token contains.
+
   // const userIdQuery = `SELECT id FROM users WHERE email = the current users email`
 
   // const collectionQuery = `SELECT * FROM records INNER JOIN`
@@ -198,5 +210,30 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
     })
   }) */
 });
+
+router.post('/community', (req,res,next)=>{
+  // set variables for any locals i need
+  // set a variable for my query
+  // connection.query to run the query
+  console.log(req.body.auth)
+
+  
+  // const currentUserId = `SELECT id FROM users WHERE token != ${req}`
+  const currentUserId = `SELECT * FROM users;`
+  connection.query(currentUserId,(error,results)=>{
+    if(error){throw error}
+    res.json(results);
+    // console.log(results);
+  })
+
+  // const communityQuery = `SELECT userName, email, addressStreet, addressCity, addressState, addressZip, avatarUrl, tagline FROM users WHERE id != ${currentUserId};`;
+  // // make sure it doesnt pull yourself or anyone who is already friends with you
+  // connection.query(communityQuery,(error,results)=>{
+  //   if(error){throw error}
+  //   res.json(results);
+  //   console.log(results);
+  // })
+
+})
 
 module.exports = router;
