@@ -153,50 +153,93 @@ router.post('/addrecord/', (req,res,next)=>{
 });
 
 router.post('/profileCreation',(req,res,next)=>{
-  const tagline = req.body.tagline;
-  const addStreet = req.body.addStreet;
-  const addCity = req.body.addCity;
-  const addState = req.body.addState;
-  const addZip = req.body.addZip;
+  //console.log(req.body);
+  const tagline = req.body.registerData.tagline;
+  const addStreet = req.body.registerData.addStreet;
+  const addCity = req.body.registerData.addCity;
+  const addState = req.body.registerData.addState;
+  const addZip = req.body.registerData.addZip;
+  const userToken = req.body.token;
+  const userName = req.body.userName;
 
-  const profileDetailsQuery = `INSERT INTO users (tagline,addressStreet,addressCity,addressState,addressZip)
-    VALUES
-    (?,?,?,?,?)`
+  const profileDetailsQuery = `UPDATE users
+    SET tagline = ?, addressStreet = ?, addressCity = ?, addressState = ?, addressZip = ?
+    WHERE userName = ?
+    AND token = ?;`;
 
-  console.log(tagline,addStreet,addCity,addState,addZip);
+  //console.log(tagline,addStreet,addCity,addState,addZip);
   
-  // connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip],(err,results)=>{
-  //   if(err){throw err}
-  //   res.redirect('/dashboard')
-  // })
+  connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip,userName,userToken],(err,results)=>{
+    if(err){throw err}
+    res.json({msg:'Profile Successfully Populated'});
+    //console.log(results);
+    //res.redirect('/dashboard')
+  })
 });
 
 router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
-  const tempPath = req.body.avatar;
-  let userId;
-  const targetQuery = `SELECT * FROM users WHERE id = ?`;
-  console.log(tempPath);
-
-  /* connection.query(targetQuery,[userId],(err,results)=>{
+  //console.log(req.file);
+  const tempPath = req.file.path;
+  //console.log(tempPath);
+  //const targetQuery = `SELECT * FROM users ORDER BY id DESC LIMIT 1;`;
+  console.log(req.body);
+  /* connection.query(targetQuery,(err,results)=>{
     if(err){throw err}
-    const targetPath = "public/images/avy_" + userId + ".jpg";
-    const dbPath = "avy_" + userId + ".jpg"
+    let lastId = results[0].id;
+    const targetPath = "public/images/avy_" + lastId + ".jpg";
+    const dbPath = "avy_" + lastId + ".jpg"
     fs.readFile(tempPath,(err,fileContents)=>{
       if(err){throw err}
       fs.writeFile(targetPath,fileContents,(error_2)=>{
         if(error_2){throw error_2}
-        const insertAvatarQuery = `INSERT INTO users (avatarUrl)
-          VALUES (?)`
+        const insertAvatarQuery = `UPDATE users
+          SET avatarUrl = ?
+          WHERE id = ?;`
 
-        connection.query(insertAvatarQuery,[dbPath],(dbErr,dbResults)=>{
+        connection.query(insertAvatarQuery,[dbPath,lastId],(dbErr,dbResults)=>{
           if(dbErr){throw dbErr}
           else{
             res.redirect('/dashboard');
           }
         })
+
+        fs.unlink(req.file.path);
       })
     })
   }) */
+
+  const token = req.body.token;
+  const userName = req.body.userName;
+  const targetQuery = `SELECT id FROM users
+    WHERE userName = ?
+    AND token = ?;`;
+
+  connection.query(targetQuery,[userName,token],(err,results)=>{
+    if(err){throw err}
+    let lastId = results[0].id;
+    const targetPath = "public/images/avy_" + lastId + ".jpg";
+    const dbPath = "avy_" + lastId + ".jpg"
+    fs.readFile(tempPath,(err,fileContents)=>{
+      if(err){throw err}
+      fs.writeFile(targetPath,fileContents,(error_2)=>{
+        if(error_2){throw error_2}
+        const insertAvatarQuery = `UPDATE users
+          SET avatarUrl = ?
+          WHERE id = ?;`
+
+        connection.query(insertAvatarQuery,[dbPath,lastId],(dbErr,dbResults)=>{
+          if(dbErr){throw dbErr}
+          else{
+            res.json('/');
+          }
+        })
+
+        fs.unlink(req.file.path,(err)=>{
+          if(err){throw err}
+        });
+      })
+    })
+  })
 });
 
 module.exports = router;
