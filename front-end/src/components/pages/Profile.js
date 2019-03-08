@@ -7,7 +7,7 @@ class Profile extends Component{
     constructor(){
         super()
         this.state = {
-
+            
         }
     }
 
@@ -47,6 +47,8 @@ class Profile extends Component{
     }
 
     render(){
+        console.log(this.props);
+
         var profileStyle = {
             backgroundImage: `url(${formHeaderImage})`,
             backgroundSize: 'cover',

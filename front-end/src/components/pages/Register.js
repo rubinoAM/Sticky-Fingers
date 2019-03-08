@@ -23,7 +23,7 @@ class Register extends Component{
                 showAlert: true
             })
         }else if(newProps.auth.msg === 'User Added'){ 
-            this.props.history.push('/');
+            this.props.history.push('/users/profile');
         }
     }
 
