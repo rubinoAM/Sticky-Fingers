@@ -14,8 +14,8 @@ class HomeBanner extends Component{
 
 
     render(){
-        // console.log(this.props.auth.userName)
-      
+        const userNameOnBanner = this.props.auth.userName
+        let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase()
         return(
             <div className="container">
                 <div className="home-header row">
@@ -23,7 +23,7 @@ class HomeBanner extends Component{
                         <img src="https://placehold.it/200x200" className="headshot" alt="" />
                     </div>
                     <div className="banner col s12 m7">
-                        <h2>{this.props.auth.userName}</h2>
+                        <h2>{allUpperUserNameOnBanner}</h2>
                         <p>Personalized Tag Line</p>
                         <p>Member since</p>
                     </div>

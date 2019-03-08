@@ -13,9 +13,7 @@ class HomeCollection extends Component{
     }
 
     componentDidMount(){
-        console.log(this.props)
         this.props.collectionAction();
-        console.log(this.props)
     }
 
     render(){
@@ -24,14 +22,22 @@ class HomeCollection extends Component{
         if(this.props.coll.length === 0){
             return (<h1>Loading...</h1>)
         }else{
-            console.log(this.props)
             const collection = this.props.coll.map((album,i)=>{
                 return(
-                    <div>
-                        <span>{album.name}</span>
+                    <div key={i}>
+                        <span >{album.name}</span>
                     </div>
                 )
             })
+            const recordCount = collection.length;
+            let userRank = "";
+            if(recordCount > 0 && recordCount < 11){
+                userRank = "Garage Band"
+            }else if(recordCount > 10 && recordCount < 21){
+                userRank = "Opening Act"
+            }else{
+                userRank = "Grammy Winner"
+            }
 
             return(
                 <div className="dashboard-item row">
@@ -47,12 +53,13 @@ class HomeCollection extends Component{
                             <span className="dashboard-item-details col s12">
                                 <span>Grab a Record!
                                     <span>{collection}</span>
+                                    <span>{userRank}</span>
                                 </span>
                             </span>
                         </div>
                         <div className="row">
                         <span className="col s9"></span>
-                            <span className="dashboard-item-link pin-bottom col s3 offset-s8" ><a href="#">Collection</a></span>
+                            <span className="dashboard-item-link pin-bottom col s3 offset-s8" ><Link to="/users/collection">Collection</Link></span>
                         </div>
                     </div>
                 </div>
