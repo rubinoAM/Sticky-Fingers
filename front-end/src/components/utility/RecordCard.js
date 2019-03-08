@@ -13,10 +13,10 @@ class RecordCard extends Component{
             <div key={this.props.data.rid} className="col s12 m6 l3">
                 <div className="card record-card">
                     <div className="card-image">
-                    <Link to={`/collection/record/${this.props.data.rid}`}><img className="record-img" src={this.props.data.coverUrl} alt="" /></Link>
+                    <Link to={`/users/record/${this.props.data.rid}`}><img className="record-img" src={this.props.data.coverUrl} alt="" /></Link>
                     </div>
                     <div className="card-content">
-                        <Link to={`/collection/record/${this.props.data.rid}`} className="record-name">{this.props.data.name}</Link>
+                        <Link to={`/users/record/${this.props.data.rid}`} className="record-name">{this.props.data.name}</Link>
                         <div className="row record-details">
                             <div className="col s12">
                                 <div className="field-row">

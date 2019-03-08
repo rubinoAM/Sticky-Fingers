@@ -32,7 +32,7 @@ class HomeTrending extends Component{
 
             )
         }
-    }
+    
 }
 
 function mapStateToProps(state){
