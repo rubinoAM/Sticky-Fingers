@@ -49,6 +49,7 @@ class NavBar extends Component{
                             <li><Link to="/users/userHome">MY HOME</Link></li>
                             <li><Link to="/users/collection">COLLECTION</Link></li>
                             <li><Link to="/users/friends">FRIENDS</Link></li>
+                            <li><Link to="/users/community">COMMUNITY</Link></li>
                             <li><a onClick={this.logOut}>LOGOUT</a></li>
                         </ul>;
 
@@ -56,6 +57,7 @@ class NavBar extends Component{
                                     <li><Link to="/users/userHome">MY HOME</Link></li>
                                     <li><Link to="/users/collection">COLLECTION</Link></li>
                                     <li><Link to="/users/friends">FRIENDS</Link></li>
+                                    <li><Link to="/users/community">COMMUNITY</Link></li>
                                     <li><a onClick={this.logOut}>LOGOUT</a></li>
                                 </ul>;
         }

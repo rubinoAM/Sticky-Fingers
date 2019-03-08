@@ -211,4 +211,29 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
   }) */
 });
 
+router.post('/community', (req,res,next)=>{
+  // set variables for any locals i need
+  // set a variable for my query
+  // connection.query to run the query
+  console.log(req.body.auth)
+
+  
+  // const currentUserId = `SELECT id FROM users WHERE token != ${req}`
+  const currentUserId = `SELECT * FROM users;`
+  connection.query(currentUserId,(error,results)=>{
+    if(error){throw error}
+    res.json(results);
+    // console.log(results);
+  })
+
+  // const communityQuery = `SELECT userName, email, addressStreet, addressCity, addressState, addressZip, avatarUrl, tagline FROM users WHERE id != ${currentUserId};`;
+  // // make sure it doesnt pull yourself or anyone who is already friends with you
+  // connection.query(communityQuery,(error,results)=>{
+  //   if(error){throw error}
+  //   res.json(results);
+  //   console.log(results);
+  // })
+
+})
+
 module.exports = router;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import loginAction from '../../actions/loginAction';
+import communityAction from '../../actions/communityAction';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import './form.css';
@@ -31,6 +32,8 @@ class Login extends Component{
                 msg: "User name not found"
             })
         }else if(newProps.auth.msg === "Login Success"){
+            console.log(newProps.auth)
+            this.props.communityAction(newProps.auth);
             this.props.history.push('/users/userHome');
         }
     }
@@ -53,6 +56,7 @@ class Login extends Component{
             backgroundImage: `url(${formHeaderImage})`,
             backgroundSize: 'cover',
         };
+        console.log(this.props)
 
         return(
             <div className="row form-holder">
@@ -109,6 +113,7 @@ function MapStateToProps(state){
 function MapDispatchToProps(dispatcher){
     return bindActionCreators({
         loginAction,
+        communityAction
     }, dispatcher)
 }
 
