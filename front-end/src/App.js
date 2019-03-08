@@ -18,6 +18,7 @@ import Community from './components/pages/Community';
 import Friends from './components/pages/Friends';
 import Record from './components/pages/Record';
 import MakeTrade from './components/pages/MakeTrade';
+import Profile from './components/pages/Profile';
 import FriendProfile from './components/pages/FriendProfile';
 import AddRecord from './components/pages/AddRecord';
 
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path="/users/friends" component={Friends} />
             <Route exact path="/users/record/:id" component={Record} />
             <Route exact path="/users/makeTrade" component={MakeTrade} />
+            <Route exact path="/users/profile" component={Profile} />
             <Route exact path="/users/friendProfile" component={FriendProfile} />
             <Route exact path="/users/addRecord" component={AddRecord} />
           </div>
