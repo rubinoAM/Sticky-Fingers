@@ -164,6 +164,7 @@ router.post('/profileCreation',(req,res,next)=>{
     (?,?,?,?,?)`
 
   console.log(tagline,addStreet,addCity,addState,addZip);
+  
   // connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip],(err,results)=>{
   //   if(err){throw err}
   //   res.redirect('/dashboard')
@@ -171,11 +172,12 @@ router.post('/profileCreation',(req,res,next)=>{
 });
 
 router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
-  const tempPath = req.file.path;
+  const tempPath = req.body.avatar;
   let userId;
   const targetQuery = `SELECT * FROM users WHERE id = ?`;
+  console.log(tempPath);
 
-  connection.query(targetQuery,[userId],(err,results)=>{
+  /* connection.query(targetQuery,[userId],(err,results)=>{
     if(err){throw err}
     const targetPath = "public/images/avy_" + userId + ".jpg";
     const dbPath = "avy_" + userId + ".jpg"
@@ -194,7 +196,7 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
         })
       })
     })
-  })
+  }) */
 });
 
 module.exports = router;

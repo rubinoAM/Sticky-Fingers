@@ -85,6 +85,13 @@ img.trade-cover{
     }
 }
 
+@media screen and (min-width:600px) and (max-width:992px){
+    .trades-body{
+        width:80%;
+        margin:0 auto;
+    }
+}
+
 @media screen and (max-width:992px){
     .trade-rec-row{
         text-align:center;
