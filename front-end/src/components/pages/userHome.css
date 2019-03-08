@@ -118,7 +118,7 @@ a{
 
 .navOption:hover{
     background-color:#006D80;
-    transition:color 0.9s ease-in;
+    transition: background-color 0.2s ease-in
 }
 
 
@@ -151,15 +151,14 @@ a{
 
 .dashboard-item-link{
     background-color: #E23F35;
-    height: 40px;
-    width: 120px;
+    height: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.dashboard-item-link-tag{
+.dashboard-item-link a{
     color: #FBF6EF;
     height: 100%;
     display: flex;
@@ -167,7 +166,9 @@ a{
     justify-content: center;
 }
 
-.dashboard-item-link-tag:hover{
+
+
+.dashboard-item-link a:hover{
     color:#006D80;
     transition:color 0.2s ease-in;
 }

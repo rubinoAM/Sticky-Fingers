@@ -1,0 +1,1 @@
+// stretch goal: adding this in once trades features are done. possibly adding Chart.js

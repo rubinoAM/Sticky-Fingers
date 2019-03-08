@@ -18,7 +18,8 @@ class Login extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps)
+        console.log("===========")
+        console.log(this.props)
         if(newProps.auth.msg === "Bad Password"){
             this.setState({
                 showAlert: true,
@@ -34,9 +35,6 @@ class Login extends Component{
         }
     }
 
-    componentDidMount(){
-
-    }
 
     handleLogin = (event)=>{
         event.preventDefault()
@@ -104,13 +102,13 @@ class Login extends Component{
 
 function MapStateToProps(state){
     return{
-        auth: state.auth
+        auth: state.auth,
     }
 }
 
 function MapDispatchToProps(dispatcher){
     return bindActionCreators({
-        loginAction
+        loginAction,
     }, dispatcher)
 }
 
