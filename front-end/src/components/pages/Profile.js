@@ -7,19 +7,48 @@ class Profile extends Component{
     constructor(){
         super()
         this.state = {
-
+            
         }
     }
 
     finishRegister = (e)=>{
         e.preventDefault();
-        console.log(e.target);
+        //console.log(e.target);
 
         const avatar = e.target.avatar.value;
-        console.log(avatar);
+        const tagline = e.target.tagline.value;
+        const addStreet = e.target.addStreet.value;
+        const addCity = e.target.addCity.value;
+        const addState = e.target.addState.value;
+        const addZip = e.target.addZip.value;
+        //console.log(avatar,tagline,addStreet,addCity,addState,addZip);
+
+        const registerData = {
+            tagline,
+            addStreet,
+            addCity,
+            addState,
+            addZip,
+        }
+
+        axios({
+            url: `${window.apiHost}/users/profileAvatar`,
+            method: 'POST',
+            data: {
+                avatar:avatar,
+            },
+        })
+
+        axios({
+            url: `${window.apiHost}/users/profileCreation`,
+            method: 'POST',
+            data: registerData,
+        })
     }
 
     render(){
+        console.log(this.props);
+
         var profileStyle = {
             backgroundImage: `url(${formHeaderImage})`,
             backgroundSize: 'cover',
