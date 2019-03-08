@@ -78,21 +78,34 @@ img.trade-cover{
     border-bottom:1px solid #E23F35;
 }
 
+.trade-contents{
+    display:flex;
+    align-items:center;
+}
+
 @media screen and (max-width:600px){
     .info-detail{
         text-align:center;
         font-size:1.5rem;
     }
+
+    .trade-rec-detail{
+        font-size:1.75rem;
+    }
 }
 
 @media screen and (min-width:600px) and (max-width:992px){
-    .trades-body{
-        width:80%;
-        margin:0 auto;
+    .trade-rec-detail{
+        font-size:1.25rem;
     }
 }
 
 @media screen and (max-width:992px){
+    .trades-body{
+        width:80%;
+        margin:0 auto 40px;
+    }
+
     .trade-rec-row{
         text-align:center;
         padding-bottom:10px;
@@ -106,11 +119,11 @@ img.trade-cover{
         border-bottom:0;
     }
 
-    .trade-rec-detail{
-        font-size:1.75rem;
-    }
-
     .trades-page hr{
         width:70%;
+    }
+
+    .trade-contents{
+        display:block;
     }
 }
