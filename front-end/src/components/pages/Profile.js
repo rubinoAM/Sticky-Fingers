@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './profile.css';
 import formHeaderImage from '../../images/form-header.jpg';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Profile extends Component{
     constructor(){
         super()
         this.state = {
-            
+            msg: "",
+            showAlert: false,
         }
     }
 
@@ -15,7 +17,10 @@ class Profile extends Component{
         e.preventDefault();
         //console.log(e.target);
 
-        const avatar = e.target.avatar.value;
+        //console.dir(e.target.avatar);
+
+        const avatar = e.target.avatar.files[0];
+        //console.log(avatar);
         const tagline = e.target.tagline.value;
         const addStreet = e.target.addStreet.value;
         const addCity = e.target.addCity.value;
@@ -31,23 +36,37 @@ class Profile extends Component{
             addZip,
         }
 
-        axios({
-            url: `${window.apiHost}/users/profileAvatar`,
-            method: 'POST',
-            data: {
-                avatar:avatar,
-            },
-        })
+        const config = {
+            headers: {
+                'content-type':'multipart/form-data',
+            }
+        }
+
+        const formData = new FormData();
+        formData.append('avatar',avatar);
+        formData.append('token',this.props.auth.token);
+        formData.append('userName',this.props.auth.userName)
+
+        const axiosPromise = axios.post(
+            `${window.apiHost}/users/profileAvatar`,
+            formData,
+            config);
 
         axios({
             url: `${window.apiHost}/users/profileCreation`,
             method: 'POST',
-            data: registerData,
-        })
+            data: {
+                registerData,
+                token:this.props.auth.token,
+                userName:this.props.auth.userName,
+            },
+        }).then(()=>{
+            this.props.history.push('/users/userHome');
+        }).catch((err)=>{if (err){throw err}});
     }
 
     render(){
-        console.log(this.props);
+        //console.log(this.props);
 
         var profileStyle = {
             backgroundImage: `url(${formHeaderImage})`,
@@ -111,4 +130,10 @@ class Profile extends Component{
     }
 }
 
-export default Profile;
+function mapStateToProps(state){
+    return{
+        auth:state.auth,
+    }
+}
+
+export default connect(mapStateToProps)(Profile);
