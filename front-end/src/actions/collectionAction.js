@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-export default ()=>{
+export default (auth)=>{
     const axiosPromise = axios({
         url: `${window.apiHost}/users/collection`,
-        method: 'GET',
+        method: 'POST',
+        data: {
+            auth
+        }
     })
     return{
         type: "COLLECTION_ACTION",

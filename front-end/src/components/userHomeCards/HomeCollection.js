@@ -12,9 +12,9 @@ class HomeCollection extends Component{
         super()
     }
 
-    componentDidMount(){
-        this.props.collectionAction();
-    }
+    // componentDidMount(){
+    //     this.props.collectionAction();
+    // }
 
     render(){
         // console.log(this.props.coll[0].name)
@@ -81,13 +81,13 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatcher){
-    return bindActionCreators({
-        collectionAction
-    },dispatcher)
-}
+// function mapDispatchToProps(dispatcher){
+//     return bindActionCreators({
+//         collectionAction
+//     },dispatcher)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomeCollection);
+export default connect(mapStateToProps)(HomeCollection);
 
 
 

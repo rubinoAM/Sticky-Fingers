@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import authAction from '../../actions/authAction';
 import communityAction from '../../actions/communityAction';
+import collectionAction from '../../actions/collectionAction';
+import friendsAction from '../../actions/friendsAction';
 import { connect } from 'react-redux';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
@@ -24,7 +26,9 @@ class Register extends Component{
                 showAlert: true
             })
         }else if(newProps.auth.msg === 'User Added'){ 
-            this.props.communityAction();
+            this.props.communityAction(newProps.auth);
+            this.props.collectionAction(newProps.auth);
+            this.props.friendsAction(newProps.auth);
             this.props.history.push('/users/profile');
         }
     }
@@ -114,7 +118,9 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
         authAction: authAction,
-        communityAction
+        communityAction,
+        collectionAction,
+        friendsAction
     },dispatcher)
 }
 

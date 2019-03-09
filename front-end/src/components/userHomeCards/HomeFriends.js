@@ -10,9 +10,9 @@ class HomeFriends extends Component{
         super()
     }
 
-    componentDidMount(){
-        this.props.friendsAction();
-    }
+    // componentDidMount(){
+    //     this.props.friendsAction();
+    // }
 
     render(){
         console.log(this.props)
@@ -55,10 +55,10 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatcher){
-    return bindActionCreators({
-        friendsAction
-    },dispatcher)
-}
+// function mapDispatchToProps(dispatcher){
+//     return bindActionCreators({
+//         friendsAction
+//     },dispatcher)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HomeFriends);
+export default connect(mapStateToProps)(HomeFriends);
