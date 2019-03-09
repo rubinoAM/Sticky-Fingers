@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 .user-home-container {
     text-align: center;
     display: flex;
@@ -20,8 +21,6 @@ a{
     
 }
 
-
-
 .home-header{
     /* display: flex;
     justify-content:center;
@@ -35,25 +34,38 @@ a{
 
 .headshot{
     border-radius: 50%;
+    position:absolute;
     /* z-index: 1; */
 }
 
 .banner{
-    background-color: #FBF6EF;
+    display:flex;
+    justify-content:flex-start;
 }
 
+.banner-contents{
+    margin-top:15px;
+    background-color: #FBF6EF;
+    width:90%;
+    float:right;
+    min-height:170px;
+    padding:25px 0 0 45px;
+}
+
+.banner-contents h2{
+    margin:0;
+}
 
 /* small screen */
 @media screen and (max-width:600px){
-    /* .headshot-div{
-        widt
-    } */
-    .navPanel{
-        display: none;
+    .home-header{
+        margin-top:40px;
     }
+    
     .dashboard-item{
         margin: 15px;
     }
+
     .dashboard-item-label{
         background-color: #999;
         height: 40px;
@@ -63,8 +75,14 @@ a{
         align-items: center;
         justify-content: center;
         margin-top: 12px;
-        /* margin: 12px; */
+    }
+
+    .headshot{
+        position:static;
+    }
     
+    .banner{
+        justify-content:center;
     }
 }
 
@@ -101,11 +119,10 @@ a{
 
 }
 .navOption{
-    /* display: block; */
     width: 100%;
     background-color: #FBF6EF;
     height: 50px;
-    
+    transition: background-color 0.4s ease-in;
 }
 
 .navOption a{
@@ -113,15 +130,19 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.4s ease-in;
 }
 
 
 .navOption:hover{
-    background-color:#006D80;
+    background-color:#1eabc4;
     transition: background-color 0.2s ease-in
 }
 
-
+.navOption:hover a{
+    color:white;
+    transition: color 0.2s ease-in
+}
 
 .dashboard{
     /* margin: 25px; */
@@ -148,7 +169,6 @@ a{
     
 }
 
-
 .dashboard-item-link{
     background-color: #E23F35;
     height: 35px;
@@ -166,15 +186,20 @@ a{
     justify-content: center;
 }
 
-
-
 .dashboard-item-link a:hover{
     color:#006D80;
     transition:color 0.2s ease-in;
 }
 
+@media screen and (min-width:601px) and (max-width:992px){
+    .banner-contents{
+        padding:35px 0 0 115px;
+    }
 
-
+    .banner-contents h2{
+        font-size:3rem;
+    }
+}
 
 /* .line{
     border-bottom: 1px solid black;
@@ -186,12 +211,9 @@ a{
     margin-left: 2.5%;
 } */
 
-
-
 /* 600
 992
 1200 */
-
 
 /* font{
     color: #515151;
