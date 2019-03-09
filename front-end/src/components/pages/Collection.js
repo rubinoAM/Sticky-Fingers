@@ -19,7 +19,7 @@ class Collection extends Component{
     }
 
     componentDidMount(){
-        this.props.collectionAction();
+        // this.props.collectionAction();
 
         this.setState({
             footer:window.document.getElementById('footer'),
@@ -94,10 +94,10 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatcher){
-    return bindActionCreators({
-        collectionAction
-    },dispatcher)
-}
+// function mapDispatchToProps(dispatcher){
+//     return bindActionCreators({
+//         collectionAction
+//     },dispatcher)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Collection);
+export default connect(mapStateToProps)(Collection);
