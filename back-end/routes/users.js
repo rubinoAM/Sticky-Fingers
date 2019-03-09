@@ -20,7 +20,9 @@ router.get('/', function(req, res, next) {
 });
 
 //Friends
-router.get('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
+router.post('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
+  console.log("friends Route:")
+  console.log(req.body.auth)
   const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
     FROM friendships
     INNER JOIN users u1 ON friendships.u1id = u1.id
@@ -35,7 +37,9 @@ router.get('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
 });
 
 //Collection
-router.get('/collection',(req,res,next)=>{
+router.post('/collection',(req,res,next)=>{
+  console.log("collection Route:")
+  console.log(req.body.auth)
   // pull all records from the records table where 
   // (the uid in the collections table = the current user), 
   // (the crid of those items = rid in collection-records table)
@@ -63,8 +67,6 @@ router.get('/collection',(req,res,next)=>{
   // const userIdQuery = `SELECT id FROM users WHERE email = the current users email`
 
   // const collectionQuery = `SELECT * FROM records INNER JOIN`
-
-  console.log("collection route has been hit")
 
   connection.query(collectionQuery,(error,results)=>{
     // console.log(results)
@@ -255,10 +257,12 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
 });
 
 router.post('/community', (req,res,next)=>{
+  console.log("community Route:")
+  console.log(req.body.auth)
   // set variables for any locals i need
   // set a variable for my query
   // connection.query to run the query
-  console.log(req.body.auth)
+  
 
   
   // const currentUserId = `SELECT id FROM users WHERE token != ${req}`

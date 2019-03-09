@@ -15,7 +15,7 @@ class Friends extends Component{
     }
 
     componentDidMount(){ //Challenge: Footer resize
-        this.props.friendsAction();
+        // this.props.friendsAction();
 
         this.setState({
             footer:window.document.getElementById('footer'),
@@ -89,10 +89,10 @@ function mapStateToProps(state){
     }
 }
 
-function mapDispatchToProps(dispatcher){
-    return bindActionCreators({
-        friendsAction
-    },dispatcher)
-}
+// function mapDispatchToProps(dispatcher){
+//     return bindActionCreators({
+//         friendsAction
+//     },dispatcher)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Friends);
+export default connect(mapStateToProps)(Friends);

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import loginAction from '../../actions/loginAction';
 import communityAction from '../../actions/communityAction';
+import collectionAction from '../../actions/collectionAction';
+import friendsAction from '../../actions/friendsAction';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import './form.css';
@@ -34,6 +36,8 @@ class Login extends Component{
         }else if(newProps.auth.msg === "Login Success"){
             console.log(newProps.auth)
             this.props.communityAction(newProps.auth);
+            this.props.collectionAction(newProps.auth);
+            this.props.friendsAction(newProps.auth);
             this.props.history.push('/users/userHome');
         }
     }
@@ -113,7 +117,9 @@ function MapStateToProps(state){
 function MapDispatchToProps(dispatcher){
     return bindActionCreators({
         loginAction,
-        communityAction
+        communityAction,
+        collectionAction,
+        friendsAction
     }, dispatcher)
 }
 
