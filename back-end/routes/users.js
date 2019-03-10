@@ -256,22 +256,32 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
   })
 });
 
+//Community
 router.post('/community', (req,res,next)=>{
   console.log("community Route:")
   console.log(req.body.auth)
   // set variables for any locals i need
   // set a variable for my query
   // connection.query to run the query
-  
+  const communityQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
+    FROM friendships
+    INNER JOIN users u1 ON friendships.u1id = u1.id
+    INNER JOIN users u2 ON friendships.u2id = u2.id
+    WHERE u1.id = 1;`;
+  connection.query(communityQuery,(err,results)=>{
+    if(err){throw err}
+    res.json(results);
+    //console.log(results);
+  })
 
   
   // const currentUserId = `SELECT id FROM users WHERE token != ${req}`
-  const currentUserId = `SELECT * FROM users;`
-  connection.query(currentUserId,(error,results)=>{
-    if(error){throw error}
-    res.json(results);
+  // const currentUserId = `SELECT * FROM users;`
+  // connection.query(currentUserId,(error,results)=>{
+  //   if(error){throw error}
+  //   res.json(results);
     // console.log(results);
-  })
+  // })
 
   // const communityQuery = `SELECT userName, email, addressStreet, addressCity, addressState, addressZip, avatarUrl, tagline FROM users WHERE id != ${currentUserId};`;
   // // make sure it doesnt pull yourself or anyone who is already friends with you
