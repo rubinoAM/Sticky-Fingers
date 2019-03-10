@@ -1,0 +1,104 @@
+.make-trade-header{
+    text-align:center
+}
+.make-trade-header h1{
+    font-family: 'Kodchasan', sans-serif;
+}
+
+.make-trade-header span{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.25rem;
+    position:relative;
+    bottom:10px;
+    padding:5px 5px 10px;
+}
+
+.make-trade-body h3{
+    font-family: 'Kodchasan', sans-serif;
+    margin-left:10px;
+}
+
+.make-trade-btn{
+    background:#1eabc4;
+}
+
+.make-trade-btn:hover{
+    background:#E23F35;
+}
+
+.trade-recipient{
+    background:#FBF6EF;
+    padding:10px;
+}
+
+.trade-recipient h4, .trade-recipient-record h4{
+    font-family: 'KoHo', sans-serif;
+    font-size:1.5rem;
+    margin:0 0 20px;
+}
+
+.recipient-avatar{
+    border-radius:50%;
+}
+
+.recipient-avatar, .recipient-rec-cover{
+    width:100%;
+}
+
+.trade-recipient-record{
+    background:#E23F35;
+    padding:10px;
+    /* filter:grayscale(100%); */
+}
+
+.trade-recipient-record h4{
+    color:#FBF6EF;
+}
+
+
+.trade-recipient .row, .trade-recipient-record .row{
+    margin:0;
+}
+
+.user-select, .record-select{
+    display:block;
+    margin-bottom:20px;
+}
+
+.filled .col div{
+    font-size:1.25rem;
+}
+
+.trade-recipient-record .filled .col div{
+    color:#FBF6EF;
+}
+
+@media screen and (max-width:600px){
+    .recipient-avatar, .recipient-rec-cover{
+        width:60%;
+    }
+
+    .make-trade-header{
+        padding:0 20px;
+    }
+
+    .make-trade-body .col{
+        margin:10px;
+    }
+
+    .trade-recipient .row{
+        text-align:center;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:992px){
+    .recipient-avatar, .recipient-rec-cover{
+        width:80%;
+    }
+}
+
+@media screen and (max-width:992px){
+    .trade-recipient .row, .trade-recipient-record .row{
+        text-align:center;
+    }
+}
