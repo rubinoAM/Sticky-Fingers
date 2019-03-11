@@ -19,8 +19,6 @@ class Collection extends Component{
     }
 
     componentDidMount(){
-        // this.props.collectionAction();
-
         this.setState({
             footer:window.document.getElementById('footer'),
         })
@@ -36,9 +34,19 @@ class Collection extends Component{
     render(){
         //console.log(this.props);
         let recordsArray = this.props.coll.map((record,i)=>{
-            return(
-                <RecordCard data={record} key={i} />
-            )
+            if((i+1)%4 === 0){
+                return(
+                    <span>
+                        <RecordCard data={record} key={i} />
+                        <div className="col s12 buffer"></div>
+                    </span>
+                )
+            } else {
+                return(
+                    <RecordCard data={record} key={i} />
+                )
+            }
+            
         })
 
         if (this.state.footer) {
