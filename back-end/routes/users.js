@@ -265,6 +265,28 @@ router.post('/community', (req,res,next)=>{
 
 })
 
+router.get('/trades',(req,res,next)=>{
+  const userName = req.body.userName;
+  const targetQuery = `SELECT id FROM users
+    WHERE userName = ?;`;
+
+  connection.query(targetQuery,[userName],(err,results)=>{
+    if(err){throw err}
+    console.log(results);
+    let userId = results[0].id;
+
+    const getTradesQuery = `SELECT * FROM trades
+      WHERE u1id = 1
+      OR u2id = 2;`;
+
+    connection.query(getTradesQuery,[userId, userId],(err_2,results_2)=>{
+      if(err_2){throw err_2}
+      console.log(results_2);
+    });
+  });
+})
+
+
 router.post("/makeTrade",(req,res,next)=>{
   
 })

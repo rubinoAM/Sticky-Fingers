@@ -36,7 +36,6 @@ class Collection extends Component{
     render(){
         //console.log(this.props);
         let recordsArray = this.props.coll.map((record,i)=>{
-            //console.log(record);
             return(
                 <RecordCard data={record} key={i} />
             )
