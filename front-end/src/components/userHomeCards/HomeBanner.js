@@ -14,7 +14,7 @@ class HomeBanner extends Component{
         const userNameOnBanner = this.props.auth.userName;
         let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase();
         console.log(this.props);
-        const userAvatar = `/images/${this.props.auth.avatarUrl}`;
+        const userAvatar = `${window.apiHost}/images/${this.props.auth.avatarUrl}`;
         const userTagline = this.props.auth.tagline;
 
         return(
