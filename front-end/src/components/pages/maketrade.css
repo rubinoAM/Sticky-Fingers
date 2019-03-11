@@ -1,3 +1,7 @@
+.make-trade-page{
+    margin-bottom:40px;
+}
+
 .make-trade-header{
     text-align:center
 }
@@ -37,26 +41,32 @@
     margin:0 0 20px;
 }
 
+.trade-your-record h4{
+    font-family: 'KoHo', sans-serif;
+    font-size:2rem;
+    margin:0 0 20px;
+}
+
 .recipient-avatar{
     border-radius:50%;
 }
 
-.recipient-avatar, .recipient-rec-cover{
+.recipient-avatar, .recipient-rec-cover, .your-rec-cover{
     width:100%;
 }
 
-.trade-recipient-record{
+.trade-recipient-record, .trade-your-record{
     background:#E23F35;
     padding:10px;
     /* filter:grayscale(100%); */
 }
 
-.trade-recipient-record h4{
+.trade-recipient-record h4, .trade-your-record h4{
     color:#FBF6EF;
 }
 
 
-.trade-recipient .row, .trade-recipient-record .row{
+.trade-recipient .row, .trade-recipient-record .row, .trade-your-record .row{
     margin:0;
 }
 
@@ -69,12 +79,12 @@
     font-size:1.25rem;
 }
 
-.trade-recipient-record .filled .col div{
+.trade-recipient-record .filled .col div, .trade-your-record .filled .col div{
     color:#FBF6EF;
 }
 
 @media screen and (max-width:600px){
-    .recipient-avatar, .recipient-rec-cover{
+    .recipient-avatar, .recipient-rec-cover, .your-rec-cover{
         width:60%;
     }
 
@@ -95,10 +105,14 @@
     .recipient-avatar, .recipient-rec-cover{
         width:80%;
     }
+
+    .your-rec-cover{
+        width:65%;
+    }
 }
 
 @media screen and (max-width:992px){
-    .trade-recipient .row, .trade-recipient-record .row{
+    .trade-recipient .row, .trade-recipient-record .row, .trade-your-record .row{
         text-align:center;
     }
 }

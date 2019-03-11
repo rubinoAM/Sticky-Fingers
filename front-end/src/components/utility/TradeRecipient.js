@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class TradeRecipient extends Component{
     render(){
-        let recipSelected = true;
-        let recipRecSelected = true;
+        let recipSelected = false;
+        let recipRecSelected = false;
         let recipient;
         let recipientRec;
 

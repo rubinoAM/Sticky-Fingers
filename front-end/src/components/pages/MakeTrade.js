@@ -11,10 +11,13 @@ class MakeTrade extends Component{
                     <h1>Make Trade</h1>
                     <span>Pick a person you wish to trade with and then pick a record you want them to trade. Then select a record you wish to trade to them.</span>
                 </div>
-                <div className="make-trade-body">
+                <form className="make-trade-body">
                     <TradeRecipient />
                     <TradeUser />
-                </div>
+                    <center className="row">
+                        <button className="btn make-trade-btn col s8 offset-s2 m4 offset-m4">Submit</button>
+                    </center>
+                </form>
             </div>
         )
     }
