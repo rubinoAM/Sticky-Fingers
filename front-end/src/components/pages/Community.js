@@ -92,6 +92,7 @@ class Community extends Component{
 function mapStateToProps(state){
     return{
         community: state.community,
+        friends: state.friends
     }
 }
 

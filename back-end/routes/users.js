@@ -23,13 +23,14 @@ router.get('/', function(req, res, next) {
 router.post('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
   console.log("friends Route:")
   console.log(req.body.auth)
+  const currentUserName = req.body.auth.userName;
   const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
     FROM friendships
     INNER JOIN users u1 ON friendships.u1id = u1.id
     INNER JOIN users u2 ON friendships.u2id = u2.id
-    WHERE u1.id = 1;`;
+    WHERE u1.userName = ?;`;
 
-  connection.query(friendsQuery,(err,results)=>{
+  connection.query(friendsQuery, [currentUserName], (err,results)=>{
     if(err){throw err}
     res.json(results);
     //console.log(results);
@@ -40,40 +41,19 @@ router.post('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
 router.post('/collection',(req,res,next)=>{
   console.log("collection Route:")
   console.log(req.body.auth)
-  // pull all records from the records table where 
-  // (the uid in the collections table = the current user), 
-  // (the crid of those items = rid in collection-records table)
-
-  // pull the records who have an id that is within rid of the collection-records table, that has a cid
-  // pull the user id of the current user, 
-  
-  // correct one that works:
+  const currentUserName = req.body.auth.userName;
   const collectionQuery = `SELECT * FROM records 
     INNER JOIN collectionRecords ON collectionRecords.rid = records.id
     INNER JOIN collections ON collections.id = collectionRecords.cid
     INNER JOIN users ON collections.uid = users.id
-    WHERE users.id = 1;`;
-
-  // const collectionQuery = `SELECT * FROM records 
-  // //   INNER JOIN collectionRecords ON collectionRecords.rid = records.id
-  // //   INNER JOIN collections ON collections.id = collectionRecords.cid
-  // //   INNER JOIN users ON collections.uid = users.id
-  // //   WHERE users.id = ?;`;
-
-  // INNER JOIN users ON {auth.token} = 
-  // pull the collection that belongs to the current user
-  // we know its the current user by what auth.token contains.
-
-  // const userIdQuery = `SELECT id FROM users WHERE email = the current users email`
-
-  // const collectionQuery = `SELECT * FROM records INNER JOIN`
-
-  connection.query(collectionQuery,(error,results)=>{
+    WHERE users.userName = (?);`;
+  connection.query(collectionQuery, [currentUserName], (error,results)=>{
     // console.log(results)
     if(error){throw error}
     // const record = results;
     res.json(results)
-    //console.log(results)
+    console.log("collection query results")
+    console.log(results)
   })
 
   // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
@@ -170,7 +150,7 @@ router.post('/addrecord/', (req,res,next)=>{
     if(err){throw err}
     recId = results[0].id;
     //console.log(recId);
-
+    const currentUserName = req.body.auth.userName;
     const connectRecToCollectionQuery = `INSERT INTO collectionRecords (cid,rid)
     VALUES(?,?)`;
 
@@ -247,37 +227,16 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
 router.post('/community', (req,res,next)=>{
   console.log("community Route:")
   console.log(req.body.auth)
-  // set variables for any locals i need
-  // set a variable for my query
-  // connection.query to run the query
-  const communityQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
-    FROM friendships
-    INNER JOIN users u1 ON friendships.u1id = u1.id
-    INNER JOIN users u2 ON friendships.u2id = u2.id
-    WHERE u1.id = 1;`;
-  connection.query(communityQuery,(err,results)=>{
+  const currentUserName = req.body.auth.userName;
+  const communityQuery = `SELECT userName, id, addressCity, avatarUrl
+    FROM users
+    WHERE userName != (?);`;
+  connection.query(communityQuery, [currentUserName], (err,results)=>{
     if(err){throw err}
     res.json(results);
-    //console.log(results);
+    console.log("Community Query Results");
+    console.log(results);
   })
-
-  
-  // const currentUserId = `SELECT id FROM users WHERE token != ${req}`
-  // const currentUserId = `SELECT * FROM users;`
-  // connection.query(currentUserId,(error,results)=>{
-  //   if(error){throw error}
-  //   res.json(results);
-    // console.log(results);
-  // })
-
-  // const communityQuery = `SELECT userName, email, addressStreet, addressCity, addressState, addressZip, avatarUrl, tagline FROM users WHERE id != ${currentUserId};`;
-  // // make sure it doesnt pull yourself or anyone who is already friends with you
-  // connection.query(communityQuery,(error,results)=>{
-  //   if(error){throw error}
-  //   res.json(results);
-  //   console.log(results);
-  // })
-
 })
 
 router.get('/trades',(req,res,next)=>{

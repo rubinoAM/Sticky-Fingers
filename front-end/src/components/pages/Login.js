@@ -35,9 +35,9 @@ class Login extends Component{
             })
         }else if(newProps.auth.msg === "Login Success"){
             console.log(newProps.auth)
-            this.props.communityAction(newProps.auth);
-            this.props.collectionAction(newProps.auth);
             this.props.friendsAction(newProps.auth);
+            this.props.collectionAction(newProps.auth);
+            this.props.communityAction(newProps.auth);
             this.props.history.push('/users/userHome');
         }
     }
@@ -111,6 +111,7 @@ class Login extends Component{
 function MapStateToProps(state){
     return{
         auth: state.auth,
+        friends: state.friends
     }
 }
 
