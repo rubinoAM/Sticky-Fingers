@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import axios from 'axios';
+import communityAction from '../../actions/communityAction';
+import friendsAction from '../../actions/friendsAction';
+
 
 class PersonCard extends Component{
     constructor(){
@@ -10,6 +15,25 @@ class PersonCard extends Component{
         }
     }
 
+    addFriend = ()=>{
+        // (this.state.friend.userName)
+        // console.log(this.state.friend.userName)
+        const newFriend = this.state;
+        // axios request to add this person to the friend group
+        // then run the friends action
+        // then run the community action
+        // re-route to the friends page
+        
+        const addFriendPromise = axios.post(`${window.apiHost}/users/addFriend`, newFriend);
+        addFriendPromise.then(()=>{
+            this.props.friendsAction(this.props.auth);
+            this.props.communityAction(this.props.auth);
+
+        })
+
+    } 
+    
+
     // this.state.friend changed to this.props.community
 
     componentDidMount(){
@@ -18,8 +42,10 @@ class PersonCard extends Component{
         })
     }
 
+    
+
     render(){
-        //console.log(this.state.friend);
+        // console.log(this.props);
         let avatar = this.state.friend.avatarUrl;
         if(avatar === ""){
             avatar = 'placeholder.png'
@@ -54,6 +80,11 @@ class PersonCard extends Component{
                         <Link to={profileUrl}><button className="btn friend-btn">PROFILE</button></Link>
                     </center>
                     </div>
+                    <div className="card-action">
+                    <center>
+                        <button onClick={this.addFriend} className="btn friend-btn">ADD FRIEND</button>
+                    </center>
+                    </div>
                 </div>
             </div>
         )
@@ -67,4 +98,13 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(PersonCard);
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        communityAction,
+        friendsAction
+    }, dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PersonCard);
+
+// add this person to your friends with a an axios request right in the component, THEN! have the friends action and community actions run to update state of these two on the front end. then re route the user to the Friends page

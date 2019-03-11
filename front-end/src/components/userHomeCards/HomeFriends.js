@@ -16,9 +16,9 @@ class HomeFriends extends Component{
 
     render(){
         console.log(this.props)
-        if(this.props.friends.length === 0){
-            return (<h1>Loading...</h1>)
-        }else{
+        // if(this.props.friends.length === 0){
+        //     return (<h1>Loading...</h1>)
+        // }else{
             const friendsList = this.props.friends.map((friend,i)=>{
                 return(
                     <div key={i}>
@@ -46,7 +46,7 @@ class HomeFriends extends Component{
                 </div>
 
             )
-        }
+        
     }
 }
 
