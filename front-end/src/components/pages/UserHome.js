@@ -18,26 +18,16 @@ class UserHome extends Component{
 
     render(){
         return(
-            
             <div className="user-home-container">
-
                 <HomeBanner />
-
                 <div className="home-body container">
                     <div className="row">
-
                         <HomeNavPanel />
-
                         <div className="dashboard col s12 m9">
-
                             <HomeCollection />
-
                             <HomeFriends />
-
-                            {/* <HomeTrades /> */}
-
-                            {/* <HomeTrending /> */}
-
+                            {/* <HomeTrades /> 
+                            <HomeTrending /> */}
                         </div>
                     </div>
                 </div>

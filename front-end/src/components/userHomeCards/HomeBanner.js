@@ -5,13 +5,10 @@ import { connect } from 'react-redux';
 import authAction from '../../actions/authAction';
 import '../pages/userHome.css';
 
-
-
 class HomeBanner extends Component{
     constructor(){
         super()
     }
-
 
     render(){
         const userNameOnBanner = this.props.auth.userName
@@ -19,17 +16,37 @@ class HomeBanner extends Component{
         return(
             <div className="container">
                 <div className="home-header row">
-                    <div className="headshot-div col s12 m5">
+                    <div className="hide-on-med-and-up">
+                        <div className="col s12 banner">
+                            <img src="https://placehold.it/200x200" className="headshot" alt="" />
+                        </div>
+                        <div className=" col s12 banner-contents">
+                            <h2>{allUpperUserNameOnBanner}</h2>
+                            <p>Personalized Tag Line</p>
+                            <p>Member since</p>
+                        </div>
+                    </div>
+                    <div className="col m12 hide-on-small-only">
+                        <div className="banner">
+                            <img src="https://placehold.it/200x200" className="headshot" alt="" />
+                        </div>
+                            <div className="banner-contents">
+                                <h2>{allUpperUserNameOnBanner}</h2>
+                                <p>Personalized Tag Line</p>
+                                <p>Member since</p>
+                            </div>
+                    </div>
+
+                    {/* <div className="headshot-div col s12 m5">
                         <img src="https://placehold.it/200x200" className="headshot" alt="" />
                     </div>
                     <div className="banner col s12 m7">
                         <h2>{allUpperUserNameOnBanner}</h2>
                         <p>Personalized Tag Line</p>
                         <p>Member since</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-
         )
     }
 }

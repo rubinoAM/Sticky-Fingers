@@ -1,10 +1,9 @@
 import React from 'react';
 import '../pages/userHome.css';
+import Link from 'react-router-dom';
 
 function HomeNavPanel(){
-
     return(
-
         <div className="navPanel col s12 m3">
             <div className="row">
                 <ul className="navOptions col s12">
@@ -16,7 +15,6 @@ function HomeNavPanel(){
                 </ul>
             </div>
         </div>
-
     )
 }
 
