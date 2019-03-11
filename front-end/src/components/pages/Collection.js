@@ -19,8 +19,6 @@ class Collection extends Component{
     }
 
     componentDidMount(){
-        // this.props.collectionAction();
-
         this.setState({
             footer:window.document.getElementById('footer'),
         })
@@ -36,9 +34,25 @@ class Collection extends Component{
     render(){
         //console.log(this.props);
         let recordsArray = this.props.coll.map((record,i)=>{
-            return(
-                <RecordCard data={record} key={i} />
-            )
+            if((i+1)%4 === 0){
+                return(
+                    <span>
+                        <RecordCard data={record} key={i} />
+                        <div className="col s12"></div>
+                    </span>
+                )
+            } else if ((i+1)%2 === 0){
+                return(
+                    <span>
+                        <RecordCard data={record} key={i} />
+                        <div className="col s12 hide-on-large-only"></div>
+                    </span>
+                )
+            } else {
+                return(
+                    <RecordCard data={record} key={i} />
+                )
+            }
         })
 
         if (this.state.footer) {
@@ -48,21 +62,21 @@ class Collection extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
-                        footer.style.bottom = "initial";
+                        footer.style.top = "initial";
                     }
                 } if (this.props.coll.length < 3){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else if(window.innerHeight >= 978 && window.innerWidth <= 992 && window.innerWidth >= 601){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";

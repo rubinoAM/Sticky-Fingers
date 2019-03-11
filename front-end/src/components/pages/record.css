@@ -1,0 +1,48 @@
+.indv-rec-holder{
+    margin:20px 0;
+    min-height:auto;
+    text-align:center;
+    font-family: 'KoHo', sans-serif;
+}
+
+.indv-details{
+    background:#E23F35;
+    color:#FBF6EF;
+}
+
+.indv-details p{
+    font-size:1.75rem;
+}
+
+.page-footer .footer{
+    position:static;
+}
+
+@media screen and (max-width:600px){
+    .indv-cover{
+        width:90%;
+    }
+
+    .indv-details p{
+        font-size:1.25rem;
+    }
+}
+
+@media screen and (min-width:601px) and (max-width:992px){
+    .indv-cover{
+        width:50%;
+    }
+}
+
+@media screen and (max-width:992px){
+    .indv-details{
+        width:90%;
+        margin:0 auto;
+    }
+}
+
+@media screen and (min-width:993px){
+    .indv-cover{
+        width:40%;
+    }
+}

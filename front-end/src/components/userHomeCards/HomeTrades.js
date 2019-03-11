@@ -20,14 +20,15 @@ class HomeTrades extends Component{
         })
         return(
             <div className="dashboard-item row">
-                <div className="col s12 m3">
+                <div className="col s12 m4">
                     <span className="dashboard-item-label" id="trades">Trades</span>
-                    <span className="dashboard-subinfo"> sub info sub info sub info sub info sub info sub info</span>
                 </div>
-                
-                <div className="dashboard-item-content col s12 m9 ">
+                <div className="dashboard-item-content col s12">
                     <div className="row">
-                        <span className="dashboard-item-details col s12"> {tradesList}</span>
+                        <div className="col s12 m3">
+                            <div className="dashboard-item-detail-label">Newest Trades:</div>   
+                        </div>
+                        <div className="dashboard-item-details col s12 m9">{tradesList}</div>
                     </div>
                     <div className="row">
                     <span className="col s9"></span>

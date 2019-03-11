@@ -265,4 +265,8 @@ router.post("/makeTrade",(req,res,next)=>{
   
 })
 
+router.post('/people/:id',(req,res,next)=>{
+  
+})
+
 module.exports = router;
