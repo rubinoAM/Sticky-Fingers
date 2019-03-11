@@ -23,11 +23,13 @@ class Friend extends Component{
             avatar = 'https://via.placeholder.com/200'
         }
 
+        let avatarUrl = `${window.apiHost}/images/${avatar}`
+
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
                     <div className="card-image">
-                        <Link to="/"><img src={this.state.friend.avatarUrl} className="friend-avatar" alt="" /></Link>
+                        <Link to="/"><img src={avatarUrl} className="friend-avatar" alt="" /></Link>
                     </div>
                     <div className="card-content">
                         <span className="friend-username">{this.state.friend.userName}</span>

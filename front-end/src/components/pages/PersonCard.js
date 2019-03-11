@@ -21,15 +21,17 @@ class PersonCard extends Component{
     render(){
         //console.log(this.state.friend);
         let avatar = this.state.friend.avatarUrl;
-        if(avatar === "null"){
-            avatar = 'https://via.placeholder.com/200'
+        if(avatar === ""){
+            avatar = 'placeholder.png'
         }
+
+        let avatarUrl = `${window.apiHost}/images/${avatar}`
 
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
                     <div className="card-image">
-                        <Link to="/"><img src={this.state.friend.avatarUrl} className="friend-avatar" alt="" /></Link>
+                        <Link to="/"><img src={avatarUrl} className="friend-avatar" alt="" /></Link>
                     </div>
                     <div className="card-content">
                         <span className="friend-username">{this.state.friend.userName}</span>
