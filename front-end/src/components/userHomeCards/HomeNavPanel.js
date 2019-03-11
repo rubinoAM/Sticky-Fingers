@@ -1,6 +1,6 @@
 import React from 'react';
 import '../pages/userHome.css';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function HomeNavPanel(){
     return(
@@ -10,8 +10,8 @@ function HomeNavPanel(){
                     <li className="navOption"><a href="#collection">Collection</a></li>
                     <li className="navOption"><a href="#friends">Friends</a></li>
                     <li className="navOption"><a href="#trades">Trades</a></li>
-                    <li className="navOption"><a href="#trending">Trending</a></li>
-                    <li className="navOption"><a href="#preferences">Preferences</a></li>
+                    {/* <li className="navOption"><a href="#trending">Trending</a></li> */}
+                    <li className="navOption"><Link to="/users/profile">Profile</Link></li>
                 </ul>
             </div>
         </div>

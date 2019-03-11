@@ -4,6 +4,7 @@ import collectionReducer from './collectionReducer';
 import friendsReducer from './friendsReducer';
 import addRecordReducer from './addRecordReducer';
 import tradesReducer from './tradesReducer';
+import makeTradeReducer from './makeTradeReducer';
 import communityReducer from './communityReducer';
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     friends: friendsReducer,
     addRec: addRecordReducer,
     trades: tradesReducer,
-    community: communityReducer
+    community: communityReducer,
+    makeTrade: makeTradeReducer,
 })
 
 export default rootReducer;

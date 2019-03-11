@@ -83,6 +83,35 @@
     color:#FBF6EF;
 }
 
+.finalize-trade{
+    background:#FBF6EF;
+    padding:20px;
+    width:65%;
+    min-height:250px;
+}
+
+.finalize-trade .btn{
+    margin-top:20px;
+}
+
+input[type=date]:not(.browser-default):focus:not([readonly])+label{
+    color: #E23F35;
+    font-family: 'KoHo', sans-serif;
+}
+
+/* label underline focus color */
+input[type=date]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid #E23F35;
+    box-shadow: 0 1px 0 0 #E23F35;
+    font-family: 'KoHo', sans-serif;
+}
+  
+/* icon prefix focus color */
+.input-field .prefix.active {
+    color: #E23F35;
+    font-family: 'KoHo', sans-serif;
+}
+
 @media screen and (max-width:600px){
     .recipient-avatar, .recipient-rec-cover, .your-rec-cover{
         width:60%;

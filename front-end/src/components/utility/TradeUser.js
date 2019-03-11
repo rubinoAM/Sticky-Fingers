@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class TradeUser extends Component{
     render(){
         let yourRec;
-        let yourRecSelected = true;
+        let yourRecSelected = false;
 
         if(!yourRecSelected){  
             yourRec = <div className="row">

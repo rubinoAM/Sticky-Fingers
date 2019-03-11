@@ -51,12 +51,15 @@ router.post('/login',(req,res,next)=>{
   // const hash = bcrypt.hashSync(req.body.password);
   connection.query(selectUserQuery, [userName],(error,results)=>{
     console.log("============login route hit")
+    console.log(results);
     if(error)throw error
     if(results.length === 0){
       res.json({
         msg: "Bad User"
       })
     } else {
+      const avatarUrl = results[0].avatarUrl;
+      const tagline = results[0].tagline;
       const checkHash = bcrypt.compareSync(password, results[0].password)
       //console.log(password,results[0].password)
       if(checkHash){
@@ -72,7 +75,8 @@ router.post('/login',(req,res,next)=>{
           token,
           userName,
           email,
-
+          avatarUrl,
+          tagline,
         })
       } else {
         //console.log("=========Server insanity check - bad password")
