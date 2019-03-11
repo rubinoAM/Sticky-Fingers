@@ -40,7 +40,7 @@ class Friends extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
@@ -50,11 +50,11 @@ class Friends extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else if(window.innerHeight >= 978 && window.innerWidth <= 992 && window.innerWidth >= 601){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
@@ -64,7 +64,25 @@ class Friends extends Component{
             })
 
             friendContainers = this.props.friends.map((friend,i)=>{
-                return <Friend data={friend} key={i} />
+                if((i+1)%4 === 0){
+                    return(
+                        <span>
+                            <Friend data={friend} key={i} />
+                            <div className="col s12"></div>
+                        </span>
+                    )
+                } else if ((i+1)%2 === 0){
+                    return(
+                        <span>
+                            <Friend data={friend} key={i} />
+                            <div className="col s12 hide-on-large-only"></div>
+                        </span>
+                    )
+                } else {
+                    return(
+                        <Friend data={friend} key={i} />
+                    )
+                }
             })
         }
     

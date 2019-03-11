@@ -46,7 +46,7 @@ class Community extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
@@ -56,11 +56,11 @@ class Community extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else if(window.innerHeight >= 978 && window.innerWidth <= 992 && window.innerWidth >= 601){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
@@ -71,7 +71,25 @@ class Community extends Component{
         }
 
         communityContainers = this.props.community.map((person,i)=>{
-            return <PersonCard data={person} key={i} />
+            if((i+1)%4 === 0){
+                return(
+                    <span>
+                        <PersonCard data={person} key={i} />
+                        <div className="col s12"></div>
+                    </span>
+                )
+            } else if ((i+1)%2 === 0){
+                return(
+                    <span>
+                        <PersonCard data={person} key={i} />
+                        <div className="col s12 hide-on-large-only"></div>
+                    </span>
+                )
+            } else {
+                return(
+                    <PersonCard data={person} key={i} />
+                )
+            }
         })
     
         return(

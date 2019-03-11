@@ -15,6 +15,7 @@ class MakeTrade extends Component{
     }
 
     render(){
+        console.log(this.props);
         return(
             <div className="make-trade-page">
                 <div className="make-trade-header">

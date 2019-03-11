@@ -45,21 +45,18 @@ class HomeCollection extends Component{
 
             return(
                 <div className="dashboard-item row">
-                    <div className="col s12 m3">
+                    <div className="col s12 m4">
                         <span className="dashboard-item-label" id="collection">Collection</span>
-                        <span className="dashboard-subinfo">
-                            <span>Name</span>
-                            <span>Started</span>
-                        </span>
                     </div>
-                    <div className="dashboard-item-content col s12 m9 ">
+                    <div className="dashboard-item-content col s12">
                         <div className="row">
-                            <span className="dashboard-item-details col s12">
-                                <span>Grab a Record!
-                                    <span>{collection}</span>
-                                    <span>{userRank}</span>
-                                </span>
-                            </span>
+                            <div className="col s12 m3">
+                                <div className="dashboard-item-detail-label">Recent Additions:</div>
+                            </div>
+                            <div className="dashboard-item-details col s12 m9">
+                                <div>{collection}</div>
+                                {/* <span>{userRank}</span> */}
+                            </div>
                         </div>
                         <div className="row">
                         <span className="col s9"></span>

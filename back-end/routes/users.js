@@ -278,6 +278,8 @@ router.post("/addFriend", (req,res,next)=>{
 
 })
 
+router.post('/people/:id',(req,res,next)=>{
+  
+})
+
 module.exports = router;
-
-

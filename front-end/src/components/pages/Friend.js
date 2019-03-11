@@ -17,17 +17,20 @@ class Friend extends Component{
     }
 
     render(){
-        //console.log(this.state.friend);
+        console.log(this.state.friend);
         let avatar = this.state.friend.avatarUrl;
         if(avatar === "null"){
-            avatar = 'https://via.placeholder.com/200'
+            avatar = 'placeholder.png'
         }
+
+        let avatarUrl = `${window.apiHost}/images/${avatar}`;
+        let profileUrl = `/users/people/${this.state.friend.id}`;
 
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
                     <div className="card-image">
-                        <Link to="/"><img src={this.state.friend.avatarUrl} className="friend-avatar" alt="" /></Link>
+                        <Link to={profileUrl}><img src={avatarUrl} className="friend-avatar" alt="" /></Link>
                     </div>
                     <div className="card-content">
                         <span className="friend-username">{this.state.friend.userName}</span>
@@ -46,7 +49,7 @@ class Friend extends Component{
                     </div>
                     <div className="card-action">
                     <center>
-                        <Link to="/"><button className="btn friend-btn">PROFILE</button></Link>
+                        <Link to={profileUrl}><button className="btn friend-btn">PROFILE</button></Link>
                     </center>
                     </div>
                 </div>
