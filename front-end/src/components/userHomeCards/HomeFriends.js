@@ -28,13 +28,15 @@ class HomeFriends extends Component{
             })
             return(
                 <div className="dashboard-item row">
-                    <div className="col s12 m3">
+                    <div className="col s12 m4">
                         <span className="dashboard-item-label" id="friends">Friends</span>
-                        <span className="dashboard-subinfo"> sub info sub info sub info sub info sub info sub info</span>
                     </div>
-                    <div className="dashboard-item-content col s12 m9 ">
+                    <div className="dashboard-item-content col s12">
                         <div className="row">
-                            <span className="dashboard-item-details col s12">{friendsList}</span>
+                            <div className="col s12 m3">
+                                <div className="dashboard-item-detail-label">Newest Friends:</div>
+                            </div>
+                            <div className="dashboard-item-details col s12 m9">{friendsList}</div>
                         </div>
                         <div className="row">
                         <span className="col s9"></span>

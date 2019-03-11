@@ -48,21 +48,21 @@ class Collection extends Component{
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
-                        footer.style.bottom = "initial";
+                        footer.style.top = "initial";
                     }
                 } if (this.props.coll.length < 3){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1645 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else if(window.innerHeight >= 978 && window.innerWidth <= 992 && window.innerWidth >= 601){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
-                        footer.style.bottom = "0";
+                        footer.style.top = "100vh";
                     } else {
                         footer.style.width = "auto";
                         footer.style.position = "static";
