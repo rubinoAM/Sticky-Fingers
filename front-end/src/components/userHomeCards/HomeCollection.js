@@ -19,11 +19,15 @@ class HomeCollection extends Component{
     render(){
         // console.log(this.props.coll[0].name)
         // console.log(this.props)
-        if(this.props.coll.length === 0){
-            return (<h1>Loading...</h1>)
-        }else{
+        // if(this.props.coll.length === 0){
+        //     return (<h1>Loading...</h1>)
+        // }else{
+
+
             const collection = this.props.coll.map((album,i)=>{
+                console.log(album)
                 return(
+                    
                     <div key={i}>
                         <span >{album.name}</span>
                     </div>
@@ -66,7 +70,7 @@ class HomeCollection extends Component{
     
             )
 
-        }
+        
         
         
         

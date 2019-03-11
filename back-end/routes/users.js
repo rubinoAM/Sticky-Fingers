@@ -265,4 +265,19 @@ router.post("/makeTrade",(req,res,next)=>{
   
 })
 
+router.post("/addFriend", (req,res,next)=>{
+  const addFriendQuery = `INSERT INTO friendships (u1id, u2id)
+    VALUES (?,?)`
+    // results.insertId
+  const newFriendId = req.body.friend.id;
+  connection.query(addFriendQuery,[1,newFriendId],(err,results)=>{
+    if(err){throw err}
+    console.log("addfriend")
+    console.log(req.body)
+  })
+
+})
+
 module.exports = router;
+
+
