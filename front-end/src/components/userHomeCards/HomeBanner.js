@@ -11,40 +11,35 @@ class HomeBanner extends Component{
     }
 
     render(){
-        const userNameOnBanner = this.props.auth.userName
-        let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase()
+        const userNameOnBanner = this.props.auth.userName;
+        let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase();
+        console.log(this.props);
+        const userAvatar = `/images/${this.props.auth.avatarUrl}`;
+        const userTagline = this.props.auth.tagline;
+
         return(
             <div className="container">
                 <div className="home-header row">
                     <div className="hide-on-med-and-up">
                         <div className="col s12 banner">
-                            <img src="https://placehold.it/200x200" className="headshot" alt="" />
+                            <img src={userAvatar} className="headshot" alt="" />
                         </div>
                         <div className=" col s12 banner-contents">
                             <h2>{allUpperUserNameOnBanner}</h2>
-                            <p>Personalized Tag Line</p>
-                            <p>Member since</p>
+                            <p>{userTagline}</p>
+                            {/* <p>Member since</p> */}
                         </div>
                     </div>
                     <div className="col m12 hide-on-small-only">
                         <div className="banner">
-                            <img src="https://placehold.it/200x200" className="headshot" alt="" />
+                            <img src={userAvatar} className="headshot" alt="" />
                         </div>
                             <div className="banner-contents">
                                 <h2>{allUpperUserNameOnBanner}</h2>
-                                <p>Personalized Tag Line</p>
-                                <p>Member since</p>
+                                <p>{userTagline}</p>
+                                {/* <p>Member since</p> */}
                             </div>
                     </div>
-
-                    {/* <div className="headshot-div col s12 m5">
-                        <img src="https://placehold.it/200x200" className="headshot" alt="" />
-                    </div>
-                    <div className="banner col s12 m7">
-                        <h2>{allUpperUserNameOnBanner}</h2>
-                        <p>Personalized Tag Line</p>
-                        <p>Member since</p>
-                    </div> */}
                 </div>
             </div>
         )

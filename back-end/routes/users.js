@@ -178,12 +178,11 @@ router.post('/profileCreation',(req,res,next)=>{
 
   const profileDetailsQuery = `UPDATE users
     SET tagline = ?, addressStreet = ?, addressCity = ?, addressState = ?, addressZip = ?
-    WHERE userName = ?
-    AND token = ?;`;
+    WHERE userName = ?;`;
 
   //console.log(tagline,addStreet,addCity,addState,addZip);
   
-  connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip,userName,userToken],(err,results)=>{
+  connection.query(profileDetailsQuery,[tagline,addStreet,addCity,addState,addZip,userName],(err,results)=>{
     if(err){throw err}
     res.json({msg:'Profile Successfully Populated'});
     //console.log(results);
@@ -192,44 +191,17 @@ router.post('/profileCreation',(req,res,next)=>{
 });
 
 router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
-  //console.log(req.file);
   const tempPath = req.file.path;
-  //console.log(tempPath);
-  //const targetQuery = `SELECT * FROM users ORDER BY id DESC LIMIT 1;`;
   console.log(req.body);
-  /* connection.query(targetQuery,(err,results)=>{
-    if(err){throw err}
-    let lastId = results[0].id;
-    const targetPath = "public/images/avy_" + lastId + ".jpg";
-    const dbPath = "avy_" + lastId + ".jpg"
-    fs.readFile(tempPath,(err,fileContents)=>{
-      if(err){throw err}
-      fs.writeFile(targetPath,fileContents,(error_2)=>{
-        if(error_2){throw error_2}
-        const insertAvatarQuery = `UPDATE users
-          SET avatarUrl = ?
-          WHERE id = ?;`
-
-        connection.query(insertAvatarQuery,[dbPath,lastId],(dbErr,dbResults)=>{
-          if(dbErr){throw dbErr}
-          else{
-            res.redirect('/dashboard');
-          }
-        })
-
-        fs.unlink(req.file.path);
-      })
-    })
-  }) */
 
   const token = req.body.token;
   const userName = req.body.userName;
   const targetQuery = `SELECT id FROM users
-    WHERE userName = ?
-    AND token = ?;`;
+    WHERE userName = ?;`;
 
-  connection.query(targetQuery,[userName,token],(err,results)=>{
+  connection.query(targetQuery,[userName],(err,results)=>{
     if(err){throw err}
+    console.log(results);
     let lastId = results[0].id;
     const targetPath = "public/images/avy_" + lastId + ".jpg";
     const dbPath = "avy_" + lastId + ".jpg"
@@ -291,6 +263,10 @@ router.post('/community', (req,res,next)=>{
   //   console.log(results);
   // })
 
+})
+
+router.post("/makeTrade",(req,res,next)=>{
+  
 })
 
 module.exports = router;

@@ -6,7 +6,7 @@ import HomeBanner from '../userHomeCards/HomeBanner';
 import HomeNavPanel from '../userHomeCards/HomeNavPanel';
 import HomeCollection from '../userHomeCards/HomeCollection';
 import HomeFriends from '../userHomeCards/HomeFriends';
-// import HomeTrades from '../userHomeCards/HomeTrades';
+import HomeTrades from '../userHomeCards/HomeTrades';
 // import HomeTrending from '../userHomeCards/HomeTrending';
 import './userHome.css';
 
@@ -26,8 +26,8 @@ class UserHome extends Component{
                         <div className="dashboard col s12 m9">
                             <HomeCollection />
                             <HomeFriends />
-                            {/* <HomeTrades /> 
-                            <HomeTrending /> */}
+                            <HomeTrades /> 
+                            {/* <HomeTrending /> */}
                         </div>
                     </div>
                 </div>
