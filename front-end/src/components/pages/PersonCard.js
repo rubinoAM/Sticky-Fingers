@@ -60,7 +60,7 @@ class PersonCard extends Component{
 function mapStateToProps(state){
     return{
         community: state.community,
-        friend: state.friend
+        friends: state.friends
     }
 }
 
