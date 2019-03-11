@@ -15,36 +15,6 @@ router.get('/', function(req, res, next) {
 });
 
 // The original Register route that works:
-router.post('/register',(req,res,next)=>{
-  const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
-  connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
-    // console.log("=========Server insanity check")
-    if(err){throw err};
-    if(results.length === 0){
-      console.log(req.body)
-      const token = randToken.uid(50);
-      const hash = bcrypt.hashSync(req.body.password);
-      const insertUserQuery = `INSERT INTO users (userName,email,password,token)
-      VALUES
-      (?,?,?,?);`;
-      connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
-        if(err2){throw err2;}
-        res.json({
-          msg: "User Added",
-          token,
-          email: req.body.email,
-          userName: req.body.userName
-        })
-      });
-    } else {
-      console.log("there is a spoon")
-      res.json({msg: "User Exists"})
-    }
-  })
-})
-
-
-// The register route Im playing with:
 // router.post('/register',(req,res,next)=>{
 //   const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
 //   connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
@@ -55,42 +25,62 @@ router.post('/register',(req,res,next)=>{
 //       const token = randToken.uid(50);
 //       const hash = bcrypt.hashSync(req.body.password);
 //       const insertUserQuery = `INSERT INTO users (userName,email,password,token)
-//         VALUES
-//         (?,?,?,?);`;
-//       const userName = req.body.userName;
-//       let uId;
-//       const uIdQuery = `SELECT id FROM users
-//         WHERE userName = ?;`;
-//       const createCollectionQuery = `INSERT INTO collections (uid)
 //       VALUES
-//       (?) 
-//       FROM users INNER JOIN collections ON users.id = collections.uid`;
-
-//       connection.query(uIdQuery,[userName],(error,results)=>{
-//         if(error){throw error}
-//         uId = results[0].id;
-//         connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
-//           if(err2){throw err2;}
-//           connection.query(createCollectionQuery),[uId],(err3,results3)=>{
-//             if(err3){throw err3;}
-//             res.json({
-//               msg: "User Added",
-//               token,
-//               email: req.body.email,
-//               userName: req.body.userName
-//             })
-//           }
+//       (?,?,?,?);`;
+//       connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
+//         if(err2){throw err2;}
+//         res.json({
+//           msg: "User Added",
+//           token,
+//           email: req.body.email,
+//           userName: req.body.userName
 //         })
-//       })
-
-      
-
+//       });
 //     } else {
 //       console.log("there is a spoon")
 //       res.json({msg: "User Exists"})
 //     }
 //   })
 // })
+
+
+// The register route Im playing with:
+router.post('/register',(req,res,next)=>{
+  const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
+  connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
+    // console.log("=========Server insanity check")
+    if(err){throw err};
+    if(results.length === 0){
+      console.log(req.body)
+      const token = randToken.uid(50);
+      const hash = bcrypt.hashSync(req.body.password);
+      const insertUserQuery = `INSERT INTO users (userName,email,password,token)
+        VALUES
+        (?,?,?,?);`;
+      const createCollectionQuery = `INSERT INTO collections (uid)
+      VALUES
+      (?);`
+        connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
+          console.log(results2)
+          if(err2){throw err2;}
+          connection.query(createCollectionQuery,[results2.insertId],(err3,results3)=>{
+            if(err3){throw err3;}
+            res.json({
+              msg: "User Added",
+              token,
+              email: req.body.email,
+              userName: req.body.userName
+            })
+          })
+        })
+      
+    } else {
+      console.log("there is a spoon")
+      res.json({msg: "User Exists"})
+    }
+  })
+})
+
 
 router.post('/login',(req,res,next)=>{
   const email = req.body.email;
