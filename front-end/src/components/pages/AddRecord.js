@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './addrecord.css';
 import addRecordBG from '../../images/addrecord_bg.jpg';
+import { connect } from 'react-redux';
 
 class AddRecord extends Component{
     constructor(){
@@ -48,13 +49,16 @@ class AddRecord extends Component{
             year:recordYear,
             genre:recordGenre,
             coverUrl:recordCover,
+            userName:this.props.auth.userName,
         }
 
         axios({
             url: `${window.apiHost}/users/addrecord`,
             method: 'POST',
             data: recordSubmission,
-        })
+        }).then(
+            this.props.history.push('/users/userHome')
+        )
 
         console.log(recordSubmission);
     }
@@ -149,4 +153,10 @@ class AddRecord extends Component{
     }
 }
 
-export default AddRecord;
+function mapStateToProps(state){
+    return{
+        auth:state.auth,
+    }
+}
+
+export default connect(mapStateToProps)(AddRecord);

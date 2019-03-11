@@ -112,7 +112,12 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log(data);
       const title = data.title;
       const artist = data.artists[0].name;
-      const genre = data.styles[0];
+      let genre = '';
+      if(!data.styles){
+        genre = data.genres[0];
+      } else {
+        genre = data.styles[0];
+      }
       const year = data.year;
       const imageUrl = data.images[0].uri;
 
@@ -130,13 +135,23 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
 })
 
 router.post('/addrecord/', (req,res,next)=>{
-  //console.log(req);
+  console.log(req.body);
 
   const title = req.body.title;
   const artist = req.body.artist;
   const year = req.body.year;
   const genre = req.body.genre;
   const coverUrl = req.body.coverUrl;
+  const userName = req.body.userName;
+
+  let uId;
+  const uIdQuery = `SELECT id FROM users
+    WHERE userName = ?;`;
+  
+  connection.query(uIdQuery,[userName],(error,results)=>{
+    if(error){throw error}
+    uId = results[0].id;
+  })
 
   const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl)
     VALUES (?,?,?,?,?);`;  
@@ -157,11 +172,11 @@ router.post('/addrecord/', (req,res,next)=>{
     //console.log(recId);
 
     const connectRecToCollectionQuery = `INSERT INTO collectionRecords (cid,rid)
-    VALUES(1,?)`;
+    VALUES(?,?)`;
 
-    connection.query(connectRecToCollectionQuery,[recId],(err,results)=>{
+    connection.query(connectRecToCollectionQuery,[uId,recId],(err,results)=>{
       if(err){throw err}
-      console.log(results);
+      //console.log(results);
     })
   });
 });

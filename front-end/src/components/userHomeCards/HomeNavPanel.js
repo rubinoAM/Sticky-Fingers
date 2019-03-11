@@ -7,10 +7,8 @@ function HomeNavPanel(){
         <div className="navPanel col s12 m3">
             <div className="row">
                 <ul className="navOptions col s12">
-                    <li className="navOption"><a href="#collection">Collection</a></li>
-                    <li className="navOption"><a href="#friends">Friends</a></li>
-                    <li className="navOption"><a href="#trades">Trades</a></li>
-                    {/* <li className="navOption"><a href="#trending">Trending</a></li> */}
+                    <li className="navOption"><Link to="/users/addrecord">Add Record</Link></li>
+                    <li className="navOption"><Link to="/users/makeTrade">Make Trade</Link></li>
                     <li className="navOption"><Link to="/users/profile">Profile</Link></li>
                 </ul>
             </div>
