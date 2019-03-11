@@ -21,13 +21,6 @@ a{
     
 }
 
-.home-header{
-    /* display: flex;
-    justify-content:center;
-    align-items:center; */
-
-}
-
 .headshot-div{
     margin: 25px 0px 25px 0px;
 }
@@ -147,17 +140,8 @@ a{
     transition: color 0.2s ease-in
 }
 
-.dashboard{
-    /* margin: 25px; */
-}
-
 .dashboard-item{
-    /* height: 200px; */
     background-color:  #FBF6EF;
-    /* border-bottom: 1px #201F1B solid; */
-    /* display: flex;
-    position: relative; */
-    /* padding-left: 12px; */
 }
 
 .dashboard-subinfo{
@@ -166,10 +150,6 @@ a{
 
 .dashboard-item-content{
     margin: 12px 0 0 0;
-}
-
-.dashboard-item-details{
-    
 }
 
 .dashboard-item-link{

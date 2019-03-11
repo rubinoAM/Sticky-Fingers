@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default (formData)=>{
+export default (formData,auth)=>{
     console.log(formData)
     const axiosPromise = axios({
         url: `${window.apiHost}/users/addrecord`,

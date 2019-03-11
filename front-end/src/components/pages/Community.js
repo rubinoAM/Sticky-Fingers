@@ -37,10 +37,12 @@ class Community extends Component{
         let communityContainers;
         if(Object.keys(this.props.community).length === 0){
             communityContainers = <div className="friends-filler">NO ONE</div>
-        } else if (this.state.footer) {
+        }
+        
+        if(this.state.footer){
             let footer = this.state.footer;
             window.addEventListener("resize",()=>{
-                if(Object.keys(this.props.friends).length < 5 && Object.keys(this.props.community).length > 2){
+                if(Object.keys(this.props.community).length < 5 && Object.keys(this.props.community).length > 2){
                     if(window.innerHeight >= 978 && window.innerWidth <= 1200 && window.innerWidth >= 993){
                         footer.style.width = "100vw";
                         footer.style.position = "absolute";
@@ -66,11 +68,11 @@ class Community extends Component{
                     }
                 }
             })
-
-            communityContainers = this.props.community.map((person,i)=>{
-                return <PersonCard data={person} key={i} />
-            })
         }
+
+        communityContainers = this.props.community.map((person,i)=>{
+            return <PersonCard data={person} key={i} />
+        })
     
         return(
             <div className="friends-container">
