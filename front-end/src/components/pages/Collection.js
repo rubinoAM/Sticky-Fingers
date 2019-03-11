@@ -38,7 +38,14 @@ class Collection extends Component{
                 return(
                     <span>
                         <RecordCard data={record} key={i} />
-                        <div className="col s12 buffer"></div>
+                        <div className="col s12"></div>
+                    </span>
+                )
+            } else if ((i+1)%2 === 0){
+                return(
+                    <span>
+                        <RecordCard data={record} key={i} />
+                        <div className="col s12 hide-on-large-only"></div>
                     </span>
                 )
             } else {
@@ -46,7 +53,6 @@ class Collection extends Component{
                     <RecordCard data={record} key={i} />
                 )
             }
-            
         })
 
         if (this.state.footer) {

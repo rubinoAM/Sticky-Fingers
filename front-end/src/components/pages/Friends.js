@@ -64,7 +64,25 @@ class Friends extends Component{
             })
 
             friendContainers = this.props.friends.map((friend,i)=>{
-                return <Friend data={friend} key={i} />
+                if((i+1)%4 === 0){
+                    return(
+                        <span>
+                            <Friend data={friend} key={i} />
+                            <div className="col s12"></div>
+                        </span>
+                    )
+                } else if ((i+1)%2 === 0){
+                    return(
+                        <span>
+                            <Friend data={friend} key={i} />
+                            <div className="col s12 hide-on-large-only"></div>
+                        </span>
+                    )
+                } else {
+                    return(
+                        <Friend data={friend} key={i} />
+                    )
+                }
             })
         }
     

@@ -71,7 +71,25 @@ class Community extends Component{
         }
 
         communityContainers = this.props.community.map((person,i)=>{
-            return <PersonCard data={person} key={i} />
+            if((i+1)%4 === 0){
+                return(
+                    <span>
+                        <PersonCard data={person} key={i} />
+                        <div className="col s12"></div>
+                    </span>
+                )
+            } else if ((i+1)%2 === 0){
+                return(
+                    <span>
+                        <PersonCard data={person} key={i} />
+                        <div className="col s12 hide-on-large-only"></div>
+                    </span>
+                )
+            } else {
+                return(
+                    <PersonCard data={person} key={i} />
+                )
+            }
         })
     
         return(
