@@ -94,6 +94,10 @@
     margin-top:20px;
 }
 
+.greyed{
+    filter:grayscale(100%);
+}
+
 input[type=date]:not(.browser-default):focus:not([readonly])+label{
     color: #E23F35;
     font-family: 'KoHo', sans-serif;

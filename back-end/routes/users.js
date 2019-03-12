@@ -297,8 +297,52 @@ router.post('/people/:id',(req,res,next)=>{
   
 })
 
-router.post("/makeTrade",(req,res,next)=>{
-  
+/* router.get('/makeTrade',(req,res,next)=>{
+  //console.log(req.body);
+
+  const getFriendsQuery = `SELECT r2.available AS r2Available, r2.name AS r2Name, r2.artist AS r2Artist,
+	r1.available AS r1Available, r1.name AS r1Name, r1.artist AS r1Artist,
+	u1.id AS yourId, u1.userName AS yourUsername, u2.id AS friendId, u2.userName AS friendUsername
+    FROM friendships
+    INNER JOIN users u1 ON friendships.u1id = u1.id
+    INNER JOIN users u2 ON friendships.u2id = u2.id
+    INNER JOIN collections c1 ON u1.id = c1.uid
+    INNER JOIN collections c2 ON u2.id = c2.uid
+    INNER JOIN collectionRecords cr1 ON c1.crid = cr1.id
+    INNER JOIN collectionRecords cr2 ON c2.crid = cr2.id
+    INNER JOIN records r1 ON cr1.rid = r1.id
+    INNER JOIN records r2 ON cr2.rid = r2.id
+    WHERE u1.userName = ?;`;
+}) */
+
+router.post("/makeTrade/pickFriend",(req,res,next)=>{
+  //console.dir(Object.keys(req.body));
+  let friendUserName = Object.keys(req.body)[0];
+  //console.log(friendUserName);
+
+  const friendCollectionQuery = `SELECT users.id AS userId, records.* FROM records
+    INNER JOIN collectionRecords ON records.id = collectionRecords.rid
+    INNER JOIN collections ON collectionRecords.cid = collections.id
+    INNER JOIN users ON collections.uid = users.id
+    WHERE userName = ?
+    AND records.available = 1;`;
+
+  connection.query(friendCollectionQuery,[friendUserName],(err,results)=>{
+    if(err){throw err}
+    res.json(results);
+    console.log(results);
+  })
+})
+
+router.post("/makeTrade/pickFriendRecord",(req,res,next)=>{
+  let recName = Object.keys(req.body)[0]
+  res.json(recName);
+})
+
+router.post("/makeTrade/pickYourRecord",(req,res,next)=>{
+  //console.log(req.body)
+  let recName = Object.keys(req.body)[0]
+  res.json(recName);
 })
 
 module.exports = router;
