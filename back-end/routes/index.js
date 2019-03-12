@@ -44,7 +44,6 @@ router.get('/', function(req, res, next) {
 // })
 
 
-// The register route Im playing with:
 router.post('/register',(req,res,next)=>{
   const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
   connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{

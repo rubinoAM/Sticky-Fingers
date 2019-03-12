@@ -15,22 +15,30 @@ class PersonCard extends Component{
         }
     }
 
-    addFriend = ()=>{
-        // (this.state.friend.userName)
-        // console.log(this.state.friend.userName)
+    addFriend = (e)=>{
+        e.preventDefault();
+        console.log(e)
         const newFriend = this.state;
+        const auth = this.props.auth;
+        
         // axios request to add this person to the friend group
         // then run the friends action
         // then run the community action
         // re-route to the friends page
-        
-        const addFriendPromise = axios.post(`${window.apiHost}/users/addFriend`, newFriend);
-        addFriendPromise.then(()=>{
+        console.log("addFriend has been hit")
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/users/addfriend`,
+            data: {
+                newFriend,
+                auth,
+            },
+        }).then(()=>{
+            console.log("addFriend has been hit")
             this.props.friendsAction(this.props.auth);
             this.props.communityAction(this.props.auth);
-
+            this.props.history.push('/users/userHome')
         })
-
     } 
     
 
@@ -94,7 +102,8 @@ class PersonCard extends Component{
 function mapStateToProps(state){
     return{
         community: state.community,
-        friends: state.friends
+        friends: state.friends,
+        auth: state.auth
     }
 }
 
