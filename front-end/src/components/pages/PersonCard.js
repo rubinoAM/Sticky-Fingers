@@ -16,16 +16,10 @@ class PersonCard extends Component{
     }
 
     addFriend = (e)=>{
+        console.log("add Friend hit")
         e.preventDefault();
-        console.log(e)
         const newFriend = this.state;
         const auth = this.props.auth;
-        
-        // axios request to add this person to the friend group
-        // then run the friends action
-        // then run the community action
-        // re-route to the friends page
-        console.log("addFriend has been hit")
         axios({
             method: 'POST',
             url: `${window.apiHost}/users/addfriend`,
@@ -33,16 +27,16 @@ class PersonCard extends Component{
                 newFriend,
                 auth,
             },
-        }).then(()=>{
-            console.log("addFriend has been hit")
+            
+        }).then((response)=>{
+            console.log("promise hit")
             this.props.friendsAction(this.props.auth);
             this.props.communityAction(this.props.auth);
-            this.props.history.push('/users/userHome')
+            // this.props.history.push('/users/userHome')
+            // console.log(this.props.friends)
         })
+        console.log("promise done")
     } 
-    
-
-    // this.state.friend changed to this.props.community
 
     componentDidMount(){
         this.setState({
@@ -52,16 +46,15 @@ class PersonCard extends Component{
 
     
 
+    // component will update or receive props and then update state in here
+
     render(){
-        // console.log(this.props);
         let avatar = this.state.friend.avatarUrl;
         if(avatar === ""){
             avatar = 'placeholder.png'
         }
-
         let avatarUrl = `${window.apiHost}/images/${avatar}`;
         let profileUrl = `/users/people/${this.state.friend.id}`;
-
         return(
             <div className="col s12 m6 l3">
                 <div className="card friend-card">
