@@ -30,6 +30,8 @@
 
 .mobile-navs{
     display:none;
+    opacity:0;
+    transition:0.2s ease-in opacity;
 }
 
 .navs li{
@@ -59,6 +61,10 @@ button.menu-btn{
 
 .mobile-navs{
     text-align:center;
+}
+
+.image-link{
+    width:311px;
 }
 
 @media screen and (max-width:600px){
