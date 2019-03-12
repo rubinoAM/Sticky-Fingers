@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
-import collectionAction from '../../actions/collectionAction';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Record from './Record';
 import RecordCard from '../utility/RecordCard';
 import './collection.css';
 

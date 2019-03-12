@@ -11,6 +11,8 @@ class HomeTrades extends Component{
     }
 
     render(){
+        console.log(this.props);
+
         const tradesList = this.props.trades.map((trade,i)=>{
             return(
                 <div key={i}>

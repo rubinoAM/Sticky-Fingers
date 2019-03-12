@@ -262,12 +262,12 @@ router.get('/trades',(req,res,next)=>{
 
   connection.query(targetQuery,[userName],(err,results)=>{
     if(err){throw err}
-    console.log(results);
+    //console.log(results);
     let userId = results[0].id;
 
     const getTradesQuery = `SELECT * FROM trades
-      WHERE u1id = 1
-      OR u2id = 2;`;
+      WHERE u1id = ?
+      OR u2id = ?;`;
 
     connection.query(getTradesQuery,[userId, userId],(err_2,results_2)=>{
       if(err_2){throw err_2}
@@ -297,23 +297,65 @@ router.post('/people/:id',(req,res,next)=>{
   
 })
 
-/* router.get('/makeTrade',(req,res,next)=>{
+router.post('/makeTrade',(req,res,next)=>{
   //console.log(req.body);
+  const startDate = req.body.startDate;
+  const finishDate = req.body.finishDate;
+  const recipientId = req.body.recipientId;
+  const recipRec = req.body.recipRec;
+  const yourRec = req.body.yourRec;
+  const yourUserName = req.body.yourUserName;
+  let yourId;
+  let recipRecId;
+  let yourRecId;
 
-  const getFriendsQuery = `SELECT r2.available AS r2Available, r2.name AS r2Name, r2.artist AS r2Artist,
-	r1.available AS r1Available, r1.name AS r1Name, r1.artist AS r1Artist,
-	u1.id AS yourId, u1.userName AS yourUsername, u2.id AS friendId, u2.userName AS friendUsername
-    FROM friendships
-    INNER JOIN users u1 ON friendships.u1id = u1.id
-    INNER JOIN users u2 ON friendships.u2id = u2.id
-    INNER JOIN collections c1 ON u1.id = c1.uid
-    INNER JOIN collections c2 ON u2.id = c2.uid
-    INNER JOIN collectionRecords cr1 ON c1.crid = cr1.id
-    INNER JOIN collectionRecords cr2 ON c2.crid = cr2.id
-    INNER JOIN records r1 ON cr1.rid = r1.id
-    INNER JOIN records r2 ON cr2.rid = r2.id
-    WHERE u1.userName = ?;`;
-}) */
+  const getYourIdQuery = `SELECT id FROM users WHERE userName = ?`;
+  const getRecIdQuery = `SELECT id FROM records WHERE name = ? or name = ? LIMIT 2;`;
+  const createTradeQuery = `INSERT INTO trades (u1id,u2id,r1id,r2id,dateStarted,dateEnded)
+    VALUES (?,?,?,?,?,?);`;
+  const updateRecQuery = `UPDATE records
+    SET available = 0
+    WHERE id = ? OR id = ?;`;
+  const updateFriendshipQuery = `UPDATE friendships
+    SET exchanges = exchanges + 1
+    WHERE (u1id = ? AND u2id = ?) OR (u1id = ? AND u2id = ?);`;
+  const returnAddressQuery = `SELECT addressStreet, addressCity, addressState, addressZip
+    FROM users
+    WHERE id = ? OR id = ?;`
+
+  connection.query(getYourIdQuery,[yourUserName],(err,results)=>{
+    if(err){throw err}
+    yourId = results[0].id;
+
+    connection.query(getRecIdQuery,[recipRec,yourRec],(err2,results2)=>{
+      if(err2){throw err2}
+      //console.log(results2);
+      recipRecId = results2[0].id;
+      yourRecId = results2[1].id;
+      //console.log(recipRecId,yourRecId);
+
+      connection.query(createTradeQuery,[yourId,recipientId,yourRecId,recipRecId,startDate,finishDate],(err3,results3)=>{
+        if(err3){throw err3}
+        //console.log(results3)
+    
+        connection.query(updateRecQuery,[yourRecId,recipRecId],(err4,results4)=>{
+          if(err4){throw err4}
+          //console.log(results4)
+        })
+
+        connection.query(updateFriendshipQuery,[yourRecId,recipRecId,recipRecId,yourRecId],(err5,results5)=>{
+          if(err5){throw err5}
+          //console.log(results5)
+        })
+
+        connection.query(returnAddressQuery,[yourId,recipientId],(err6,results6)=>{
+          if(err6){throw err6}
+          res.json(results6)
+        })
+      })
+    })
+  })
+})
 
 router.post("/makeTrade/pickFriend",(req,res,next)=>{
   //console.dir(Object.keys(req.body));

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 
 function Home(){
-
     return(
             <div className="App">
                 <header className="App-header">
@@ -13,7 +10,6 @@ function Home(){
                 <Link to="/register" >Register</Link>
                 or
                 <Link to="/login" >Login</Link>
-                
                 </header>
             </div>
     )

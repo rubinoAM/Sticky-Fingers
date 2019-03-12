@@ -6,12 +6,16 @@ import TradeRecipient from '../utility/TradeRecipient';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import makeTradeAction from '../../actions/makeTradeAction';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class MakeTrade extends Component{
     constructor(){
         super()
         this.state = {
-            makeTrade:'',
+            successAlert:false,
+            msg:'',
+            msgTitle:'',
             tradeRecords: [],
             recipient:'',
             recipRecSelected: 'false',
@@ -128,17 +132,49 @@ class MakeTrade extends Component{
         const recipientId = this.state.recipient;
         const recipRec = this.state.recipientRec;
         const yourRec = this.state.yourRec;
-        const yourUserName = this.props.userName;
+        const yourUserName = this.props.auth.userName;
 
         if(this.state.recipRecSelected === 'true' && this.state.yourRecSelected === 'true'){
             console.log(startDate,finishDate,recipientId,recipRec,yourRec,yourUserName);
         }
+
+        axios({
+            url: `${window.apiHost}/users/makeTrade/`,
+            method: 'POST',
+            data: {
+                startDate,
+                finishDate,
+                recipientId,
+                recipRec,
+                yourRec,
+                yourUserName,
+            },
+        }).then((response)=>{
+            console.log(response.data);
+            const yourAddress = `${response.data[0].addressStreet} ${response.data[0].addressCity}, ${response.data[0].addressState} ${response.data[0].addressZip}`;
+            const recipAddress = `${response.data[1].addressStreet} ${response.data[1].addressCity}, ${response.data[1].addressState} ${response.data[1].addressZip}`;
+
+            this.setState({
+                successAlert:true,
+                msg:`Your trade has gone through successfully.\nSend your record to the recipient's address:\n${recipAddress}\nYour Address:\n${yourAddress}`,
+                msgTitle:'Traded!',
+            })
+        })
     }
 
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         return(
             <div className="make-trade-page">
+                <SweetAlert
+                    show={this.state.successAlert}
+                    title={this.state.msgTitle}
+                    text={this.state.msg}
+                    onConfirm={() => {
+                        this.setState({ successAlert: false })
+                        this.props.history.push('/users/userHome');
+                    }}
+                />
                 <div className="make-trade-header">
                     <h1>Make Trade</h1>
                     <span>Pick a person you wish to trade with and then pick a record you want them to trade. Then select a record you wish to trade to them.</span>
@@ -149,9 +185,9 @@ class MakeTrade extends Component{
                     <center className="row">
                         <form className="finalize-trade" id="finalizeTrade" onSubmit={this.submitTrade}>
                             <div>
-                                <input className='validate' type="date" id="startDate" name="startDate"/>
+                                <input className='validate' type="date" id="startDate" name="startDate" required />
                                 <label htmlFor='startDate'>Pick Your Send Off Date</label>
-                                <input className='validate' type="date" id="returnDate" name="returnDate" />
+                                <input className='validate' type="date" id="returnDate" name="returnDate" required />
                                 <label htmlFor='username'>Pick Your Return Date</label>
                             </div>
                             <button className="btn make-trade-btn col s8 offset-s2 m4 offset-m4">Submit</button>

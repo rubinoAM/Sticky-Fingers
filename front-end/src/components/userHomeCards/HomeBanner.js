@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import authAction from '../../actions/authAction';
 import '../pages/userHome.css';
 
 class HomeBanner extends Component{
-    constructor(){
-        super()
-    }
-
     render(){
         const userNameOnBanner = this.props.auth.userName;
         let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase();
