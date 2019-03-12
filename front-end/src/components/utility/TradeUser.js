@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import makeTradeAction from '../../actions/makeTradeAction';
 
 class TradeUser extends Component{
-    render(){
-        let yourRec;
-        let yourRecSelected = false;
-
-        if(!yourRecSelected){  
-            yourRec = <div className="row">
-                                <div className="col s12 l4">
-                                    <img src="https://via.placeholder.com/200" alt="" className="your-rec-cover"/>
-                                </div>
-                                <form className="col s12 l8" id="yourRecSelect">
-                                    <h4>Pick a Record To Trade For</h4>
-                                    <select className="record-select">
-                                        <option>Record 1</option>
-                                        <option>Record 2</option>
-                                        <option>Record 3</option>
-                                    </select>
-                                    <button className="btn make-trade-btn">Select</button>
-                                </form>
-                            </div>
-        } else {
-            yourRec = <div className="row filled">
-                                <div className="col s12 l4">
-                                    <img src="https://via.placeholder.com/200" alt="" className="your-rec-cover"/>
-                                </div>
-                                <div className="col s12 l8">
-                                    <h4>RECORD TITLE</h4>
-                                    <div>ARTIST</div>
-                                    <div>AVAILABILITY</div>
-                                </div>
-                            </div>
+    constructor(){
+        super()
+        this.state = {
+            yourRec: '',
+            yourRecSelected:'false',
         }
+    } 
+
+    render(){
+        let defAvatar = `${window.apiHost}/images/placeholder.png`;
+
+        let yourRecArr = this.props.coll.map((record,i)=>{
+            return <option key={i} value={record.coverUrl}>{record.name}</option>
+        })
+
+        let yourRec = <div className="row">
+                        <div className="col s12 l4">
+                            <img src={defAvatar} alt="" id="yourRecCover" className="your-rec-cover"/>
+                        </div>
+                        <form className="col s12 l8" id="yourRecSelect">
+                            <h4>Pick a Record To Trade</h4>
+                            <select onChange={this.props.yourCover} className="record-select">
+                                {yourRecArr}
+                            </select>
+                            <button onClick={this.props.pickYourRec} className="btn make-trade-btn">Select</button>
+                        </form>
+                    </div>
 
         return(
             <div className="row">
@@ -45,5 +45,16 @@ class TradeUser extends Component{
         )
     }
 }
+function mapStateToProps(state){
+    return{
+        //coll:state.coll,
+    }
+}
 
-export default TradeUser;
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        makeTradeAction
+    }, dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TradeUser);

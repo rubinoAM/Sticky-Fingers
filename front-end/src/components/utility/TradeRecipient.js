@@ -1,66 +1,73 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import makeTradeAction from '../../actions/makeTradeAction';
 
 class TradeRecipient extends Component{
-    render(){
-        let recipSelected = false;
-        let recipRecSelected = false;
-        let recipient;
-        let recipientRec;
+    constructor(){
+        super()
+        this.state = {
+            recipient:'',
+            tradeRecords: [],
+            recipRecSelected: 'false',
+            recipientRec:'',
+        }
+    }
 
-        if(!recipSelected){
-            recipient = <div className="row">
+    render(){
+        //console.log(this.props);
+        let defAvatar = `${window.apiHost}/images/placeholder.png`;
+        let recipientRecord;
+        let friendsArray = this.props.friends.map((friend,i)=>{
+            return <option value={i} key={i}>{friend.userName}</option>
+        });
+
+        if(this.props.tradeRecords.length === 0){
+            recipientRecord = <div className="trade-recipient-record greyed">
+                                <div className="row">
+                                    <div className="col s12 l4">
+                                        <img src={defAvatar} alt="" className="recipient-rec-cover"/>
+                                    </div>
+                                    <div className="col s12 l8">
+                                        <h4>You must pick a user before you can pick a record.</h4>
+                                    </div>
+                                </div>
+                            </div>;
+        } else {
+            let friendRecordsArray = this.props.tradeRecords.map((record,i)=>{
+                return <option value={record.coverUrl} key={i}>{record.name}</option>
+            })
+
+            recipientRecord = <div className="trade-recipient-record">
+                                <div className="row">
+                                    <div className="col s12 l4">
+                                        <img src={defAvatar} alt="" id="recipientRecCover" className="recipient-rec-cover"/>
+                                    </div>
+                                    <form className="col s12 l8" id="recipientRecSelect">
+                                        <h4>Pick a Record To Trade For</h4>
+                                        <select onChange={this.props.showCover} className="record-select">
+                                            {friendRecordsArray}
+                                        </select>
+                                        <button onClick={this.props.pickFriendRecord} className="btn make-trade-btn">Select</button>
+                                    </form>
+                                </div>
+                            </div>;
+            
+        }
+
+        let recipient = <div className="row">
                             <div className="col s12 l4">
-                                <img src="https://via.placeholder.com/200" alt="" className="recipient-avatar" />
+                                <img src={defAvatar} alt="" id="recipientAvatar" className="recipient-avatar" />
                             </div>
-                            <form className="col s12 l8" id="recipientSelect">
+                            <form className="col s12 l8" id="recipientSelect" onSubmit={this.props.pickFriend} >
                                 <h4>Pick a User</h4>
-                                <select className="user-select">
-                                    <option>User 1</option>
-                                    <option>User 2</option>
-                                    <option>User 3</option>
+                                <select onChange={this.props.showAvatar}className="user-select">
+                                    {friendsArray}
                                 </select>
                                 <button className="btn make-trade-btn">Select</button>
                             </form>
                         </div>
-        } else {
-            recipient = <div className="row filled">
-                            <div className="col s12 l4">
-                                <img src="https://via.placeholder.com/200" alt="" className="recipient-avatar" />
-                            </div>
-                            <div className="col s12 l8">
-                                <h4>USERNAME</h4>
-                                <div>DETAIL</div>
-                                <div>DETAIL</div>
-                            </div>
-                        </div>
-        }
-        if(!recipRecSelected){  
-            recipientRec = <div className="row">
-                                <div className="col s12 l4">
-                                    <img src="https://via.placeholder.com/200" alt="" className="recipient-rec-cover"/>
-                                </div>
-                                <form className="col s12 l8" id="recipientRecSelect">
-                                    <h4>Pick a Record To Trade For</h4>
-                                    <select className="record-select">
-                                        <option>Record 1</option>
-                                        <option>Record 2</option>
-                                        <option>Record 3</option>
-                                    </select>
-                                    <button className="btn make-trade-btn">Select</button>
-                                </form>
-                            </div>
-        } else {
-            recipientRec = <div className="row filled">
-                                <div className="col s12 l4">
-                                    <img src="https://via.placeholder.com/200" alt="" className="recipient-rec-cover"/>
-                                </div>
-                                <div className="col s12 l8">
-                                    <h4>RECORD TITLE</h4>
-                                    <div>ARTIST</div>
-                                    <div>AVAILABILITY</div>
-                                </div>
-                            </div>
-        }
 
         return(
             <div className="row">
@@ -71,13 +78,24 @@ class TradeRecipient extends Component{
                     </div>
                 </div>
                 <div className="col s12 m6">
-                    <div className="trade-recipient-record">
-                        {recipientRec}
-                    </div>
+                    {recipientRecord}
                 </div>
             </div>
         )
     }
 }
 
-export default TradeRecipient;
+function mapStateToProps(state){
+    return{
+        friends: state.friends,
+        auth: state.auth
+    }
+}
+
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        makeTradeAction
+    }, dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TradeRecipient);
