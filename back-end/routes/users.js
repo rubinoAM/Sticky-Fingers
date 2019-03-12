@@ -261,24 +261,35 @@ router.get('/trades',(req,res,next)=>{
 })
 
 
-router.post("/makeTrade",(req,res,next)=>{
-  
-})
 
-router.post("/addFriend", (req,res,next)=>{
+
+router.post('/addfriend', (req,res,next)=>{
+  console.log("add Friend Route has been hit")
+  console.log(req.body.auth.userName)
+  console.log(req.body.newFriend.friend)
+  console.log(req.body.newFriend.friend.userName)
+  console.log(req.body.newFriend.friend.id)
+  const currentUserName = req.body.auth.userName;
+  const getCurrentUserIdQuery = `SELECT id FROM users 
+    WHERE userName = (?);`;
+  const newFriendId = req.body.newFriend.friend.id;
   const addFriendQuery = `INSERT INTO friendships (u1id, u2id)
-    VALUES (?,?)`
-    // results.insertId
-  const newFriendId = req.body.friend.id;
-  connection.query(addFriendQuery,[1,newFriendId],(err,results)=>{
-    if(err){throw err}
-    console.log("addfriend")
-    console.log(req.body)
+    VALUES (?,?);`;
+  connection.query(getCurrentUserIdQuery,[currentUserName],(err1,results1)=>{
+    if(err1){throw err1}
+    console.log(results1)
+  //   const currentUserId = results1[0];
+  //   connection.query(addFriendQuery,[currentUserId,newFriendId],(err2,results2)=>{
+  //     if(err2){throw err2}
+  //   })
   })
-
 })
 
 router.post('/people/:id',(req,res,next)=>{
+  
+})
+
+router.post("/makeTrade",(req,res,next)=>{
   
 })
 
