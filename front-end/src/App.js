@@ -20,6 +20,7 @@ import MakeTrade from './components/pages/MakeTrade';
 import Profile from './components/pages/Profile';
 import FriendProfile from './components/pages/FriendProfile';
 import AddRecord from './components/pages/AddRecord';
+import OtherUser from './components/pages/OtherUser';
 
 class App extends Component {
   render() {
@@ -41,6 +42,7 @@ class App extends Component {
             <Route exact path="/users/profile" component={Profile} />
             <Route exact path="/users/friendProfile" component={FriendProfile} />
             <Route exact path="/users/addRecord" component={AddRecord} />
+            <Route exact path="/users/people/:id" component={OtherUser} />
           </div>
           <Footer />
         </div>

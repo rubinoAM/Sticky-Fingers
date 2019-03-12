@@ -12,10 +12,13 @@
     * Screenshots
 
 ## Description
-To be written later...
+Sticky Fingers is a record collection application where users can show off what records they have in their collection and trade records with other users as well.
 
 ### Features
-To be written later...
+* Users are able to register an account with a fully customizable profile, including user avatars that the user can upload themselves to their account.
+* Users can look for records to add to their collection using the Add Record page, which has a search form that links to the Discogs API in order to look for the necessary record information.
+* Users can look through the community to find new people to befriend and look through each other's collections.
+* Users are able to trade records with people on their friends list and are provided each other's mailing address to send the record to.
 
 ## Technologies
 * HTML/CSS/JavaScript
@@ -28,7 +31,10 @@ To be written later...
 To be written later...
 
 ## MVP
-To be written later...
+* Users must be able to create an account and a collection associated with their account
+* Users must be able to add records to their collection using the Add Record page
+* Users must be able to befriend other users on the website
+* Users must be able to trade records with those listed as their friends
 
 ## Stretch Goals
 * Embed Spotify player for individual record pages
@@ -37,11 +43,11 @@ To be written later...
 ## Authors
 * J.R. Priestman
     * Contributions:
-        * React Routing, Express Routing, SQL Schema
+        * React & Express Routing, SQL Schema and Database Setup, Redux Implementation
     * [GitHub Profile](https://github.com/JRPriestman)
 * Michael Rubino
     * Contributions:
-        * Concept, Wireframing, Front-End Design, Discogs API Implementation
+        * Concept, Wireframing, Front-End Design, Discogs API Implementation, Database Maintenance, Assistance with Redux
     * [GitHub Profile](https://github.com/rubinoAM)
 
 ## Screenshots
