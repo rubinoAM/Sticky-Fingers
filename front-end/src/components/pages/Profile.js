@@ -85,36 +85,36 @@ class Profile extends Component{
                         <div className="row">
                             <div className="input-field col s12">
                                 <div className="avy-label">Avatar:</div>
-                                <input className="validate" type="file" name="avatar" id="avatar" />
+                                <input className="validate" type="file" name="avatar" id="avatar" required/>
                             </div>
                         </div>
                         <div className='row'>
                             <div className='input-field col s12'>
-                                <input className='validate' type='text' name='tagline' id='tagline' />
+                                <input className='validate' type='text' name='tagline' id='tagline' required/>
                                 <label htmlFor='tagline'>Enter Your Personal Tagline</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className='input-field col s12'>
-                                <input className='validate' type='text' name='addStreet' id='addStreet' />
+                                <input className='validate' type='text' name='addStreet' id='addStreet' required/>
                                 <label htmlFor='addStreet'>Enter Your Bldg. Number and Street</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className='input-field col s12'>
-                                <input className='validate' type='text' name='addCity' id='addCity' />
+                                <input className='validate' type='text' name='addCity' id='addCity' required/>
                                 <label htmlFor='addCity'>Enter Your City</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className='input-field col s12'>
-                                <input className='validate' type='text' name='addState' id='addState' />
+                                <input className='validate' type='text' name='addState' id='addState' required/>
                                 <label htmlFor='addState'>Enter Your State</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className='input-field col s12'>
-                                <input className='validate' type='text' name='addZip' id='addZip' />
+                                <input className='validate' type='text' name='addZip' id='addZip' required/>
                                 <label htmlFor='addZip'>Enter Your Zip Code</label>
                             </div>
                         </div>

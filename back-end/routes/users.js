@@ -88,7 +88,7 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log('Genre: ' + data.styles[0]);
       console.log('Year: ' + data.year);
       console.log('Image URL: ' + data.images[0].uri);*/
-
+      console.log("data response from discogs")
       console.log(data);
       const title = data.title;
       const artist = data.artists[0].name;
@@ -115,50 +115,66 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
 })
 
 router.post('/addrecord/', (req,res,next)=>{
-  console.log(req.body);
-
+  console.log("add record route")
+  // add record in to records - done
+  // add a collectionrecords line
+  // add the newly created collectionrecords reference to the collections table
+  // add a cid in to the collectionRecords table
   const title = req.body.title;
   const artist = req.body.artist;
   const year = req.body.year;
   const genre = req.body.genre;
   const coverUrl = req.body.coverUrl;
   const userName = req.body.userName;
-
-  let uId;
-  const uIdQuery = `SELECT id FROM users
-    WHERE userName = ?;`;
-  
-  connection.query(uIdQuery,[userName],(error,results)=>{
-    if(error){throw error}
-    uId = results[0].id;
-  })
-
+  // we have now added this record to our records table in the DB
   const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl,available)
     VALUES (?,?,?,?,?,1);`;  //EXPLAIN available in TABLE
-
-  connection.query(addRecordQuery,[title,artist,year,genre,coverUrl],(err,results)=>{
-    if(err){throw err}
+  connection.query(addRecordQuery,[title,artist,year,genre,coverUrl],(error3,results3)=>{
+    if(error3){throw error3}
     //console.log(results);
   });
-
-  let recId;
-  const getRecIdQuery = `SELECT id FROM records
-    WHERE name = ?
-    AND artist = ?;`
-
-  connection.query(getRecIdQuery,[title,artist],(err,results)=>{
-    if(err){throw err}
-    recId = results[0].id;
-    //console.log(recId);
-    const currentUserName = req.body.auth.userName;
-    const connectRecToCollectionQuery = `INSERT INTO collectionRecords (cid,rid)
-    VALUES(?,?)`;
-
-    connection.query(connectRecToCollectionQuery,[uId,recId],(err,results)=>{
-      if(err){throw err}
-      //console.log(results);
-    })
+    // we now know the id of the collection of this user
+  let collectionId;
+  const uIdQuery = `SELECT id FROM users
+    WHERE userName = ?;`;
+  connection.query(uIdQuery,[userName],(error1,results1)=>{
+    if(error1){throw error1}
+    let uId = results1[0].id;
+    const collectionQuery = `SELECT id FROM collections
+      WHERE uid = ?`
+    connection.query(collectionQuery,[uId],(error2,results2)=>{
+      if(error2){throw error2}
+      collectionId = results2[0].id
+      let recId;
+      const getRecIdQuery = `SELECT id FROM records
+        WHERE name = ?
+        AND artist = ?;`
+      connection.query(getRecIdQuery,[title,artist],(error4,results4)=>{
+        if(error4){throw error4}
+        recId = results4[0].id;
+        console.log("IDs below")
+        const createCollectionRecordsQuery = `INSERT INTO collectionRecords (cid,rid)
+        VALUES(?,?);`;
+        connection.query(createCollectionRecordsQuery,[collectionId,recId],(error5,results5)=>{
+          if(error5){throw error5}
+          const getIdOnCollectionRecordsIdQuery = `SELECT id FROM collectionRecords
+            WHERE cid = ?`
+          connection.query(getIdOnCollectionRecordsIdQuery,[collectionId],(error6,results6)=>{
+            if(error6){throw error6}
+            crid = results6[0].id;
+            const addIdToCollectionsQuery = `INSERT INTO collections (crid)
+              VALUES(?);`;
+            connection.query(addIdToCollectionsQuery,[crid],(error7,results7)=>{
+              if(error7){throw error7}
+              // res.json(results7)
+            });
+          });
+        });
+      });
+    });
   });
+  // we have now created a new line in collectionRecords,
+  // we now need to add the newly made id on the collectionRecords table to the collections table as the crid
 });
 
 router.post('/profileCreation',(req,res,next)=>{
@@ -260,15 +276,7 @@ router.get('/trades',(req,res,next)=>{
   });
 })
 
-
-
-
 router.post('/addfriend', (req,res,next)=>{
-  console.log("add Friend Route has been hit")
-  console.log(req.body.auth.userName)
-  console.log(req.body.newFriend.friend)
-  console.log(req.body.newFriend.friend.userName)
-  console.log(req.body.newFriend.friend.id)
   const currentUserName = req.body.auth.userName;
   const getCurrentUserIdQuery = `SELECT id FROM users 
     WHERE userName = (?);`;
@@ -277,11 +285,11 @@ router.post('/addfriend', (req,res,next)=>{
     VALUES (?,?);`;
   connection.query(getCurrentUserIdQuery,[currentUserName],(err1,results1)=>{
     if(err1){throw err1}
-    console.log(results1)
-  //   const currentUserId = results1[0];
-  //   connection.query(addFriendQuery,[currentUserId,newFriendId],(err2,results2)=>{
-  //     if(err2){throw err2}
-  //   })
+    const currentUserId = results1[0].id;
+    connection.query(addFriendQuery,[currentUserId,newFriendId],(err2,results2)=>{
+      if(err2){throw err2}
+      res.json(results2)
+    })
   })
 })
 

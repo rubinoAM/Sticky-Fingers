@@ -3,6 +3,8 @@ import axios from 'axios';
 import './addrecord.css';
 import addRecordBG from '../../images/addrecord_bg.jpg';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import collectionAction from '../../actions/collectionAction';
 
 class AddRecord extends Component{
     constructor(){
@@ -56,9 +58,16 @@ class AddRecord extends Component{
             url: `${window.apiHost}/users/addrecord`,
             method: 'POST',
             data: recordSubmission,
-        }).then(
+        }).then((response)=>{
+            this.props.collectionAction();
             this.props.history.push('/users/userHome')
-        )
+        })
+            
+
+        // }).then(
+        //     this.props.collectionAction();
+        //     this.props.history.push('/users/userHome')
+        // )
 
         console.log(recordSubmission);
     }
@@ -92,13 +101,13 @@ class AddRecord extends Component{
                                 <div className="search-body">
                                     <div className="row">
                                         <div className='input-field col s10 offset-s1'>
-                                            <input className='validate' type='text' name='searchTitle' id='searchTitle' />
+                                            <input className='validate' type='text' name='searchTitle' id='searchTitle' required/>
                                             <label htmlFor='searchTitle'>Enter a Record Title</label>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className='input-field col s10 offset-s1'>
-                                            <input className='validate' type='text' name='searchArtist' id='searchArtist' />
+                                            <input className='validate' type='text' name='searchArtist' id='searchArtist' required/>
                                             <label htmlFor='searchArtist'>Enter the Record's Artist</label>
                                         </div>
                                     </div>
@@ -159,4 +168,11 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(AddRecord);
+
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        collectionAction,
+    }, dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddRecord);
