@@ -63,7 +63,7 @@ class NavBar extends Component{
                             {/* <li><Link to="/users/collection">COLLECTION</Link></li>
                             <li><Link to="/users/friends">FRIENDS</Link></li> */}
                             <li><Link to="/users/community">COMMUNITY</Link></li>
-                            <li><a onClick={this.logOut}>LOGOUT</a></li>
+                            <li><a className="logout-link" onClick={this.logOut}>LOGOUT</a></li>
                         </ul>;
 
             currentMobileNav = <ul className="mobile-navs" id="mobile-navs">

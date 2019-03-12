@@ -35,7 +35,7 @@
 }
 
 .navs li{
-    margin:5px 10px 0;
+    margin:5px 5px 0;
     font-family: 'KoHo', sans-serif;
 }
 
@@ -65,6 +65,10 @@ button.menu-btn{
 
 .image-link{
     width:311px;
+}
+
+.logout-link:hover{
+    cursor:pointer;
 }
 
 @media screen and (max-width:600px){
