@@ -133,8 +133,8 @@ router.post('/addrecord/', (req,res,next)=>{
     uId = results[0].id;
   })
 
-  const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl)
-    VALUES (?,?,?,?,?);`;  
+  const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl,available)
+    VALUES (?,?,?,?,?,1);`;  //EXPLAIN available in TABLE
 
   connection.query(addRecordQuery,[title,artist,year,genre,coverUrl],(err,results)=>{
     if(err){throw err}
