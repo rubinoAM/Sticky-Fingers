@@ -76,3 +76,14 @@ button.menu-btn{
         align-items:center;
     }
 }
+
+@media screen and (min-width:601px) and (max-width:992px){
+    .navs li{
+        font-size:1rem;
+        margin:-3px 5px 0;
+    }
+
+    .nav-logo{
+        width:70%;
+    }
+}
