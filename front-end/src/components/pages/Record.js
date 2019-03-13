@@ -14,11 +14,9 @@ class Record extends Component{
 
     render(){
         const recordId = this.props.match.params.id;
-        const recordSearch = this.props.records.find((record)=>{
-            return(record.rid === recordId)
+        const recordSearch = this.props.coll.find((record)=>{
+            return(record.rid == recordId)
         })
-
-        console.log(this.props);
 
         return(
             <div className="indv-rec-holder">
@@ -32,7 +30,7 @@ class Record extends Component{
 
 function mapStateToProps(state){
     return{
-        records: state.coll
+        coll: state.coll
     }
 }
 

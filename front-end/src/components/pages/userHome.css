@@ -77,6 +77,15 @@ a{
     .banner{
         justify-content:center;
     }
+
+    .mini-album-cover, .mini-friend-pic {
+        height: 50px;
+        width: auto;
+    }
+
+    .dashboard-item-details{
+        text-align: left;
+    }
 }
 
 /* medium screen and up */
@@ -102,6 +111,15 @@ a{
 
     .headshot{
         width:200px;
+    }
+
+    .mini-album-cover, .mini-friend-pic {
+        height: 50px;
+        width: auto;
+    }
+
+    .dashboard-item-details{
+        text-align: left;
     }
 }
 
