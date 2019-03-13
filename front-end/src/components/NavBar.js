@@ -13,7 +13,6 @@ class NavBar extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        //console.log(newProps);
         let mobileNavBar = document.getElementById('mobile-navs');
         mobileNavBar.style.display = 'none';
         mobileNavBar.style.opacity = '0';
