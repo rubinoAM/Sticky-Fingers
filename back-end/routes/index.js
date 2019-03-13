@@ -50,7 +50,7 @@ router.post('/register',(req,res,next)=>{
     // console.log("=========Server insanity check")
     if(err){throw err};
     if(results.length === 0){
-      console.log(req.body)
+      //console.log(req.body)
       const token = randToken.uid(50);
       const hash = bcrypt.hashSync(req.body.password);
       const insertUserQuery = `INSERT INTO users (userName,email,password,token)
@@ -60,7 +60,7 @@ router.post('/register',(req,res,next)=>{
       VALUES
       (?);`
         connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
-          console.log(results2)
+          //console.log(results2)
           if(err2){throw err2;}
           connection.query(createCollectionQuery,[results2.insertId],(err3,results3)=>{
             if(err3){throw err3;}
@@ -74,7 +74,7 @@ router.post('/register',(req,res,next)=>{
         })
       
     } else {
-      console.log("there is a spoon")
+      //console.log("there is a spoon")
       res.json({msg: "User Exists"})
     }
   })
@@ -88,8 +88,8 @@ router.post('/login',(req,res,next)=>{
   const selectUserQuery = `SELECT * FROM users WHERE userName = ?;`;
   // const hash = bcrypt.hashSync(req.body.password);
   connection.query(selectUserQuery, [userName],(error,results)=>{
-    console.log("============login route hit")
-    console.log(results);
+    //console.log("============login route hit")
+    //console.log(results);
     if(error)throw error
     if(results.length === 0){
       res.json({
