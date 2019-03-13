@@ -36,7 +36,7 @@ class AddRecord extends Component{
             console.log("our search response")
             console.log(resp)
             const recordData = resp.data;
-            if(resp.msg = "No results"){
+            if(resp.msg === "No results"){
                 this.setState({
                     successAlert:true,
                     msgTitle: 'SCREEEEEET',
