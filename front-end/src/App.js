@@ -10,17 +10,7 @@ import Footer from './components/Footer';
 import Home from './components/pages/Home';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
-import UserHome from './components/pages/UserHome';
-import Collection from './components/pages/Collection';
-import Trades from './components/pages/Trades';
-import Community from './components/pages/Community';
-import Friends from './components/pages/Friends';
-import Record from './components/pages/Record';
-import MakeTrade from './components/pages/MakeTrade';
-import Profile from './components/pages/Profile';
-import FriendProfile from './components/pages/FriendProfile';
-import AddRecord from './components/pages/AddRecord';
-import OtherUser from './components/pages/OtherUser';
+import Protected from './Protected';
 
 class App extends Component {
   render() {
@@ -32,17 +22,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/users/userHome" component={UserHome} />
-            <Route exact path="/users/collection" component={Collection} />
-            <Route exact path="/users/trades" component={Trades} />
-            <Route exact path="/users/community" component={Community} />
-            <Route exact path="/users/friends" component={Friends} />
-            <Route exact path="/users/record/:id" component={Record} />
-            <Route exact path="/users/makeTrade" component={MakeTrade} />
-            <Route exact path="/users/profile" component={Profile} />
-            <Route exact path="/users/friendProfile" component={FriendProfile} />
-            <Route exact path="/users/addRecord" component={AddRecord} />
-            <Route exact path="/users/people/:id" component={OtherUser} />
+            <Route path="/" component={Protected} />
           </div>
           <Footer />
         </div>
