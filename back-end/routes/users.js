@@ -227,7 +227,7 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
         connection.query(insertAvatarQuery,[dbPath,lastId],(dbErr,dbResults)=>{
           if(dbErr){throw dbErr}
           else{
-            res.json('/');
+            res.json(dbPath);
           }
         })
 
@@ -255,8 +255,9 @@ router.post('/community', (req,res,next)=>{
   })
 })
 
-router.get('/trades',(req,res,next)=>{
-  const userName = req.body.userName;
+router.post('/trades',(req,res,next)=>{
+  //console.log(req.body);
+  const userName = req.body.auth.userName;
   const targetQuery = `SELECT id FROM users
     WHERE userName = ?;`;
 
@@ -265,12 +266,22 @@ router.get('/trades',(req,res,next)=>{
     //console.log(results);
     let userId = results[0].id;
 
-    const getTradesQuery = `SELECT * FROM trades
-      WHERE u1id = ?
-      OR u2id = ?;`;
+    const getTradesQuery = `SELECT u2.userName,
+      u1.addressStreet AS u1Street, u1.addressCity AS u1City, u1.addressState AS u1State, u1.addressZip AS u1Zip, 
+      u2.addressStreet AS u2Street, u2.addressCity AS u2City, u2.addressState AS u2State, u2.addressZip AS u2Zip,
+      r1.name AS r1Name, r1.artist AS r1Artist, r1.year AS r1Year, r1.genre AS r1Genre, r1.coverUrl AS r1CoverUrl,
+      r2.name AS r2Name, r2.artist AS r2Artist, r2.year AS r2Year, r2.genre AS r2Genre, r2.coverUrl AS r2CoverUrl,
+      dateStarted, dateEnded
+      FROM trades
+      INNER JOIN users u1 ON trades.u1id = u1.id
+      INNER JOIN users u2 ON trades.u2id = u2.id
+      INNER JOIN records r1 ON trades.r1id = r1.id
+      INNER JOIN records r2 ON trades.r2id = r2.id
+      WHERE trades.u1id = ? OR trades.u2id = ?;`;
 
     connection.query(getTradesQuery,[userId, userId],(err_2,results_2)=>{
       if(err_2){throw err_2}
+      res.json(results_2);
       console.log(results_2);
     });
   });

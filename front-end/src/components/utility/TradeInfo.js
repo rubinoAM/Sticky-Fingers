@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 
 class TradeInfo extends Component{
-    constructor(){
-        super()
-        this.state = {
-
-        }
-    }
-
     render(){
         //console.log(this.props);
         const u1Address = this.props.data.user1Address.city + ", " + this.props.data.user1Address.state + " " + this.props.data.user1Address.zip;
         const u2Address = this.props.data.user2Address.city + ", " + this.props.data.user2Address.state + " " + this.props.data.user2Address.zip;
+        const sendOffDate = this.props.data.sendOffDate.slice(0,10);
+        const returnDate = this.props.data.returnDate.slice(0,10);
 
         return(
             <div className="col s10 offset-s1 l6 offset-l3 trade-information">
@@ -34,11 +29,11 @@ class TradeInfo extends Component{
                 <div className="row">
                     <div className="col s12 m6">
                         <div className="info-title">SEND-OFF DATE:</div>
-                        <div className="info-detail">{this.props.data.sendOffDate}</div>
+                        <div className="info-detail">{sendOffDate}</div>
                     </div>
                     <div className="col s12 m6">
                         <div className="info-title">RETURN DATE:</div>
-                        <div className="info-detail">{this.props.data.returnDate}</div>
+                        <div className="info-detail">{returnDate}</div>
                     </div>
                 </div>
             </div>
