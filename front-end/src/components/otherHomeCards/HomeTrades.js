@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import tradesAction from '../../actions/tradesAction';
 import '../pages/userHome.css';
 
 class HomeTrades extends Component{
     constructor(){
         super()
+        this.state = {
+            trades:[],
+        }
+    }
+
+    componentWillReceiveProps(newProps){
+        //console.log(newProps);
+        this.setState({
+            trades:newProps.data,
+        })
     }
 
     render(){
-        const tradesList = this.props.trades.map((trade,i)=>{
-            return(
-                <div key={i}>
-                    <span >{trade.id}</span>
-                </div>
-            )
-        })
+        console.log(this.props);
+        let tradesList;
+        if(this.state.trades.length === 0){
+            tradesList = <span>No Trades Currently</span>
+        } else {
+            tradesList = this.state.trades.map((trade,i)=>{
+                return(
+                    <div key={i}>
+                        <span>{trade.r1Name} for {trade.r2Name}</span>
+                        <div>With {trade.userName}</div>
+                    </div>
+                )
+            })
+        }
+
         return(
             <div className="dashboard-item row">
                 <div className="col s12 m4">
@@ -40,11 +55,4 @@ class HomeTrades extends Component{
     }
 }
 
-function mapStateToProps(state){
-    return{
-        auth: state.auth,
-        trades: state.trades
-    }
-}
-
-export default connect(mapStateToProps)(HomeTrades);
+export default HomeTrades;

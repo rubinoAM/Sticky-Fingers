@@ -8,45 +8,51 @@ import '../pages/userHome.css';
 class HomeFriends extends Component{
     constructor(){
         super()
+        this.state = {
+            friends: [],
+        }
     }
 
-    // componentDidMount(){
-    //     this.props.friendsAction();
-    // }
+    componentWillReceiveProps(newProps){
+        console.log(newProps);
+        this.setState({
+            friends:newProps.data,
+        })
+    }
 
     render(){
-        console.log(this.props)
-        // if(this.props.friends.length === 0){
-        //     return (<h1>Loading...</h1>)
-        // }else{
-            const friendsList = this.props.friends.map((friend,i)=>{
-                return(
-                    <div key={i}>
-                        <span >{friend.userName}</span>
-                    </div>
-                )
-            })
+        const friendsList = this.state.friends.map((friend,i)=>{
+            let avatar = this.state.friends[i].avatarUrl;
+            if(!avatar){
+                avatar = 'placeholder.png'
+            }
+            let avatarUrl = `${window.apiHost}/images/${avatar}`;
             return(
-                <div className="dashboard-item row">
-                    <div className="col s12 m4">
-                        <span className="dashboard-item-label" id="friends">Friends</span>
+                <div key={i}>
+                    <img src={avatarUrl} alt="" className="mini-friend-pic"/> {friend.userName} 
+                </div>
+            )
+        })
+
+        return(
+            <div className="dashboard-item row">
+                <div className="col s12 m4">
+                    <span className="dashboard-item-label" id="friends">Friends</span>
+                </div>
+                <div className="dashboard-item-content col s12">
+                    <div className="row">
+                        <div className="col s12 m3">
+                            <div className="dashboard-item-detail-label">Newest Friends:</div>
+                        </div>
+                        <div className="dashboard-item-details col s12 m9">{friendsList}</div>
                     </div>
-                    <div className="dashboard-item-content col s12">
-                        <div className="row">
-                            <div className="col s12 m3">
-                                <div className="dashboard-item-detail-label">Newest Friends:</div>
-                            </div>
-                            <div className="dashboard-item-details col s12 m9">{friendsList}</div>
-                        </div>
-                        <div className="row">
-                        <span className="col s9"></span>
-                            <span className="dashboard-item-link pin-bottom col s3 offset-s8" ><Link to="/users/friends">Friends</Link></span>
-                        </div>
+                    <div className="row">
+                    <span className="col s9"></span>
+                        <span className="dashboard-item-link pin-bottom col s3 offset-s8" ><Link to="/users/friends">Friends</Link></span>
                     </div>
                 </div>
-
-            )
-        
+            </div>
+        )
     }
 }
 
@@ -56,11 +62,5 @@ function mapStateToProps(state){
         friends: state.friends
     }
 }
-
-// function mapDispatchToProps(dispatcher){
-//     return bindActionCreators({
-//         friendsAction
-//     },dispatcher)
-// }
 
 export default connect(mapStateToProps)(HomeFriends);

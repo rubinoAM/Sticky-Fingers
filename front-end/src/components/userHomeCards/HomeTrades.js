@@ -6,17 +6,17 @@ import tradesAction from '../../actions/tradesAction';
 import '../pages/userHome.css';
 
 class HomeTrades extends Component{
-    constructor(){
-        super()
+    componentDidMount(){
+        this.props.tradesAction(this.props.trades,this.props.auth)
     }
 
     render(){
-        console.log(this.props);
-
+        //console.log(this.props);
         const tradesList = this.props.trades.map((trade,i)=>{
             return(
                 <div key={i}>
-                    <span >{trade.id}</span>
+                    <span>{trade.r1Name} for {trade.r2Name}</span>
+                    <div>With {trade.userName}</div>
                 </div>
             )
         })
@@ -45,8 +45,14 @@ class HomeTrades extends Component{
 function mapStateToProps(state){
     return{
         auth: state.auth,
-        trades: state.trades
+        trades: state.trades,
     }
 }
 
-export default connect(mapStateToProps)(HomeTrades);
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        tradesAction: tradesAction,
+    },dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomeTrades);

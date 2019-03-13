@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import authAction from '../../actions/authAction';
 import '../pages/userHome.css';
 
 class HomeBanner extends Component{
     constructor(){
         super()
+        this.state = {
+            userName:'',
+            avatarUrl:'placeholder.jpg',
+            tagline:'',
+        }
+    }
+
+    componentWillReceiveProps(newProps){
+        //console.log(newProps);
+        this.setState({
+            userName:newProps.data[0].userName,
+            avatarUrl:newProps.data[0].avatarUrl,
+            tagline:newProps.data[0].tagline,
+        })
     }
 
     render(){
-        const userNameOnBanner = this.props.auth.userName;
+        const userNameOnBanner = this.state.userName;
         let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase();
-        console.log(this.props);
-        const userAvatar = `${window.apiHost}/images/${this.props.auth.avatarUrl}`;
-        const userTagline = this.props.auth.tagline;
+        //console.log(this.props);
+        const userAvatar = `${window.apiHost}/images/${this.state.avatarUrl}`;
+        const userTagline = this.state.tagline;
 
         return(
             <div className="container">
@@ -46,19 +56,7 @@ class HomeBanner extends Component{
     }
 }
 
-function mapStateToProps(state){
-    return{
-        auth: state.auth,
-    }
-}
-
-function mapDispatchToProps(dispatcher){
-    return bindActionCreators({
-        authAction
-    },dispatcher)
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(HomeBanner);
+export default HomeBanner;
 
 
 
