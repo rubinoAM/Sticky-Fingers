@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import collectionAction from '../../actions/collectionAction';
 import '../pages/userHome.css';
 
-
-
 class HomeCollection extends Component{
-    constructor(){
-        super()
-    }
-
-    // componentDidMount(){
-    //     this.props.collectionAction();
-    // }
-
     render(){
         console.log(this.props.coll)
         // console.log(this.props)
@@ -33,7 +21,7 @@ class HomeCollection extends Component{
                     </div>
                 )
             })
-            const recordCount = collection.length;
+            /* const recordCount = collection.length;
             let userRank = "";
             if(recordCount > 0 && recordCount < 11){
                 userRank = "Garage Band"
@@ -41,7 +29,7 @@ class HomeCollection extends Component{
                 userRank = "Opening Act"
             }else{
                 userRank = "Grammy Winner"
-            }
+            } */
 
             return(
                 <div className="dashboard-item row">

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import communityAction from '../../actions/communityAction';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import PersonCard from './PersonCard';
 import './friends.css';
-import Friend from './Friend';
 
 class Community extends Component{
     constructor(){
@@ -114,11 +110,5 @@ function mapStateToProps(state){
         friends: state.friends
     }
 }
-
-// function mapDispatchToProps(dispatcher){
-//     return bindActionCreators({
-//         communityAction
-//     },dispatcher)
-// }
 
 export default connect(mapStateToProps)(Community);

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import HomeBanner from '../userHomeCards/HomeBanner';
 import HomeNavPanel from '../userHomeCards/HomeNavPanel';
@@ -12,10 +10,6 @@ import './userHome.css';
 
 
 class UserHome extends Component{
-    constructor(){
-        super()
-    }
-
     render(){
         return(
             <div className="user-home-container">
