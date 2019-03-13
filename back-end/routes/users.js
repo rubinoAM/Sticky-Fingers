@@ -166,7 +166,7 @@ router.post('/addrecord/', (req,res,next)=>{
               VALUES(?);`;
             connection.query(addIdToCollectionsQuery,[crid],(error7,results7)=>{
               if(error7){throw error7}
-              // res.json(results7)
+              res.json({msg:"Record Added"})
             });
           });
         });
