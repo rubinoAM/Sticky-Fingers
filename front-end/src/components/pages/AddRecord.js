@@ -5,12 +5,17 @@ import addRecordBG from '../../images/addrecord_bg.jpg';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import collectionAction from '../../actions/collectionAction';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class AddRecord extends Component{
     constructor(){
         super()
         this.state = {
-            result:{}
+            result:{},
+            successAlert:false,
+            msg:'',
+            msgTitle:'',
         }
     }
 
@@ -28,16 +33,25 @@ class AddRecord extends Component{
         const searchArtist = e.target[1].value;
         const searchRequest = axios.get(`${window.apiHost}/users/addrecord/${searchTitle}/${searchArtist}`);
         searchRequest.then((resp)=>{
+            console.log("our search response")
+            console.log(resp)
             const recordData = resp.data;
-            this.setState({
-                result:recordData,
-            })
-            //console.log(recordData);
+            if(resp.msg = "No results"){
+                this.setState({
+                    successAlert:true,
+                    msgTitle: 'SCREEEEEET',
+                    msg: 'Your search did not return any records. Give it another try!'
+                })
+            }else{
+                this.setState({
+                    result:recordData,
+                })
+            }
         });
     }
 
     submitRecord = (e)=>{
-        console.log("submitRecord running")
+        // console.log("submitRecord running")
         e.preventDefault();
         
         const recordTitle = document.getElementById('recordTitle').value;
@@ -55,17 +69,17 @@ class AddRecord extends Component{
             userName:this.props.auth.userName,
         }
 
-        console.log("submitRecord in middle")
+        // console.log("submitRecord in middle")
 
         axios({
             url: `${window.apiHost}/users/addrecord`,
             method: 'POST',
             data: recordSubmission,
         }).then((response)=>{
-            console.log("promise running")
+            // console.log("promise running")
             this.props.collectionAction(this.props.auth);
             this.props.history.push('/users/userHome')
-            console.log("promise has ran")
+            // console.log("promise has ran")
         })
             
 
@@ -74,8 +88,8 @@ class AddRecord extends Component{
         //     this.props.history.push('/users/userHome')
         // )
 
-        console.log(recordSubmission);
-        console.log("submitRecord ran")
+        // console.log(recordSubmission);
+        // console.log("submitRecord ran")
     }
 
     render(){
@@ -89,13 +103,21 @@ class AddRecord extends Component{
         if(this.state.result.imageUrl){
             resultCover = this.state.result.imageUrl;
         } else {
-            resultCover = 'https://via.placeholder.com/300';
+            resultCover = `${window.apiHost}/images/placeholder.png`;
         }
 
         document.body.style.backgroundImage = `url(${addRecordBG})`;
 
         return(
             <div className="add-record-page">
+                <SweetAlert
+                    show={this.state.successAlert}
+                    title={this.state.msgTitle}
+                    text={this.state.msg}
+                    onConfirm={() => {
+                        this.setState({ successAlert: false })
+                    }}
+                />
                 <div className="add-record-header">
                     <h1>ADD RECORD</h1>
                     <span>Enter the requested details below, and we will provide the closest match in our database.</span>

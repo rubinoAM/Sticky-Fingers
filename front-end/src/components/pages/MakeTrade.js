@@ -38,10 +38,18 @@ class MakeTrade extends Component{
             data: friendName,
         }).then((response)=>{
             console.log(response);
-            this.setState({
-                tradeRecords:response.data,
-                recipient:response.data[0].userId,
-            })
+            if (response.data.length === 0){
+                this.setState({
+                    successAlert: true,
+                    msg: "Your friend has no records! Pick a better friend.",
+                    msgTitle: "Hold on!"
+                })
+            }else{
+                this.setState({
+                    tradeRecords:response.data,
+                    recipient:response.data[0].userId,
+                })
+            }
         });
     }
 
@@ -172,7 +180,9 @@ class MakeTrade extends Component{
                     text={this.state.msg}
                     onConfirm={() => {
                         this.setState({ successAlert: false })
-                        this.props.history.push('/users/userHome');
+                        if(this.state.tradeRecords.length !== 0){
+                            this.props.history.push('/users/userHome');
+                        }
                     }}
                 />
                 <div className="make-trade-header">
@@ -180,7 +190,7 @@ class MakeTrade extends Component{
                     <span>Pick a person you wish to trade with and then pick a record you want them to trade. Then select a record you wish to trade to them.</span>
                 </div>
                 <div className="make-trade-body">
-                    <TradeRecipient pickFriend={this.pickFriend} pickFriendRecord={this.pickFriendRecord} tradeRecords={this.state.tradeRecords} showAvatar={this.showAvatar} showCover={this.showCover}/>
+                    <TradeRecipient recipient = {this.state.recipient} pickFriend={this.pickFriend} pickFriendRecord={this.pickFriendRecord} tradeRecords={this.state.tradeRecords} showAvatar={this.showAvatar} showCover={this.showCover}/>
                     <TradeUser coll={this.props.coll} yourCover={this.yourCover} pickYourRec={this.pickYourRec} />
                     <center className="row">
                         <form className="finalize-trade" id="finalizeTrade" onSubmit={this.submitTrade}>

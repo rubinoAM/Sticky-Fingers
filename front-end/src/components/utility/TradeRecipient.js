@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import makeTradeAction from '../../actions/makeTradeAction';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class TradeRecipient extends Component{
     constructor(){
         super()
         this.state = {
+            successAlert:false,
+            msg:'',
+            msgTitle:'',
             recipient:'',
             tradeRecords: [],
             recipRecSelected: 'false',
@@ -70,6 +75,14 @@ class TradeRecipient extends Component{
 
         return(
             <div className="row">
+                <SweetAlert
+                    show={this.state.successAlert}
+                    title={this.state.msgTitle}
+                    text={this.state.msg}
+                    onConfirm={() => {
+                        this.setState({ successAlert: false })
+                    }}
+                />
                 <h3>Recipient</h3>
                 <div className="col s12 m6">
                     <div className="trade-recipient">

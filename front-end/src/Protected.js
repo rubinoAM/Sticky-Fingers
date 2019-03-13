@@ -15,6 +15,7 @@ import Profile from './components/pages/Profile';
 import FriendProfile from './components/pages/FriendProfile';
 import AddRecord from './components/pages/AddRecord';
 import OtherUser from './components/pages/OtherUser';
+import AboutUs from './components/pages/AboutUs';
 
 class Protected extends Component{
     render(){
@@ -36,6 +37,7 @@ class Protected extends Component{
                         <Route exact path="/users/friendProfile" component={FriendProfile} />
                         <Route exact path="/users/addRecord" component={AddRecord} />
                         <Route exact path="/users/people/:id" component={OtherUser} />
+                        <Route exact path="/users/aboutUs" component={AboutUs} />
                     </div>
                 )
             }

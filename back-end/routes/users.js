@@ -90,23 +90,30 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log('Image URL: ' + data.images[0].uri);*/
       console.log("data response from discogs")
       console.log(data);
-      const title = data.title;
-      const artist = data.artists[0].name;
-      let genre = '';
-      if(!data.styles){
-        genre = data.genres[0];
-      } else {
-        genre = data.styles[0];
-      }
-      const year = data.year;
-      const imageUrl = data.images[0].uri;
-
-      const result = {
-        title,
-        artist,
-        genre,
-        year,
-        imageUrl,
+      let result
+      if(data.message == 'The requested resource was not found.'){
+          result = {
+          msg: "No results"
+        }
+      }else{
+        const title = data.title;
+        const artist = data.artists[0].name;
+        let genre = '';
+        if(!data.styles){
+          genre = data.genres[0];
+        } else {
+          genre = data.styles[0];
+        }
+        const year = data.year;
+        const imageUrl = data.images[0].uri;
+  
+        result = {
+          title,
+          artist,
+          genre,
+          year,
+          imageUrl,
+        }
       }
       res.json(result);
       console.log(result);
