@@ -16,13 +16,13 @@ const upload = multer({dest:'public/images/'});
 //Main Users Route
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
-  console.log(req.body);
+  //console.log(req.body);
 });
 
 //Friends
 router.post('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
-  console.log("friends Route:")
-  console.log(req.body.auth)
+  //console.log("friends Route:")
+  //console.log(req.body.auth)
   const currentUserName = req.body.auth.userName;
   const friendsQuery = `SELECT u2.userName, u2.id, friendships.friendSince, friendships.exchanges, u2.avatarUrl
     FROM friendships
@@ -39,8 +39,8 @@ router.post('/friends',(req,res,next)=>{ //Challenge: Inner Join a table twice
 
 //Collection
 router.post('/collection',(req,res,next)=>{
-  console.log("collection Route:")
-  console.log(req.body.auth)
+  //console.log("collection Route:")
+  //console.log(req.body.auth)
   const currentUserName = req.body.auth.userName;
   const collectionQuery = `SELECT * FROM records 
     INNER JOIN collectionRecords ON collectionRecords.rid = records.id
@@ -52,8 +52,8 @@ router.post('/collection',(req,res,next)=>{
     if(error){throw error}
     // const record = results;
     res.json(results)
-    console.log("collection query results")
-    console.log(results)
+    //console.log("collection query results")
+    //console.log(results)
   })
 
   // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
@@ -116,13 +116,13 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
         }
       }
       res.json(result);
-      console.log(result);
+      //console.log(result);
     })
   })
 })
 
 router.post('/addrecord/', (req,res,next)=>{
-  console.log("add record route")
+  //console.log("add record route")
   // add record in to records - done
   // add a collectionrecords line
   // add the newly created collectionrecords reference to the collections table
@@ -210,7 +210,7 @@ router.post('/profileCreation',(req,res,next)=>{
 
 router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
   const tempPath = req.file.path;
-  console.log(req.body);
+  //console.log(req.body);
 
   const token = req.body.token;
   const userName = req.body.userName;
@@ -219,7 +219,7 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
 
   connection.query(targetQuery,[userName],(err,results)=>{
     if(err){throw err}
-    console.log(results);
+    //console.log(results);
     let lastId = results[0].id;
     const targetPath = "public/images/avy_" + lastId + ".jpg";
     const dbPath = "avy_" + lastId + ".jpg"
@@ -248,8 +248,8 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
 
 //Community
 router.post('/community', (req,res,next)=>{
-  console.log("community Route:")
-  console.log(req.body.auth)
+  //console.log("community Route:")
+  //console.log(req.body.auth)
   const currentUserName = req.body.auth.userName;
   const communityQuery = `SELECT userName, id, addressCity, avatarUrl
     FROM users
@@ -257,8 +257,8 @@ router.post('/community', (req,res,next)=>{
   connection.query(communityQuery, [currentUserName], (err,results)=>{
     if(err){throw err}
     res.json(results);
-    console.log("Community Query Results");
-    console.log(results);
+    //console.log("Community Query Results");
+    //console.log(results);
   })
 })
 
@@ -289,7 +289,7 @@ router.post('/trades',(req,res,next)=>{
     connection.query(getTradesQuery,[userId, userId],(err_2,results_2)=>{
       if(err_2){throw err_2}
       res.json(results_2);
-      console.log(results_2);
+      //console.log(results_2);
     });
   });
 })
@@ -309,10 +309,6 @@ router.post('/addfriend', (req,res,next)=>{
       res.json(results2)
     })
   })
-})
-
-router.post('/people/:id',(req,res,next)=>{
-  
 })
 
 router.post('/makeTrade',(req,res,next)=>{
@@ -390,7 +386,7 @@ router.post("/makeTrade/pickFriend",(req,res,next)=>{
   connection.query(friendCollectionQuery,[friendUserName],(err,results)=>{
     if(err){throw err}
     res.json(results);
-    console.log(results);
+    //console.log(results);
   })
 })
 
@@ -403,6 +399,68 @@ router.post("/makeTrade/pickYourRecord",(req,res,next)=>{
   //console.log(req.body)
   let recName = Object.keys(req.body)[0]
   res.json(recName);
+})
+
+//VIEWING OTHER USERS
+router.post('/people/:id',(req,res,next)=>{
+  const userId = Object.keys(req.body)[0];
+  //console.log(userId);
+  let userFriends, userRecords, userTrades, userDetails, userInfo;
+
+  const getPersonRecordsQuery = `SELECT records.name, records.coverUrl, records.artist
+    FROM users
+    INNER JOIN collections ON users.id = collections.uid
+    INNER JOIN collectionRecords ON collections.id = collectionRecords.cid
+    INNER JOIN records ON collectionRecords.rid = records.id
+    WHERE users.id = ?;`;
+
+  const getPersonInfoQuery = `SELECT userName, avatarUrl, tagline
+    FROM users
+    WHERE users.id = ?;`;
+
+  const getPersonFriendsQuery = `SELECT u2.userName, u2.avatarUrl, users.userName, users.avatarUrl
+    FROM users
+    INNER JOIN friendships ON users.id = friendships.u1id
+    INNER JOIN users u2 ON friendships.u2id = u2.id
+    WHERE users.id = ? OR u2.id = ?;`;
+
+  const getPersonTradesQuery = `SELECT u2.userName, r1.name AS r1Name, r2.name AS r2Name
+    FROM trades
+    INNER JOIN records r1 ON trades.r1id = r1.id
+    INNER JOIN records r2 ON trades.r2id = r2.id
+    INNER JOIN users u1 ON trades.u1id = u1.id
+    INNER JOIN users u2 ON trades.u2id = u2.id
+    WHERE u1.id = ? OR u2.id = ?;`;
+
+  connection.query(getPersonRecordsQuery,[userId],(err,results)=>{
+    if(err){throw err}
+    userRecords = results;
+    //console.log("Records:\n" + results)
+
+    connection.query(getPersonFriendsQuery,[userId,userId],(err2,results2)=>{
+      if(err2){throw err2};
+      userFriends = results2;
+      //console.log("Friends:\n" + results2);
+
+      connection.query(getPersonTradesQuery,[userId,userId],(err3,results3)=>{
+        if(err3){throw err3}
+        userTrades = results3;
+        //console.log("Trades:\n" + results3)
+
+        connection.query(getPersonInfoQuery,[userId],(err4,results4)=>{
+          if(err4){throw err4}
+          userDetails = results4;
+          userInfo = {
+            userRecords,
+            userFriends,
+            userTrades,
+            userDetails,
+          }
+          res.json(userInfo);
+        })
+      })
+    })
+  })
 })
 
 module.exports = router;
