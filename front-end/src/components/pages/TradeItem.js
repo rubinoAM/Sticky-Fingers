@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 class Trade extends Component{
     render(){
-        console.log(this.props);
-
+        //console.log(this.props);
         return(
             <div className="col s12 m6">
                 <div className="row">
@@ -14,7 +13,7 @@ class Trade extends Component{
                                 <div className="col s12 l8">
                                     <div className="row trade-rec-row">
                                         <div className="col s12 l6 trade-rec-detail">TITLE:</div>
-                                        <div className="col s12 l6 trade-rec-detail" id="trade-rec-title">{this.props.data.title}</div>
+                                        <div className="col s12 l6 trade-rec-detail" id="trade-rec-title">{this.props.data.name}</div>
                                     </div>
                                     <div className="row trade-rec-row">
                                         <div className="col s12 l6 trade-rec-detail">ARTIST:</div>

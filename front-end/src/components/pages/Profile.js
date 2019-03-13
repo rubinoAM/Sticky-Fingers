@@ -3,6 +3,8 @@ import './profile.css';
 import formHeaderImage from '../../images/form-header.jpg';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import avatarAction from '../../actions/avatarAction';
 
 class Profile extends Component{
     constructor(){
@@ -60,7 +62,9 @@ class Profile extends Component{
                 token:this.props.auth.token,
                 userName:this.props.auth.userName,
             },
-        }).then(()=>{
+        }).then((response)=>{
+            let avyPath = response.data;
+            this.props.avatarAction(avyPath);
             this.props.history.push('/users/userHome');
         }).catch((err)=>{if (err){throw err}});
     }
@@ -136,4 +140,10 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(Profile);
+function mapDispatchToProps(dispatcher){
+    return bindActionCreators({
+        avatarAction,
+    },dispatcher)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profile);

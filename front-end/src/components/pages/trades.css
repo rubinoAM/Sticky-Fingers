@@ -76,6 +76,7 @@ img.trade-cover{
     border-left:0;
     border-right:0;
     border-bottom:1px solid #E23F35;
+    margin-bottom:20px;
 }
 
 .trade-contents{
@@ -90,7 +91,11 @@ img.trade-cover{
     }
 
     .trade-rec-detail{
-        font-size:1.75rem;
+        font-size:1.5rem;
+    }
+
+    .trade-header span{
+        font-size:2rem;
     }
 }
 
@@ -125,5 +130,9 @@ img.trade-cover{
 
     .trade-contents{
         display:block;
+    }
+
+    .trade-header span{
+        font-size:1.625rem;
     }
 }

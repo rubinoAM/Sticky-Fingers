@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-export default ()=>{
+export default (trades,auth)=>{
     const axiosPromise = axios({
         url: `${window.apiHost}/users/trades`,
-        method: 'GET',
+        method: 'POST',
+        data:{
+            trades,
+            auth,
+        }
     })
     return{
         type: "TRADES_ACTION",

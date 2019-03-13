@@ -10,7 +10,7 @@ class Trades extends Component{
         super()
         this.state = {
             trades:[
-                {
+                /* {
                     user1Trade:{
                         userName:'DMCx1996',
                         coverUrl:'https://images-na.ssl-images-amazon.com/images/I/51xXiWsyqrL.jpg',
@@ -41,17 +41,18 @@ class Trades extends Component{
                     },
                     sendOffDate:'February 22nd, 2019',
                     returnDate:'March 22nd, 2019',
-                },
+                }, */
             ]
         }
     }
 
     componentDidMount(){
-
+        this.props.tradesAction(this.props.trades,this.props.auth);
     }
 
     render(){
-        let trades = this.state.trades.map((trade,i)=>{
+        console.log(this.props);
+        let trades = this.props.trades.map((trade,i)=>{
             return <Trade key={i} data={trade} />
         })
 
@@ -72,6 +73,7 @@ class Trades extends Component{
 function mapStateToProps(state){
     return{
         trades:state.trades,
+        auth:state.auth,
     }
 }
 
