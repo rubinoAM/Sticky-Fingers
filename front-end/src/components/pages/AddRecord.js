@@ -37,6 +37,7 @@ class AddRecord extends Component{
     }
 
     submitRecord = (e)=>{
+        console.log("submitRecord running")
         e.preventDefault();
         
         const recordTitle = document.getElementById('recordTitle').value;
@@ -54,13 +55,17 @@ class AddRecord extends Component{
             userName:this.props.auth.userName,
         }
 
+        console.log("submitRecord in middle")
+
         axios({
             url: `${window.apiHost}/users/addrecord`,
             method: 'POST',
             data: recordSubmission,
         }).then((response)=>{
-            this.props.collectionAction();
+            console.log("promise running")
+            this.props.collectionAction(this.props.auth);
             this.props.history.push('/users/userHome')
+            console.log("promise has ran")
         })
             
 
@@ -70,6 +75,7 @@ class AddRecord extends Component{
         // )
 
         console.log(recordSubmission);
+        console.log("submitRecord ran")
     }
 
     render(){
