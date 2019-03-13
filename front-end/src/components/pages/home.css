@@ -40,6 +40,7 @@
 
 .box{
   background:#FBF6EF;
+  margin-bottom:50px;
 }
 
 .row .content-header{
@@ -51,6 +52,11 @@
   font-size:2.75rem;
   font-family: 'Kodchasan', sans-serif;
   font-weight:700;
+}
+
+.content-copy{
+  font-size:1.375rem;
+  padding:0 50px;
 }
 
 @media screen and (max-width:600px){
@@ -69,5 +75,9 @@
 
   .content-header span{
     font-size:1.5rem;
+  }
+
+  .content-copy{
+    padding:10px 30px;
   }
 }

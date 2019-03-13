@@ -9,40 +9,7 @@ class Trades extends Component{
     constructor(){
         super()
         this.state = {
-            trades:[
-                /* {
-                    user1Trade:{
-                        userName:'DMCx1996',
-                        coverUrl:'https://images-na.ssl-images-amazon.com/images/I/51xXiWsyqrL.jpg',
-                        title:'What Makes A Man Start Fires?',
-                        artist:'Minutemen',
-                        year:'1983',
-                        genre:'Funk Punk',
-                    },
-                    user2Trade:{
-                        userName:'rhymesgalore',
-                        coverUrl:'https://media.pitchfork.com/photos/5929a79fc0084474cd0c0c25/1:1/w_320/88076201.jpg',
-                        title:'Lullabies Help The Brain Grow',
-                        artist:'Big Boys',
-                        year:'1983',
-                        genre:'Funk Punk',
-                    },
-                    user1Address:{
-                        street:'10872 E Via Cortana Rd',
-                        city:'Scottsdale',
-                        state:'AZ',
-                        zip:'85262',
-                    },
-                    user2Address:{
-                        street:'10566 W Morrison Ave',
-                        city:'New Brunswick',
-                        state:'NJ',
-                        zip:'11310',
-                    },
-                    sendOffDate:'February 22nd, 2019',
-                    returnDate:'March 22nd, 2019',
-                }, */
-            ]
+            trades:[],
         }
     }
 

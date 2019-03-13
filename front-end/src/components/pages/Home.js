@@ -19,10 +19,10 @@ function Home(){
                         </div>
                         <div className="row">
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">Sticky Fingers is a web community built for people with a tremendous love for music by a team with its own tremendous love for music. Sticky Fingers is a website where users can share their own record collections with the site's userbase and the web at large.</p>
                             </div>
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">Users can befriend each other through the website and share records with each other with the use of our handy trading system. Users pick a send-off and return date for their trade, and then select a record each to send to the other.</p>
                             </div>
                         </div>
                     </div>
@@ -36,10 +36,10 @@ function Home(){
                         </div>
                         <div className="row">
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">Sticky Fingers makes it incredibly easy to find whatever record you're looking for. Our search engine scours a tremendous database for all of the important information on whatever record you're looking for. Plus being able to trade with your friends is super simple and easy to keep track of with our user interface.</p>
                             </div>
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">Most key to our M.O. is the desire to set up a friendly environment for people to share their fascinations with music. We feel that music is most fun when you can share it with people you really like. As such, we try to ensure that our users are treated well by each other as well as by our own team here at Sticky Fingers headquarters.</p>
                             </div>
                         </div>
                     </div>
@@ -53,10 +53,10 @@ function Home(){
                         </div>
                         <div className="row">
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">It's very easy to join the Sticky Fingers community (as it should be with any good community). All you have to do is click the register link on the navbar above, which will take you to our registration form.</p>
                             </div>
                             <div className="col s12 m6">
-                                <p>Nam sit amet porta ipsum. Nunc sagittis elit enim. Donec odio lorem, porta ac imperdiet in, vehicula sit amet neque. Aliquam id ipsum laoreet, faucibus enim eget, ultrices massa. Maecenas ut semper ipsum, a volutpat magna. Praesent placerat lorem et magna porta, sit amet mattis sapien luctus. Fusce varius dolor at egestas pretium. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam accumsan nisi eget ipsum egestas, id dapibus ipsum fermentum. Sed vel velit justo. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam vel elit eget metus lobortis ullamcorper nec non sapien. In hendrerit ut lacus quis luctus.</p>
+                                <p className="content-copy">From there just input your information as requested. Once you've completed your profile, you'll be able to start befriending people and building up your collection on the site. We look forward to you joining our community very soon!</p>
                             </div>
                         </div>
                     </div>
