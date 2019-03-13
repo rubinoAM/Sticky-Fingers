@@ -16,9 +16,9 @@ class HomeCollection extends Component{
                 console.log(album)
                 return(
                     
-                    <div key={i}>
-                        <span>{album.name}</span>
-                    </div>
+                    <li key={i}>
+                        <img src={album.coverUrl} alt="" className="mini-album-cover"/> {album.name} by {album.artist}
+                    </li>
                 )
             })
             /* const recordCount = collection.length;
@@ -42,7 +42,10 @@ class HomeCollection extends Component{
                                 <div className="dashboard-item-detail-label">Recent Additions:</div>
                             </div>
                             <div className="dashboard-item-details col s12 m9">
-                                <div>{collection}</div>
+                                <ul>
+                                    {collection}
+                                </ul>
+                                {/* <div>{collection}</div> */}
                                 {/* <span>{userRank}</span> */}
                             </div>
                         </div>

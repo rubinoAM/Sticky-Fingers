@@ -19,11 +19,21 @@ class HomeFriends extends Component{
         // if(this.props.friends.length === 0){
         //     return (<h1>Loading...</h1>)
         // }else{
+            
+            
             const friendsList = this.props.friends.map((friend,i)=>{
+                let avatar = this.props.friends[i].avatarUrl;
+                console.log(this.props)
+                if(!avatar){
+                    avatar = 'placeholder.png'
+                }
+                let avatarUrl = `${window.apiHost}/images/${avatar}`;
+                console.log(avatarUrl)
+                // let profileUrl = `/users/people/${this.state.friend.id}`;
                 return(
-                    <div key={i}>
-                        <span >{friend.userName}</span>
-                    </div>
+                    <li key={i}>
+                        <img src={avatarUrl} alt="" className="mini-friend-pic"/> {friend.userName} 
+                    </li>
                 )
             })
             return(
@@ -36,7 +46,11 @@ class HomeFriends extends Component{
                             <div className="col s12 m3">
                                 <div className="dashboard-item-detail-label">Newest Friends:</div>
                             </div>
-                            <div className="dashboard-item-details col s12 m9">{friendsList}</div>
+                            <div className="dashboard-item-details col s12 m9">
+                                <ul>
+                                    {friendsList}
+                                </ul>
+                            </div>
                         </div>
                         <div className="row">
                         <span className="col s9"></span>

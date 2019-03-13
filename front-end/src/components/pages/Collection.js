@@ -30,15 +30,15 @@ class Collection extends Component{
         let recordsArray = this.props.coll.map((record,i)=>{
             if((i+1)%4 === 0){
                 return(
-                    <span>
-                        <RecordCard data={record} key={i} />
+                    <span key={i}>
+                        <RecordCard data={record}/>
                         <div className="col s12"></div>
                     </span>
                 )
             } else if ((i+1)%2 === 0){
                 return(
-                    <span>
-                        <RecordCard data={record} key={i} />
+                    <span key={i}>
+                        <RecordCard data={record}/>
                         <div className="col s12 hide-on-large-only"></div>
                     </span>
                 )
