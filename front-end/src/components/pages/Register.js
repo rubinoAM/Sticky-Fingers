@@ -20,7 +20,7 @@ class Register extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps);
+        // console.log(newProps);
         if(newProps.auth.msg === "User Exists"){
             this.setState({
                 showAlert: true
@@ -39,10 +39,10 @@ class Register extends Component{
         const userName = event.target[0].value;
         const email = document.getElementById('email').value;
         const password = event.target[2].value;
-        console.log(userName);
-        console.log(email);
-        console.log(password);
-        console.dir(event.target)
+        // console.log(userName);
+        // console.log(email);
+        // console.log(password);
+        // console.dir(event.target)
         this.props.authAction({
             userName,
             email, 

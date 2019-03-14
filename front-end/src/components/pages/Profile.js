@@ -62,7 +62,7 @@ class Profile extends Component{
                 userName:this.props.auth.userName,
             },
         }).then((response)=>{
-            console.log(response.data)
+            //console.log(response.data)
             let avyPath = response.data;
             this.props.avatarAction(avyPath);
             this.props.history.push('/users/userHome');

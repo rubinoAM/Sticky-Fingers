@@ -18,7 +18,7 @@ class Trades extends Component{
     }
 
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         let trades = this.props.trades.map((trade,i)=>{
             return <Trade key={i} data={trade} />
         })
