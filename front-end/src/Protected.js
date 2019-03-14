@@ -14,12 +14,11 @@ import MakeTrade from './components/pages/MakeTrade';
 import Profile from './components/pages/Profile';
 import AddRecord from './components/pages/AddRecord';
 import OtherUser from './components/pages/OtherUser';
-import AboutUs from './components/pages/AboutUs';
 
 class Protected extends Component{
     render(){
         //console.log(this.props.auth);
-        if(this.props.location !== '/' || this.props.location !== '/register'  || this.props.location !== '/login'){
+        if(this.props.location !== '/' || this.props.location !== '/register'  || this.props.location !== '/login' || this.props.location !== '/aboutUs'){
             if(this.props.auth.length === 0){
                 return(<Redirect to='/' />)
             } else {
@@ -35,7 +34,6 @@ class Protected extends Component{
                         <Route exact path="/users/profile" component={Profile} />
                         <Route exact path="/users/addRecord" component={AddRecord} />
                         <Route exact path="/users/people/:id" component={OtherUser} />
-                        <Route exact path="/users/aboutUs" component={AboutUs} />
                     </div>
                 )
             }
