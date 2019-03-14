@@ -30,14 +30,13 @@ class MakeTrade extends Component{
         //console.dir(e.target);
         //console.log(e.target[0].value);
         let friendIndex = e.target[0].value;
-
         const friendName = this.props.friends[friendIndex].userName;
         axios({
             url: `${window.apiHost}/users/makeTrade/pickFriend`,
             method: 'POST',
             data: friendName,
         }).then((response)=>{
-            console.log(response);
+            // console.log(response);
             if (response.data.length === 0){
                 this.setState({
                     successAlert: true,
@@ -75,7 +74,7 @@ class MakeTrade extends Component{
             method: 'POST',
             data: recordName,
         }).then((response)=>{
-            console.log(response);
+            // console.log(response);
             this.setState({
                 recipRecSelected: 'true',
                 recipientRec:response.data,
@@ -143,7 +142,7 @@ class MakeTrade extends Component{
         const yourUserName = this.props.auth.userName;
 
         if(this.state.recipRecSelected === 'true' && this.state.yourRecSelected === 'true'){
-            console.log(startDate,finishDate,recipientId,recipRec,yourRec,yourUserName);
+            // console.log(startDate,finishDate,recipientId,recipRec,yourRec,yourUserName);
         }
 
         axios({
@@ -158,7 +157,7 @@ class MakeTrade extends Component{
                 yourUserName,
             },
         }).then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             const yourAddress = `${response.data[0].addressStreet} ${response.data[0].addressCity}, ${response.data[0].addressState} ${response.data[0].addressZip}`;
             const recipAddress = `${response.data[1].addressStreet} ${response.data[1].addressCity}, ${response.data[1].addressState} ${response.data[1].addressZip}`;
 

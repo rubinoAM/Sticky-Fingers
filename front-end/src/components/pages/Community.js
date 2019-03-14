@@ -12,13 +12,10 @@ class Community extends Component{
     }
 
     componentDidMount(){ 
-        // this.props.communityAction();
         // console.log(this.props.community)
-
         this.setState({
             footer:window.document.getElementById('footer'),
         })
-
     }
 
     componentWillUnmount(){
@@ -87,7 +84,7 @@ class Community extends Component{
                 )
             }
         })
-        console.log(communityContainers)
+        // console.log(communityContainers)
     
         return(
             <div className="friends-container">

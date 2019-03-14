@@ -17,7 +17,7 @@ class Friend extends Component{
     }
 
     render(){
-        console.log(this.state.friend);
+        // console.log(this.state.friend);
         let avatar = this.state.friend.avatarUrl;
         if(avatar === "null"){
             avatar = 'placeholder.png'

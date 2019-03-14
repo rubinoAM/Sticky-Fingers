@@ -21,8 +21,8 @@ class Login extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        console.log("===========")
-        console.log(this.props)
+        // console.log("===========")
+        // console.log(this.props)
         if(newProps.auth.msg === "Bad Password"){
             this.setState({
                 showAlert: true,
@@ -34,7 +34,7 @@ class Login extends Component{
                 msg: "User name not found"
             })
         }else if(newProps.auth.msg === "Login Success"){
-            console.log(newProps.auth)
+            // console.log(newProps.auth)
             this.props.friendsAction(newProps.auth);
             this.props.collectionAction(newProps.auth);
             this.props.communityAction(newProps.auth);
@@ -60,7 +60,7 @@ class Login extends Component{
             backgroundImage: `url(${formHeaderImage})`,
             backgroundSize: 'cover',
         };
-        console.log(this.props)
+        // console.log(this.props)
 
         return(
             <div className="row form-holder">

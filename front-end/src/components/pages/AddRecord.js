@@ -19,10 +19,6 @@ class AddRecord extends Component{
         }
     }
 
-    componentDidMount(){
-        
-    }
-
     componentWillUnmount(){
         document.body.style.backgroundImage = '';
     }
@@ -33,8 +29,8 @@ class AddRecord extends Component{
         const searchArtist = e.target[1].value;
         const searchRequest = axios.get(`${window.apiHost}/users/addrecord/${searchTitle}/${searchArtist}`);
         searchRequest.then((resp)=>{
-            console.log("our search response")
-            console.log(resp)
+            // console.log("our search response")
+            // console.log(resp)
             const recordData = resp.data;
             if(resp.msg === "No results"){
                 this.setState({
@@ -81,15 +77,6 @@ class AddRecord extends Component{
             this.props.history.push('/users/userHome')
             // console.log("promise has ran")
         })
-            
-
-        // }).then(
-        //     this.props.collectionAction();
-        //     this.props.history.push('/users/userHome')
-        // )
-
-        // console.log(recordSubmission);
-        // console.log("submitRecord ran")
     }
 
     render(){
@@ -97,7 +84,6 @@ class AddRecord extends Component{
         let resultArtist = this.state.result.artist;
         let resultYear = this.state.result.year;
         let resultGenre = this.state.result.genre;
-        //let resultLabel = this.state.result.label;
         let resultCover;
 
         if(this.state.result.imageUrl){

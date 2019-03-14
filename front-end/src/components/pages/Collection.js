@@ -7,7 +7,6 @@ class Collection extends Component{
     constructor(){
         super()
         this.state = {
-            // records: [],
             footer: '',
         }
     }
@@ -100,11 +99,5 @@ function mapStateToProps(state){
         coll: state.coll
     }
 }
-
-// function mapDispatchToProps(dispatcher){
-//     return bindActionCreators({
-//         collectionAction
-//     },dispatcher)
-// }
 
 export default connect(mapStateToProps)(Collection);

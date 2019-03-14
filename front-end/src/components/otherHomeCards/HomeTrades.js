@@ -18,7 +18,7 @@ class HomeTrades extends Component{
     }
 
     render(){
-        console.log(this.props);
+        // console.log(this.props);
         let tradesList;
         if(this.state.trades.length === 0){
             tradesList = <span>No Trades Currently</span>

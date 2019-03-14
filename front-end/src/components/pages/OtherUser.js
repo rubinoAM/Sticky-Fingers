@@ -6,7 +6,6 @@ import HomeBanner from '../otherHomeCards/HomeBanner';
 import HomeCollection from '../otherHomeCards/HomeCollection';
 import HomeFriends from '../otherHomeCards/HomeFriends';
 import HomeTrades from '../otherHomeCards/HomeTrades';
-// import HomeTrending from '../otherHomeCards/HomeTrending';
 import './userHome.css';
 
 
@@ -22,7 +21,7 @@ class OtherUser extends Component{
     }
 
     render(){
-        console.log(this.props.friendsInfo);
+        // console.log(this.props.friendsInfo);
         let userDetails = this.props.friendsInfo.userDetails;
         let userRecords = this.props.friendsInfo.userRecords;
         let userFriends = this.props.friendsInfo.userFriends;
@@ -37,7 +36,6 @@ class OtherUser extends Component{
                             <HomeCollection data={userRecords} />
                             <HomeFriends data={userFriends} />
                             <HomeTrades data={userTrades} /> 
-                            {/* <HomeTrending /> */}
                         </div>
                     </div>
                 </div>
