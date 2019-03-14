@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import collectionAction from '../../actions/collectionAction';
 import '../pages/userHome.css';
 
 class HomeCollection extends Component{
@@ -14,7 +12,7 @@ class HomeCollection extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps);
+        // console.log(newProps);
         this.setState({
             records:newProps.data,
         })
@@ -34,15 +32,6 @@ class HomeCollection extends Component{
         else{
             collection=<div></div>;
         }
-        /*const recordCount = collection.length;
-        let userRank = "";
-        if(recordCount > 0 && recordCount < 11){
-            userRank = "Garage Band"
-        }else if(recordCount > 10 && recordCount < 21){
-            userRank = "Opening Act"
-        }else{
-            userRank = "Grammy Winner"
-        }*/
 
         return(
             <div className="dashboard-item row">
@@ -56,7 +45,6 @@ class HomeCollection extends Component{
                         </div>
                         <div className="dashboard-item-details col s12 m9">
                             <div>{collection}</div>
-                            {/* <span>{userRank}</span> */}
                         </div>
                     </div>
                     <div className="row">

@@ -38,10 +38,6 @@ class PersonCard extends Component{
         })
     }
 
-    
-
-    // component will update or receive props and then update state in here
-
     render(){
         let avatar = this.state.friend.avatarUrl;
         if(avatar === ""){
@@ -102,5 +98,3 @@ function mapDispatchToProps(dispatcher){
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(PersonCard);
-
-// add this person to your friends with a an axios request right in the component, THEN! have the friends action and community actions run to update state of these two on the front end. then re route the user to the Friends page

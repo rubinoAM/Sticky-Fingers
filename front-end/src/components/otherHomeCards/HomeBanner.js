@@ -37,7 +37,6 @@ class HomeBanner extends Component{
                         <div className=" col s12 banner-contents">
                             <h2>{allUpperUserNameOnBanner}</h2>
                             <p>{userTagline}</p>
-                            {/* <p>Member since</p> */}
                         </div>
                     </div>
                     <div className="col m12 hide-on-small-only">
@@ -47,7 +46,6 @@ class HomeBanner extends Component{
                             <div className="banner-contents">
                                 <h2>{allUpperUserNameOnBanner}</h2>
                                 <p>{userTagline}</p>
-                                {/* <p>Member since</p> */}
                             </div>
                     </div>
                 </div>

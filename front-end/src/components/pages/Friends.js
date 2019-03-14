@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import friendsAction from '../../actions/friendsAction';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Friend from './Friend';
 import './friends.css';
 
@@ -15,8 +12,6 @@ class Friends extends Component{
     }
 
     componentDidMount(){ //Challenge: Footer resize
-        // this.props.friendsAction();
-
         this.setState({
             footer:window.document.getElementById('footer'),
         })
@@ -106,11 +101,5 @@ function mapStateToProps(state){
         friends: state.friends,
     }
 }
-
-// function mapDispatchToProps(dispatcher){
-//     return bindActionCreators({
-//         friendsAction
-//     },dispatcher)
-// }
 
 export default connect(mapStateToProps)(Friends);

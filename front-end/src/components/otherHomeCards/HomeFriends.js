@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import friendsAction from '../../actions/friendsAction';
 import '../pages/userHome.css';
 
 class HomeFriends extends Component{
@@ -14,7 +12,7 @@ class HomeFriends extends Component{
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps);
+        // console.log(newProps);
         this.setState({
             friends:newProps.data,
         })

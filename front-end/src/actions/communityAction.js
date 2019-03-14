@@ -8,8 +8,6 @@ export default (auth)=>{
             auth
         }
     })
-    // const axiosPromise = axios.post(`${window.apiHost}/users/community`,auth,null);
-
     return{
         type: "COMMUNITY_ACTION",
         payload: axiosPromise,
