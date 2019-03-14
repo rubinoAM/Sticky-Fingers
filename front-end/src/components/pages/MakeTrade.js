@@ -157,7 +157,7 @@ class MakeTrade extends Component{
                 yourUserName,
             },
         }).then((response)=>{
-            // console.log(response.data);
+            // console.log(response.data);;
             const yourAddress = `${response.data[0].addressStreet} ${response.data[0].addressCity}, ${response.data[0].addressState} ${response.data[0].addressZip}`;
             const recipAddress = `${response.data[1].addressStreet} ${response.data[1].addressCity}, ${response.data[1].addressState} ${response.data[1].addressZip}`;
 
