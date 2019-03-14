@@ -212,7 +212,7 @@ Sticky Fingers is a record collection application where users can show off what 
     * [GitHub Profile](https://github.com/JRPriestman)
 * Michael Rubino
     * Contributions:
-        * Concept, Wireframing, Front-End Design, Discogs API Implementation, Database Maintenance, Assistance with Redux, React Component Setup & Routing, Express Route Connection
+        * Concept, Wireframing, Front-End Design, Discogs API Implementation, Database Maintenance, Assistance with Redux, React Component Setup & Routing, Express Route Connection, Logo Design
     * [GitHub Profile](https://github.com/rubinoAM)
 
 ## Screenshots
@@ -239,7 +239,7 @@ Sticky Fingers is a record collection application where users can show off what 
 * Add Record Page
 
 ![Search Box](./readme/searchbox.png)
-![Search Results](./readme/searchresults.png)
+![Search Results](./readme/searchresult.png)
 
 * Collection Page
 

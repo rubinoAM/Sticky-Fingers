@@ -8,12 +8,12 @@ class HomeFriends extends Component{
         //console.log(this.props)
         const friendsList = this.props.friends.map((friend,i)=>{
             let avatar = this.props.friends[i].avatarUrl;
-            console.log(this.props)
+            //console.log(this.props)
             if(!avatar){
                 avatar = 'placeholder.png'
             }
             let avatarUrl = `${window.apiHost}/images/${avatar}`;
-            console.log(avatarUrl)
+            //console.log(avatarUrl)
             // let profileUrl = `/users/people/${this.state.friend.id}`;
             return(
                 <li key={i}>
