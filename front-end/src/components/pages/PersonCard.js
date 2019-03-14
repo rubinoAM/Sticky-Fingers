@@ -16,7 +16,6 @@ class PersonCard extends Component{
     }
 
     addFriend = (e)=>{
-        console.log("add Friend hit")
         e.preventDefault();
         const newFriend = this.state;
         const auth = this.props.auth;
@@ -25,17 +24,12 @@ class PersonCard extends Component{
             url: `${window.apiHost}/users/addfriend`,
             data: {
                 newFriend,
-                auth,
-            },
-            
-        }).then((response)=>{
-            console.log("promise hit")
+                auth
+            }
+        }).then(()=>{
             this.props.friendsAction(this.props.auth);
             this.props.communityAction(this.props.auth);
-            // this.props.history.push('/users/userHome')
-            // console.log(this.props.friends)
         })
-        console.log("promise done")
     } 
 
     componentDidMount(){

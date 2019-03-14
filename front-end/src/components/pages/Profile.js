@@ -46,6 +46,7 @@ class Profile extends Component{
 
         const formData = new FormData();
         formData.append('avatar',avatar);
+        // formData.append('avatar',this.props.auth.avatar);
         formData.append('token',this.props.auth.token);
         formData.append('userName',this.props.auth.userName)
 
@@ -63,6 +64,7 @@ class Profile extends Component{
                 userName:this.props.auth.userName,
             },
         }).then((response)=>{
+            console.log(response.data)
             let avyPath = response.data;
             this.props.avatarAction(avyPath);
             this.props.history.push('/users/userHome');
