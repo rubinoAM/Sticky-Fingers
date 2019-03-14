@@ -20,4 +20,3 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer;
-// state to mini reducers is 1 to 1

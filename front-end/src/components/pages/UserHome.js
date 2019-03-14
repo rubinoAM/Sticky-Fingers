@@ -5,7 +5,6 @@ import HomeNavPanel from '../userHomeCards/HomeNavPanel';
 import HomeCollection from '../userHomeCards/HomeCollection';
 import HomeFriends from '../userHomeCards/HomeFriends';
 import HomeTrades from '../userHomeCards/HomeTrades';
-// import HomeTrending from '../userHomeCards/HomeTrending';
 import './userHome.css';
 
 
@@ -21,7 +20,6 @@ class UserHome extends Component{
                             <HomeCollection />
                             <HomeFriends />
                             <HomeTrades /> 
-                            {/* <HomeTrending /> */}
                         </div>
                     </div>
                 </div>

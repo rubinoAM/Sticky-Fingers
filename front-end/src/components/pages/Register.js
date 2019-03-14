@@ -36,7 +36,6 @@ class Register extends Component{
     registerSubmit = (event)=>{
         event.preventDefault();
         // console.dir(event.target);
-        // below two are exactly the same
         const userName = event.target[0].value;
         const email = document.getElementById('email').value;
         const password = event.target[2].value;
@@ -113,8 +112,6 @@ function mapStateToProps(state){
     }
 }
 
-// auth = this.props.auth
-
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
         authAction: authAction,
@@ -123,7 +120,5 @@ function mapDispatchToProps(dispatcher){
         friendsAction
     },dispatcher)
 }
-
-// authAction = this.props.authAction
 
 export default connect(mapStateToProps,mapDispatchToProps)(Register);

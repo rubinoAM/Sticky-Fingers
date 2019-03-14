@@ -8,7 +8,7 @@ class HomeBanner extends Component{
     render(){
         const userNameOnBanner = this.props.auth.userName;
         let allUpperUserNameOnBanner = userNameOnBanner.toUpperCase();
-        console.log(this.props);
+        //console.log(this.props);
         const userAvatar = `${window.apiHost}/images/${this.props.auth.avatarUrl}`;
         const userTagline = this.props.auth.tagline;
 
@@ -22,7 +22,6 @@ class HomeBanner extends Component{
                         <div className=" col s12 banner-contents">
                             <h2>{allUpperUserNameOnBanner}</h2>
                             <p>{userTagline}</p>
-                            {/* <p>Member since</p> */}
                         </div>
                     </div>
                     <div className="col m12 hide-on-small-only">
@@ -32,7 +31,6 @@ class HomeBanner extends Component{
                             <div className="banner-contents">
                                 <h2>{allUpperUserNameOnBanner}</h2>
                                 <p>{userTagline}</p>
-                                {/* <p>Member since</p> */}
                             </div>
                     </div>
                 </div>
@@ -54,6 +52,3 @@ function mapDispatchToProps(dispatcher){
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(HomeBanner);
-
-
-
