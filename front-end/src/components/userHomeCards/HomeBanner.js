@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import authAction from '../../actions/authAction';
+import avatarAction from '../../actions/avatarAction';
 import '../pages/userHome.css';
 
 class HomeBanner extends Component{
@@ -42,12 +43,14 @@ class HomeBanner extends Component{
 function mapStateToProps(state){
     return{
         auth: state.auth,
+        //avatarUrl: state.avatarUrl,
     }
 }
 
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
-        authAction
+        authAction,
+        avatarAction
     },dispatcher)
 }
 

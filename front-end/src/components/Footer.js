@@ -13,7 +13,7 @@ function Footer(){
                     <div className="col m4 s12">
                         <h5>Sticky Fingers</h5>
                         <ul>
-                            <li><Link to="/users/aboutUs">About Us</Link></li>
+                            <li><Link to="/aboutUs">About Us</Link></li>
                             <li><Link to="">Blog</Link></li>
                             <li><Link to="">Careers</Link></li>
                         </ul>
