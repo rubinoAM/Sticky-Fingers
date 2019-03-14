@@ -4,6 +4,7 @@ import formHeaderImage from '../../images/form-header.jpg';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import authAction from '../../actions/authAction';
 import avatarAction from '../../actions/avatarAction';
 
 class Profile extends Component{
@@ -53,6 +54,11 @@ class Profile extends Component{
             formData,
             config);
 
+        axiosPromise.then((response)=>{
+            let avyPath = response.data;
+            this.props.avatarAction(avyPath);
+        })
+
         axios({
             url: `${window.apiHost}/users/profileCreation`,
             method: 'POST',
@@ -62,10 +68,8 @@ class Profile extends Component{
                 userName:this.props.auth.userName,
             },
         }).then((response)=>{
-            //console.log(response.data)
-            let avyPath = response.data;
-            this.props.avatarAction(avyPath);
             this.props.history.push('/users/userHome');
+            //console.log(response.data)
         }).catch((err)=>{if (err){throw err}});
     }
 
@@ -142,6 +146,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
+        authAction,
         avatarAction,
     },dispatcher)
 }

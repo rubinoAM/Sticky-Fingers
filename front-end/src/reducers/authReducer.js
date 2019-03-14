@@ -4,7 +4,7 @@ export default (state = [], action)=>{
         return action.payload.data
     } else if(action.type === "AVATAR_ACTION"){
         let newState = {...state} //Deep copy of State
-        newState.avatarUrl = action.payload.data
+        newState.avatarUrl = action.payload
         return newState
     } else if(action.type === "LOGOUT"){
         return []

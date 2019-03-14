@@ -197,6 +197,20 @@ router.post('/profileCreation',(req,res,next)=>{
   })
 });
 
+router.post('/getAvatar',(req,res,next)=>{
+  const userName = req.body.userName;
+  const avyQuery = `SELECT avatarUrl FROM users WHERE userName = ?;`;
+
+  connection.query(avyQuery,[userName],(err,results)=>{
+    if(err){throw err}
+    if(results.length === 0){
+      res.json('placeholder.png')
+    } else {
+      res.json(results[0].avatarUrl)
+    }
+  })
+})
+
 router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
   const tempPath = req.file.path;
   //console.log(req.body);
