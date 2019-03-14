@@ -9,7 +9,7 @@ class RecordCard extends Component{
     }
 
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         return(
             <div key={this.props.data.rid} className="col s12 m6 l3">
                 <div className="card record-card">

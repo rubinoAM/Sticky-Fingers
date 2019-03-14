@@ -4,7 +4,7 @@ import TradeInfo from '../utility/TradeInfo';
 
 class Trade extends Component{
     render(){
-        console.log(this.props);
+        //console.log(this.props);
         const user1Address = {
             street: this.props.data.u1Street,
             city: this.props.data.u1City,

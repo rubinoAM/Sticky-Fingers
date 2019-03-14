@@ -18,9 +18,7 @@ class Profile extends Component{
     finishRegister = (e)=>{
         e.preventDefault();
         //console.log(e.target);
-
         //console.dir(e.target.avatar);
-
         const avatar = e.target.avatar.files[0];
         //console.log(avatar);
         const tagline = e.target.tagline.value;
