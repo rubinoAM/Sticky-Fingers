@@ -208,11 +208,11 @@ Sticky Fingers is a record collection application where users can show off what 
 ## Authors
 * J.R. Priestman
     * Contributions:
-        * React Component Setup & Routing, Front-End Design, Express Route Connection, SQL Schema and Database Setup, Redux and Axios Implementation
+        * SCRUM Manager, React Component Setup & Routing, Front-End Design, Express Route Connection, SQL Schema and Database Setup, Redux and Axios Implementation
     * [GitHub Profile](https://github.com/JRPriestman)
 * Michael Rubino
     * Contributions:
-        * SCRUM Manager, Concept, Wireframing, Front-End Design, Discogs API Implementation, Database Maintenance, Assistance with Redux, React Component Setup & Routing, Express Route Connection
+        * Concept, Wireframing, Front-End Design, Discogs API Implementation, Database Maintenance, Assistance with Redux, React Component Setup & Routing, Express Route Connection
     * [GitHub Profile](https://github.com/rubinoAM)
 
 ## Screenshots
@@ -247,16 +247,19 @@ Sticky Fingers is a record collection application where users can show off what 
 
 * Friends Page
 
-![Friends Page](./readme/friendprofile.png)
+![Friends Page](./readme/friends.png)
 
 * Other User's Profile
 
 ![Other User's Profile](./readme/friendprofile.png)
 
-* Make Trade Page
+* Make Trade Page (Choosing A Recipient)
 
-![Choose Recipient & Recipient Record](./readme/makeatradept1.png)
-![Choose Your Record](./readme/makeatradept2.png)
+![Choose Recipient & Recipient Record](./readme/maketradept1.png)
+
+* Make Trade Page (Choosing Your Record)
+
+![Choose Your Record](./readme/maketradept2.png)
 
 * Community Page
 
