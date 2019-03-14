@@ -6,7 +6,7 @@ class HomeBanner extends Component{
         super()
         this.state = {
             userName:'',
-            avatarUrl:'placeholder.jpg',
+            avatarUrl:'placeholder.png',
             tagline:'',
         }
     }

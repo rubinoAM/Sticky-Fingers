@@ -7,6 +7,7 @@ import tradesReducer from './tradesReducer';
 import makeTradeReducer from './makeTradeReducer';
 import communityReducer from './communityReducer';
 import friendsInfoReducer from './friendsInfoReducer';
+import avatarReducer from './avatarReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     community: communityReducer,
     makeTrade: makeTradeReducer,
     friendsInfo: friendsInfoReducer,
+    avatar: avatarReducer,
 })
 
 export default rootReducer;
