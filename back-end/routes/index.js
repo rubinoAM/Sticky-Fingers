@@ -14,36 +14,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// The original Register route that works:
-// router.post('/register',(req,res,next)=>{
-//   const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
-//   connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
-//     // console.log("=========Server insanity check")
-//     if(err){throw err};
-//     if(results.length === 0){
-//       console.log(req.body)
-//       const token = randToken.uid(50);
-//       const hash = bcrypt.hashSync(req.body.password);
-//       const insertUserQuery = `INSERT INTO users (userName,email,password,token)
-//       VALUES
-//       (?,?,?,?);`;
-//       connection.query(insertUserQuery,[req.body.userName, req.body.email, hash, token],(err2,results2)=>{
-//         if(err2){throw err2;}
-//         res.json({
-//           msg: "User Added",
-//           token,
-//           email: req.body.email,
-//           userName: req.body.userName
-//         })
-//       });
-//     } else {
-//       console.log("there is a spoon")
-//       res.json({msg: "User Exists"})
-//     }
-//   })
-// })
-
-
 router.post('/register',(req,res,next)=>{
   const checkUsernameQuery = `SELECT * FROM users WHERE email = ?;`;
   connection.query(checkUsernameQuery, [req.body.email],(err,results)=>{
@@ -86,7 +56,6 @@ router.post('/login',(req,res,next)=>{
   const password = req.body.password;
   const userName = req.body.userName;
   const selectUserQuery = `SELECT * FROM users WHERE userName = ?;`;
-  // const hash = bcrypt.hashSync(req.body.password);
   connection.query(selectUserQuery, [userName],(error,results)=>{
     //console.log("============login route hit")
     //console.log(results);

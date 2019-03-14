@@ -79,13 +79,13 @@ class Login extends Component{
                         <form className="form-main-form" onSubmit={this.handleLogin}>
                             <div className="row">
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='text' name='username' id='username' />
+                                    <input className='validate' type='text' name='username' id='username' autoComplete="on"/>
                                     <label htmlFor='username'>Enter Your Username</label>
                                 </div>
                             </div>
                             <div className='row'>
                                 <div className='input-field col s12'>
-                                    <input className='validate' type='password' name='password' id='password' />
+                                    <input className='validate' type='password' name='password' id='password' autoComplete="on"/>
                                     <label htmlFor='password'>Enter Your Password</label>
                                 </div>
                             </div>

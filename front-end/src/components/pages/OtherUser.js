@@ -10,9 +10,6 @@ import './userHome.css';
 
 
 class OtherUser extends Component{
-    constructor(){
-        super()
-    }
 
     componentDidMount(){
         let id = window.location.href

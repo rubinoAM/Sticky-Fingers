@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 class RecordCard extends Component{
     constructor(){
         super()
-        
     }
 
     render(){
