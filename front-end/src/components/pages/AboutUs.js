@@ -9,14 +9,14 @@ function AboutUs(){
                     <div className="content-wrapper">
                         <div className="row d-flex justify-content-center profile-section">
                             <div className="col-12 d-flex justify-content-center">
-                                <img className="profilePic" src="../../images/michael_headshot.jpeg" />
+                                <img className="profilePic" src="../../images/michael_headshot.jpeg" alt=""/>
                             </div>
                             <div className="col-12 d-flex justify-content-center">
                                 <h1>Michael Rubino</h1>
                             </div>
                             <div className="col-12 d-flex justify-content-center">
-                                <a className="p-3" href="https://github.com/rubinoAM" target="blank"><img className="favicon" src="../../images/GitHub-Mark-64px.png" /></a>
-                                <a className="p-3" href="https://www.linkedin.com/in/michael-rubino-developer/" target="blank"><img className="favicon" src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" /></a>
+                                <a className="p-3" href="https://github.com/rubinoAM" target="blank"><img className="favicon" src="../../images/GitHub-Mark-64px.png" alt=""/></a>
+                                <a className="p-3" href="https://www.linkedin.com/in/michael-rubino-developer/" target="blank"><img className="favicon" src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" alt=""/></a>
                             </div>
                             <div className="col-10 d-flex justify-content-center">
                                 <p>
@@ -27,14 +27,14 @@ function AboutUs(){
 
                         <div className="row d-flex justify-content-center profile-section">
                             <div className="col-12 d-flex justify-content-center">
-                                <img className="profilePic" src="../../images/jr_headshot.png" />
+                                <img className="profilePic" src="../../images/jr_headshot.png" alt=""/>
                             </div>
                             <div className="col-12 d-flex justify-content-center">
                                 <h1>JR Priestman</h1>
                             </div>
                             <div className="col-12 d-flex justify-content-center">
-                                <a className="p-3" href="https://github.com/JRPriestman" target="blank"><img className="favicon" src="../../images/GitHub-Mark-64px.png" /></a>
-                                <a className="p-3" href="https://www.linkedin.com/in/jrpriestman/" target="blank"><img className="favicon" src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" /></a>
+                                <a className="p-3" href="https://github.com/JRPriestman" target="blank"><img className="favicon" src="../../images/GitHub-Mark-64px.png" alt=""/></a>
+                                <a className="p-3" href="https://www.linkedin.com/in/jrpriestman/" target="blank"><img className="favicon" src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" alt=""/></a>
                             </div>
                             <div className="col-10 d-flex justify-content-center">
                                 <p>

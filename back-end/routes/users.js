@@ -55,8 +55,6 @@ router.post('/collection',(req,res,next)=>{
     //console.log("collection query results")
     //console.log(results)
   })
-
-  // const tracksQuery = `SELECT * FROM tracks WHERE rid = `
 })
 
 router.get('/addrecord/:title/:artist', (req,res,next)=>{
@@ -123,24 +121,18 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
 
 router.post('/addrecord/', (req,res,next)=>{
   //console.log("add record route")
-  // add record in to records - done
-  // add a collectionrecords line
-  // add the newly created collectionrecords reference to the collections table
-  // add a cid in to the collectionRecords table
   const title = req.body.title;
   const artist = req.body.artist;
   const year = req.body.year;
   const genre = req.body.genre;
   const coverUrl = req.body.coverUrl;
   const userName = req.body.userName;
-  // we have now added this record to our records table in the DB
   const addRecordQuery = `INSERT INTO records (name,artist,year,genre,coverUrl,available)
-    VALUES (?,?,?,?,?,1);`;  //EXPLAIN available in TABLE
+    VALUES (?,?,?,?,?,1);`; 
   connection.query(addRecordQuery,[title,artist,year,genre,coverUrl],(error3,results3)=>{
     if(error3){throw error3}
     //console.log(results);
   });
-    // we now know the id of the collection of this user
   let collectionId;
   const uIdQuery = `SELECT id FROM users
     WHERE userName = ?;`;
@@ -159,7 +151,7 @@ router.post('/addrecord/', (req,res,next)=>{
       connection.query(getRecIdQuery,[title,artist],(error4,results4)=>{
         if(error4){throw error4}
         recId = results4[0].id;
-        console.log("IDs below")
+        // console.log("IDs below")
         const createCollectionRecordsQuery = `INSERT INTO collectionRecords (cid,rid)
         VALUES(?,?);`;
         connection.query(createCollectionRecordsQuery,[collectionId,recId],(error5,results5)=>{
@@ -180,8 +172,6 @@ router.post('/addrecord/', (req,res,next)=>{
       });
     });
   });
-  // we have now created a new line in collectionRecords,
-  // we now need to add the newly made id on the collectionRecords table to the collections table as the crid
 });
 
 router.post('/profileCreation',(req,res,next)=>{
@@ -204,7 +194,6 @@ router.post('/profileCreation',(req,res,next)=>{
     if(err){throw err}
     res.json({msg:'Profile Successfully Populated'});
     //console.log(results);
-    //res.redirect('/dashboard')
   })
 });
 
