@@ -203,6 +203,7 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
 
   const token = req.body.token;
   const userName = req.body.userName;
+  let ranNum = Math.floor(Math.random() * 9);
   const targetQuery = `SELECT id FROM users
     WHERE userName = ?;`;
 
@@ -210,8 +211,8 @@ router.post('/profileAvatar',upload.single('avatar'),(req,res,next)=>{
     if(err){throw err}
     //console.log(results);
     let lastId = results[0].id;
-    const targetPath = "public/images/avy_" + lastId + ".jpg";
-    const dbPath = "avy_" + lastId + ".jpg"
+    const targetPath = "public/images/avy_" + lastId + "_" + ranNum + ".jpg";
+    const dbPath = "avy_" + lastId + "_" + ranNum + ".jpg";
     fs.readFile(tempPath,(err,fileContents)=>{
       if(err){throw err}
       fs.writeFile(targetPath,fileContents,(error_2)=>{
