@@ -50,4 +50,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//Redirect With Express
+app.use((req, res)=>{
+	console.log(req.path);
+	res.redirect(`/?route=${req.path}`);
+});
+
 module.exports = app;
