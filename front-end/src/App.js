@@ -15,6 +15,7 @@ import AboutUs from './components/pages/AboutUs';
 
 class App extends Component {
   render() {
+    //console.log(this.props.location);
     return (
       <Router>
         <div className="app-container">
