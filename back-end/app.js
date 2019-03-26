@@ -52,7 +52,7 @@ app.use(function(err, req, res, next) {
 
 //Redirect With Express
 app.use((req, res)=>{
-	console.log(req.path);
+	//console.log(req.path);
 	res.redirect(`/?route=${req.path}`);
 });
 

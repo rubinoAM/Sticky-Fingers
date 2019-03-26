@@ -86,8 +86,8 @@ router.get('/addrecord/:title/:artist', (req,res,next)=>{
       console.log('Genre: ' + data.styles[0]);
       console.log('Year: ' + data.year);
       console.log('Image URL: ' + data.images[0].uri);*/
-      console.log("data response from discogs")
-      console.log(data);
+      //console.log("data response from discogs")
+      //console.log(data);
       let result
       if(data.message == 'The requested resource was not found.'){
           result = {
